@@ -1,0 +1,146 @@
+.form-row-title h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #161616a6;
+    padding: 20px 0 !important;
+}
+
+.order-form-header p {
+    font-weight: bold;
+    font-style: italic;
+}
+
+.order-form-grid {
+    display: grid;
+    grid-template-columns: 100px auto 100px;
+    gap: 10px;
+    border-top: 1px dashed #dedede;
+}
+
+.order-form-grid .order-form-item-label {
+    padding: 5px 0;
+}
+
+.order-form-grid .order-form-item-label:last-child {
+    text-align: right;
+    font-weight: bold;
+}
+
+.order-form-input-number p {
+    text-align: right;
+}
+
+.order-form-input-number label {
+    font-weight: bold;
+    padding-right: 10px;
+}
+
+.order-form-input-number input {
+    width: 90px;
+    border: 1px solid #ccc;
+    padding: 10px 6px;
+    border-radius: 5px;
+}
+
+.order-form-layout {
+    margin-bottom: 10px;
+}
+
+.order-form-customer-inputs br {
+    display: none !important;
+}
+
+.order-form-customer-inputs .order-form-customer-input label {
+    display: block;
+    font-weight: 700;
+    color: #808080;
+}
+
+.order-form-customer-input {
+    margin-bottom: 20px;
+}
+
+.order-form-customer-input input {
+    width: 100% !important;
+    border: 1px solid #ccc;
+    padding: 10px 6px;
+    border-radius: 5px;
+}
+
+/* Payment Method */
+.choose-paymnet-options br {
+    display: none !important;
+}
+
+.choose-paymnet-options p {
+    padding-bottom: 0 !important;
+}
+
+.choose-paymnet-options p:first-child {
+    padding-bottom: 8px !important;
+}
+
+.choose-paymnet-options p>label {
+    display: block;
+    font-weight: 700;
+    color: #808080;
+    margin-bottom: 10px;
+}
+
+.choose-paymnet-options span.wpcf7-form-control-wrap .wpcf7-list-item {
+    margin: 0 !important;
+}
+
+.choose-paymnet-options .wpcf7-list-item {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.choose-paymnet-options input[type=radio] {
+    -webkit-appearance: radio;
+    margin-left: 0;
+}
+
+.termsandcondition-options {
+    margin-top: 20px;
+}
+
+.termsandcondition-options p {
+    padding-bottom: 0 !important;
+}
+
+.termsandcondition-options input[type=radio] {
+    -webkit-appearance: radio;
+    margin-left: 0;
+}
+
+.termsandcondition-options span.wpcf7-form-control-wrap .wpcf7-list-item {
+    margin: 0 !important;
+}
+
+.order-form-submit-button {
+    margin-top: 20px;
+}
+
+.order-form-submit-button input {
+    background-color: #d72e07;
+    color: #fff;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: .5s;
+}
+
+.order-form-submit-button input:hover {
+    background-color: #a41f05;
+}
+
+.termsandcondition-options input[type=checkbox] {
+    margin-left: 0 !important;
+}
+
+.termsandcondition-options p:last-child {
+    margin-top: 5px !important;
+}
