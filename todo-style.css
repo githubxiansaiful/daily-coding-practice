@@ -1,0 +1,11 @@
+div#todos {
+    display: grid;
+    gap: 10px;
+}
+
+.single-item {
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+}
