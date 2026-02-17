@@ -25,6 +25,7 @@ const loadTodosThen = () => {
         .then(res => res.json())
         .then(data => {
             console.log("Data From .then:", data.todos)
+            renderTodos(data.todos);
         })
 }
 
