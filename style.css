@@ -115,3 +115,14 @@ span.sbi_follow_btn a:hover {
 .xs-blog-module article:hover .entry-featured-image-url img {
     transform: scale(1.03);
 }
+
+/* Hover animation for column */
+.xs-animation-row .et_pb_column {
+    transition: .3s;
+}
+
+.xs-animation-row .et_pb_column:hover {
+    transform: scale(1.03);
+}
+/* Hero Slider */
+.hero-slider-section .et_pb_slider 
