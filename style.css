@@ -50,6 +50,66 @@ body .footer-email-module.et_pb_subscribe .et_pb_newsletter_result.et_pb_newslet
     gap: 10px;
 }
 
+.footer-policy-links ul {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 10px;
+}
+
+.footer-policy-links ul li {
+    position: relative;
+    padding-right: 10px;
+}
+
+.footer-policy-links ul li:after {
+    content: "-";
+    position: absolute;
+    right: -1px;
+}
+
+.footer-policy-links ul li:last-child {
+    padding-right: 0 !important;
+}
+
+.footer-policy-links ul li:last-child::after {
+    display: none !important;
+}
+
+@media all and (max-width: 767px) {
+    .footer-policy-links ul {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-policy-links ul li:after {
+        display: none !important;
+    }
+
+    .footer-policy-links ul li {
+        padding-right: 0 !important;
+    }
+}
+
+@media all and (min-width: 981px) and (max-width: 1400px) {
+    .footer-policy-copyright-row {
+        display: block !important;
+    }
+
+    .footer-policy-copyright-row .et_pb_column {
+        display: block !important;
+        width: 100% !important;
+    }
+
+    .footer-policy-links ul {
+        justify-content: center;
+    }
+
+    .footer-policy-copyright-row .et_pb_column:last-child .et_pb_text {
+        text-align: center !important;
+    }
+}
+
 /* Instagram Section */
 span.sbi_follow_btn a:hover {
     background: #161616 !important;
