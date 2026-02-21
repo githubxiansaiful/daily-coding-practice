@@ -1,38 +1,32 @@
-// JSON API URL
-const todosAPIURL = "https://dummyjson.com/todos";
+const prices = {
 
-// Render todos to the DOM
-const renderTodos = (todos) => {
-    const container = document.getElementById("todos");
-    container.innerHTML = "";
+    "Package #1 (online) - Price: $549.00 + Cert Fee: $30 + HST: 13%": 654.27,
+    "Package #2 (online) - Price: $699.00 + Cert Fee: $30 + HST: 13%": 823.77,
+    "Package #3 (online) - Price: $999.00 + Cert Fee: $30 + HST: 13%": 1162.77,
+    "Package #4 (online) - Price: $1,999.00 + Cert Fee: $30 + HST: 13%": 2292.77,
 
-    todos.forEach((todo) => {
-        const div = document.createElement("div");
-        div.className = `single-item ${todo.completed ? "bg-[#778beb]" : "bg-[#e15f413b]"}`;
-        div.innerHTML = `
-            <span>${todo.todo}</span>
-            <span><i class="${todo.completed ? 'fa-solid fa-circle-check' : 'fa-regular fa-circle-xmark'}"></i></span>
-        `;
+    "Package #1 - Price: $549.00 + Cert Fee: $30 + HST: 13%": 654.27,
+    "Package #2 - Price: $699.00 + Cert Fee: $30 + HST: 13%": 823.77,
+    "Package #3 - Price: $999.00 + Cert Fee: $30 + HST: 13%": 1162.77,
+    "Package #4 - Price: $1,999.00 + Cert Fee: $30 + HST: 13%": 2292.77,
 
-        container.appendChild(div);
-    })
+    "Package #1 virtual (zoom) - Price: $699.00 + Cert Fee: $30 + HST: 13%": 823.77,
+    "Package #2 virtual (zoom) - Price: $899.00 + Cert Fee: $30 + HST: 13%": 1049.77,
+    "Package #3 virtual (zoom) - Price: $1,099.00 + Cert Fee: $30 + HST: 13%": 1275.77,
 
-}
+    "Individual Training And Testing For G2 - 1 Hour Lesson - Price: $50.00 + HST: 13%": 56.5,
+    "Individual Training And Testing For G2 - 1 Hour Lesson And Road Test - Price: $150.00 + HST: 13%": 169.5,
+    "Individual Training And Testing For G2 - 2 Hours Lesson And Road Test - Price: $200.00 + HST: 13%": 226,
+    "Individual Training And Testing For G2 - 3 Hours Lesson And Road Test - Price: $250.00 + HST: 13%": 282.5,
+    "Individual Training And Testing For G2 - 4 Hours Lesson And Road Test - Price: $300.00 + HST: 13%": 339,
+    "Individual Training And Testing For G2 - 5 Hours Lesson And Road Test - Price: $330.00 + HST: 13%": 372.9,
+    "Individual Training And Testing For G2 - 10 Hours Lesson And Road Test - Price: $550.00 + HST: 13%": 621.5,
 
-// Fetch todos using .then() method
-const loadTodosThen = () => {
-    fetch(todosAPIURL)
-        .then(res => res.json())
-        .then(data => {
-            console.log("Data From .then:", data.todos)
-            renderTodos(data.todos);
-        })
-}
+    "Individual Training And Testing For G - 1 Hour Lesson - Price: $60.00 + HST: 13%": 67.8,
+    "Individual Training And Testing For G - 1 Hour Lesson And Road Test - Price: $190.00 + HST: 13%": 214.7,
+    "Individual Training And Testing For G - 2 Hours Lesson And Road Test - Price: $250.00 + HST: 13%": 282.5,
+    "Individual Training And Testing For G - 3 Hours Lesson And Road Test - Price: $300.00 + HST: 13%": 339,
+    "Individual Training And Testing For G - 4 Hours Lesson And Road Test - Price: $360.00 + HST: 13%": 406.8,
+    "Individual Training And Testing For G - 5 Hours Lesson And Road Test - Price: $400.00 + HST: 13%": 452
 
-// Fetch todos using async/await
-const loadTodosAsync = async () => {
-    const res = await fetch(todosAPIURL);
-    const data = await res.json();
-    console.log("Data From async:", data);
-    renderTodos(data.todos);
-}
+};
