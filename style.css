@@ -1,8 +1,15 @@
+ul#mobile_menu1 {
+    border-radius: 20px;
+    margin-top: 20px;
+    border-top: none !important;
+}
+
 .elementor-icon-list-items {
     padding: 0 !important;
     list-style: none;
     gap: 10px;
 }
+
 
 .elementor-icon-list-items br {
     display: none;
@@ -44,4 +51,78 @@
     position: absolute;
     left: 0;
     top: 0;
+}
+
+@media all and (min-width: 1200px) {
+    .footer-row .et_pb_column:nth-child(1) {
+        width: 49% !important;
+    }
+
+    .footer-row .et_pb_column:nth-child(2) {
+        width: 20% !important;
+    }
+
+    .footer-row .et_pb_column:nth-child(3) {
+        width: 25% !important;
+    }
+}
+
+/* Hero Slider */
+.hero-slider .et_pb_slide_description .et_pb_slide_content {
+    max-width: 750px;
+    margin: auto;
+}
+
+/* FAQ */
+.et_pb_toggle .et_pb_toggle_title:before {
+    content: "\f078" !important;
+    font-family: fontawesome !important;
+}
+
+.et_pb_accordion .et_pb_toggle_open .et_pb_toggle_title:before {
+    display: block !important;
+    content: "\f077" !important;
+    font-family: fontawesome !important;
+}
+
+/*  Register Form */
+.registration-form {
+    display: grid;
+    gap: 15px;
+}
+
+.rf-four-input-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+@media all and (max-width: 767px) {
+    .rf-four-input-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+.registration-form br {
+    display: none !important;
+}
+
+.registration-form span.rf-requird-span {
+    color: red;
+}
+
+.registration-form select,
+.registration-form input {
+    width: 100%;
+    border: 1px solid #c1c1c1;
+    border-radius: 10px;
+    padding: 14px 10px !important;
+    color: #161616;
+    box-shadow: none;
+}
+
+.registration-form select:focus,
+.registration-form input:focus {
+    border-color: #c1c1c1;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }
