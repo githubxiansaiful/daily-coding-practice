@@ -1,7 +1,8 @@
 <div class="registration-form">
     <div class="rf-single-input rf-input-div">
         <label>Locations <span class="rf-requird-span">*</span></label>
-        [select select-locations first_as_label "Choose Location" "Richmond Hill" "Aurora" "NewMarket" "King City" "City of Vaughan" "Stouffville" "City of Markham"]
+        [select select-locations first_as_label "Choose Location" "Richmond Hill" "Aurora" "NewMarket" "King City" "City
+        of Vaughan" "Stouffville" "City of Markham"]
     </div>
     <div class="rf-four-input-grid">
         <div class="rf-input-div">
@@ -20,5 +21,62 @@
             <label for="phone">Phone</label>
             [text* text-phone autocomplete:phone id:phone]
         </div>
+    </div>
+    <div class="rf-single-input rf-input-div">
+        <label>Select Package <span class="rf-requird-span">*</span></label>
+        [select* service id:service first_as_label
+        "Choose a Package"
+        "Package #1 (online) - Price: $549.00 + Cert Fee: $30 + HST: 13%"
+        "Package #2 (online) - Price: $699.00 + Cert Fee: $30 + HST: 13%"
+        "Package #3 (online) - Price: $999.00 + Cert Fee: $30 + HST: 13%"
+        "Package #4 (online) - Price: $1,999.00 + Cert Fee: $30 + HST: 13%"
+        "Package #1 virtual (zoom) - Price: $699.00 + Cert Fee: $30 + HST: 13%"
+        "Package #2 virtual (zoom) - Price: $899.00 + Cert Fee: $30 + HST: 13%"
+        "Package #3 virtual (zoom) - Price: $1,099.00 + Cert Fee: $30 + HST: 13%"
+        "Individual Training And Testing For G2 - 1 Hour Lesson - Price: $50.00 + HST: 13%"
+        "Individual Training And Testing For G2 - 1 Hour Lesson And Road Test - Price: $150.00 + HST: 13%"
+        "Individual Training And Testing For G2 - 2 Hours Lesson And Road Test - Price: $200.00 + HST: 13%"
+        "Individual Training And Testing For G2 - 3 Hours Lesson And Road Test - Price: $250.00 + HST: 13%"
+        "Individual Training And Testing For G2 - 4 Hours Lesson And Road Test - Price: $300.00 + HST: 13%"
+        "Individual Training And Testing For G2 - 5 Hours Lesson And Road Test - Price: $330.00 + HST: 13%"
+        "Individual Training And Testing For G2 - 10 Hours Lesson And Road Test - Price: $550.00 + HST: 13%"
+        "Individual Training And Testing For G - 1 Hour Lesson - Price: $60.00 + HST: 13%"
+        "Individual Training And Testing For G - 1 Hour Lesson And Road Test - Price: $190.00 + HST: 13%"
+        "Individual Training And Testing For G - 2 Hours Lesson And Road Test - Price: $250.00 + HST: 13%"
+        "Individual Training And Testing For G - 3 Hours Lesson And Road Test - Price: $300.00 + HST: 13%"
+        "Individual Training And Testing For G - 4 Hours Lesson And Road Test - Price: $360.00 + HST: 13%"
+        "Individual Training And Testing For G - 5 Hours Lesson And Road Test - Price: $400.00 + HST: 13%"
+        ]
+    </div>
+    <div class="rf-single-input rf-input-div">
+        <label>Total Price</label>
+        [text total-price id:total readonly]
+    </div>
+    <div class="rf-single-input rf-input-div">
+        <label>Training Start Date (Preferred) <span class="rf-requird-span">*</span></label>
+        [text text-training-start-date class:walcf7-datepicker]
+    </div>
+    <div class="rf-single-input rf-input-div">
+        <label>Parent/Guardian (Phone number or Email ID) <span class="rf-requird-span">*</span></label>
+        [text* text-parent-info]
+    </div>
+    <div class="rf-single-input rf-input-div">
+        <label id="message">Message</label>
+        [textarea textarea-message id:message]
+    </div>
+    <div class="rf-single-input">
+        <label>Payment Option</label>
+        <a href="/registration-payment" class="xs-form-paylater">If you wish to pay with a credit card please <u>click
+                here</u>.
+            <div style="margin-top: 10px;" class="gform_card_icon_container">
+                <div class="gform_card_icon gform_card_icon_amex">American Express</div>
+                <div class="gform_card_icon gform_card_icon_discover">Discover</div>
+                <div class="gform_card_icon gform_card_icon_mastercard">MasterCard</div>
+                <div class="gform_card_icon gform_card_icon_visa">Visa</div>
+            </div>
+        </a>
+    </div>
+    <div class="submit-option-btn">
+        [submit "Make Payment and Register"]
     </div>
 </div>
