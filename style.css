@@ -10,33 +10,58 @@
 .et_mobile_nav_menu ul.et_mobile_menu {
     margin-top: 10px;
     border-radius: 20px;
-    border-top-color: #D4AF37;
+    border-top-color: #69403c;
     text-align: center;
 }
 
 .et_pb_menu__menu .et-menu-nav ul.nav li:last-child a {
-    background: #D4AF37;
+    background: #69403c;
     color: #fff !important;
     padding: 10px 20px !important;
     border-radius: 10px;
     height: 50px;
-    top: 15px;
+    top: 23px;
     transition: .3s;
 }
 
-.et_pb_menu__menu .et-menu-nav ul.nav li:last-child a:hover {
-    background: #b8912a;
+.top-nav-email-now {
+    display: flex;
+    justify-content: end;
 }
 
-.top-nav-call-now .et_pb_text_inner {
-    display: flex;
-    align-items: center;
+.et_pb_menu__menu .et-menu-nav ul.nav li:last-child a:hover {
+    background: #69403c;
+}
+
+@media all and (max-width: 980px) {
+    .top-nav-call-now {
+        display: flex;
+        justify-content: center;
+    }
 }
 
 .top-nav-call-now a {
     display: flex;
     align-items: center;
     gap: 10px;
+}
+
+.top-bar-call i {
+    animation: call 2s infinite;
+}
+
+@keyframes call {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.02);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 .top-bar-call {
@@ -268,4 +293,39 @@
         overflow: unset;
         height: auto;
     }
+}
+
+/* Home Slider */
+.hero-slider .et_pb_slide_description {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.hero-slider .et_pb_slide_content {
+    max-width: 780px;
+    margin: auto;
+    padding-top: 10px;
+}
+
+.hero-slider .et-pb-controllers {
+    display: flex !important;
+    padding-left: 25%;
+    padding-right: 25%;
+}
+
+.hero-slider .et-pb-controllers a {
+    flex: 1 !important;
+    text-align: center !important;
+    height: 4px !important;
+}
+
+@media all and (max-width: 980px) {
+    .hero-slider .et-pb-slider-arrows {
+        display: none !important;
+    }
+}
+body button.ff-btn.ff-btn-submit.ff-btn-md.ff_btn_style,
+body button.ff-btn.ff-btn-submit.ff-btn-md.ff_btn_style.wpf_has_custom_css,
+body .fluentform_wrapper_4.ffs_custom_wrap .ff_submit_btn_wrapper .ff-btn-submit:not(.ff_btn_no_style) {
+    background: #69403C !important;
 }
