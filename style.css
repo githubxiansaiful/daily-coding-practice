@@ -120,23 +120,23 @@
 
 /* --- Footer Contact Icons --- */
 .footer-contact-links li:nth-child(1) a:before {
-    content: "\40";
+    content: "\f0e0";
 }
 
 .footer-contact-links li:nth-child(2) a:before {
-    content: "\f095";
+    content: "\f2a0";
 }
 
 .footer-contact-links li:nth-child(3) a:before {
-    content: "\f017";
+    content: "\f64a";
 }
 
 .footer-contact-links li:nth-child(4) a:before {
-    content: "\f124";
+    content: "\f3c5";
 }
 
 .footer-contact-links li:nth-child(5) a:before {
-    content: "\e542";
+    content: "\f059";
 }
 
 /* --- Accordion --- */
@@ -213,6 +213,10 @@
     border-radius: 20px;
     padding: 20px;
     transition: .3s;
+}
+
+.our-fleets-row .et_pb_column .et_pb_blurb:hover .et_pb_blurb_description a {
+    color: #fff !important;
 }
 
 .our-fleets-row .et_pb_column .et_pb_blurb .et_pb_image_wrap {
@@ -324,6 +328,7 @@
         display: none !important;
     }
 }
+
 body button.ff-btn.ff-btn-submit.ff-btn-md.ff_btn_style,
 body button.ff-btn.ff-btn-submit.ff-btn-md.ff_btn_style.wpf_has_custom_css,
 body .fluentform_wrapper_4.ffs_custom_wrap .ff_submit_btn_wrapper .ff-btn-submit:not(.ff_btn_no_style) {
