@@ -866,3 +866,13 @@ body ul.woocommerce-error li a strong,
 body ul.woocommerce-error li a {
     color: #fff !important;
 }
+
+/* dcloud products single layout */
+body.single-product.postid-31274 #main-content {
+    display: flex;
+    flex-direction: column;
+}
+
+body.single-product.postid-31274 #main-content .et-l.et-l--body {
+    order: -999;
+}
