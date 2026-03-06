@@ -871,8 +871,26 @@ body ul.woocommerce-error li a {
 body.single-product.postid-31274 #main-content {
     display: flex;
     flex-direction: column;
+    max-width: 1134px;
+    margin: auto;
 }
 
 body.single-product.postid-31274 #main-content .et-l.et-l--body {
     order: -999;
+}
+
+body.single-product.postid-31274 #main-content>div#questions-widget {
+    padding: 20px;
+    width: 100%;
+    background: #F1F1F1;
+    margin-bottom: 30px;
+    border-radius: 10px;
+}
+
+body.single-product.postid-31274 #main-content .et_pb_wc_tabs li.qanda_tab {
+    display: none !important;
+}
+
+div.bundled_product_summary:not(.thumbnail_hidden) .details {
+    width: 100% !important;
 }
