@@ -621,18 +621,16 @@ span.wpcf7-not-valid-tip {
 
 /* Footer Menu Animation */
 .footer-menu {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-menu li {
-    margin: 10px 0;
+    list-style: none !important;
+    padding: 0 !important;
+    display: grid !important;
+    gap: 10px !important;
 }
 
 .footer-menu li a {
     text-decoration: none;
-    font-size: 24px;
-    color: #000;
+    color: #161616;
+    line-height: 1;
 }
 
 .btn-caption {

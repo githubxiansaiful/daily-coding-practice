@@ -90,31 +90,33 @@
 
 <!-- Footer Menu Animation Auto -->
 <script>
-    document.querySelectorAll(".btn-anim").forEach(link => {
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".btn-anim").forEach(link => {
 
-        const text = link.textContent.trim();
-        link.textContent = "";
+            const text = link.textContent.trim();
+            link.textContent = "";
 
-        const caption = document.createElement("span");
-        caption.className = "btn-caption";
+            const caption = document.createElement("span");
+            caption.className = "btn-caption";
 
-        function createBlock() {
-            const block = document.createElement("div");
+            function createBlock() {
+                const block = document.createElement("div");
 
-            [...text].forEach(letter => {
-                const span = document.createElement("span");
-                span.className = "btn-anim__letter";
-                span.innerHTML = letter === " " ? "&nbsp;" : letter;
-                block.appendChild(span);
-            });
+                [...text].forEach(letter => {
+                    const span = document.createElement("span");
+                    span.className = "btn-anim__letter";
+                    span.innerHTML = letter === " " ? "&nbsp;" : letter;
+                    block.appendChild(span);
+                });
 
-            return block;
-        }
+                return block;
+            }
 
-        caption.appendChild(createBlock());
-        caption.appendChild(createBlock());
+            caption.appendChild(createBlock());
+            caption.appendChild(createBlock());
 
-        link.appendChild(caption);
+            link.appendChild(caption);
 
-    });
+        });
+    })
 </script>

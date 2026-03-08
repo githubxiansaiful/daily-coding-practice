@@ -1,146 +1,109 @@
-<!DOCTYPE html>
-<html>
+<ul class="menu">
+    <li><a href="#" class="btn-anim">Home</a></li>
+    <li><a href="#" class="btn-anim">About</a></li>
+    <li><a href="#" class="btn-anim">Services</a></li>
+    <li><a href="#" class="btn-anim">FAQ</a></li>
+    <li><a href="#" class="btn-anim">Contact US</a></li>
+</ul>
+<style>
+    ul {
+        list-style: none;
+        padding: 0;
+    }
 
-<head>
-    <meta charset="UTF-8">
-    <title>New Project Inquiry</title>
-</head>
+    ul li {
+        margin: 10px 0;
+    }
 
-<body style="margin:0; padding:0; background:#eef2f7; font-family:Arial, Helvetica, sans-serif;">
+    ul li a {
+        text-decoration: none;
+        font-size: 24px;
+        color: #000;
+    }
 
-    <table width="100%" cellpadding="0" cellspacing="0" style="padding:40px 0;">
-        <tr>
-            <td align="center">
+    .btn-caption {
+        display: block;
+        height: 30px;
+        overflow: hidden;
+    }
 
-                <table width="720" cellpadding="0" cellspacing="0"
-                    style="background:#ffffff; border-radius:14px; overflow:hidden; border:1px solid #e5e7eb;">
+    .btn-anim__letter {
+        display: inline-block;
+        transition: transform .5s cubic-bezier(0.76, 0, 0.024, 1);
+    }
 
-                    <!-- HEADER -->
-                    <tr>
-                        <td style="padding:25px 30px; background:#111827; color:#ffffff;">
+    .btn-anim:hover .btn-anim__letter {
+        transform: translateY(-100%);
+    }
 
-                            <table width="100%">
-                                <tr>
-                                    <td style="font-size:18px; font-weight:600;">
-                                        🚀 New Project Inquiry
-                                    </td>
-                                    <td align="right" style="font-size:13px; color:#9ca3af;">
-                                        [_date] at [_time]
-                                    </td>
-                                </tr>
-                            </table>
+    /* stagger animation */
+    .btn-anim__letter:nth-child(1) {
+        transition-delay: 0s
+    }
 
-                        </td>
-                    </tr>
+    .btn-anim__letter:nth-child(2) {
+        transition-delay: .03s
+    }
 
-                    <!-- CLIENT INFO -->
-                    <tr>
-                        <td style="padding:30px;">
+    .btn-anim__letter:nth-child(3) {
+        transition-delay: .06s
+    }
 
-                            <table width="100%" cellpadding="0" cellspacing="0">
+    .btn-anim__letter:nth-child(4) {
+        transition-delay: .09s
+    }
 
-                                <tr>
-                                    <td width="50%" style="padding-bottom:20px;">
-                                        <p style="margin:0; font-size:12px; text-transform:uppercase; color:#6b7280;">
-                                            Client Name</p>
-                                        <p style="margin:5px 0 0; font-size:16px; font-weight:600; color:#111827;">
-                                            [your-name]</p>
-                                    </td>
-                                </tr>
+    .btn-anim__letter:nth-child(5) {
+        transition-delay: .12s
+    }
 
-                                <tr>
-                                    <td width="50%" style="padding-bottom:20px;">
-                                        <p style="margin:0; font-size:12px; text-transform:uppercase; color:#6b7280;">
-                                            Email</p>
-                                        <p style="margin:5px 0 0; font-size:16px;">
-                                            <a href="mailto:[your-email]"
-                                                style="color:#2563eb; text-decoration:none;">[your-email]</a>
-                                        </p>
-                                    </td>
-                                </tr>
+    .btn-anim__letter:nth-child(6) {
+        transition-delay: .15s
+    }
 
-                                <tr>
-                                    <td width="50%" style="padding-bottom:20px;">
-                                        <p style="margin:0; font-size:12px; text-transform:uppercase; color:#6b7280;">
-                                            Company</p>
-                                        <p style="margin:5px 0 0; font-size:15px;">[your-company]</p>
-                                    </td>
-                                </tr>
+    .btn-anim__letter:nth-child(7) {
+        transition-delay: .18s
+    }
 
-                            </table>
+    .btn-anim__letter:nth-child(8) {
+        transition-delay: .21s
+    }
 
-                            <!-- SERVICE BADGE -->
-                            <table width="100%" cellpadding="0" cellspacing="0" style="margin:10px 0 25px 0;">
-                                <tr>
-                                    <td
-                                        style="padding:15px 20px; background:#f3f4f6; border-radius:10px;">
-                                        <p style="margin:0; font-size:12px; text-transform:uppercase; color:#6b7280;">
-                                            Selected Service</p>
-                                        <p style="margin:8px 0 0; font-size:17px; font-weight:600; color:#111827;">
-                                            [your-service]
-                                        </p>
-                                    </td>
-                                </tr>
-                            </table>
+    .btn-anim__letter:nth-child(9) {
+        transition-delay: .24s
+    }
 
-                            <!-- MESSAGE BLOCK -->
-                            <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:25px;">
-                                <tr>
-                                    <td>
-                                        <p style="margin:0; font-size:12px; text-transform:uppercase; color:#6b7280;">
-                                            Project Details</p>
+    .btn-anim__letter:nth-child(10) {
+        transition-delay: .27s
+    }
+</style>
 
-                                        <div
-                                            style="margin-top:10px; padding:20px; background:#ffffff; border:1px solid #e5e7eb; border-radius:10px; font-size:14px; line-height:1.7; color:#374151;">
-                                            [your-message]
-                                        </div>
+<script>
+    document.querySelectorAll(".btn-anim").forEach(link => {
 
-                                    </td>
-                                </tr>
-                            </table>
+        const text = link.textContent.trim();
+        link.textContent = "";
 
-                            <!-- TRACKING META -->
-                            <table width="100%" cellpadding="0" cellspacing="0" style="margin-top:20px;">
-                                <tr>
-                                    <td
-                                        style="padding:20px; background:#f3f4f6; border-radius:10px; font-size:12px; color:#6b7280;">
+        const caption = document.createElement("span");
+        caption.className = "btn-caption";
 
-                                        <p style="margin:0 0 5px 0;"><strong>IP Address:</strong> [_remote_ip]</p>
-                                        <p style="margin:0 0 5px 0;"><strong>Referrer Page:</strong> [_url]</p>
-                                        <p style="margin:0 0 5px 0;"><strong>User Agent:</strong> [_user_agent]</p>
+        function createBlock() {
+            const block = document.createElement("div");
 
-                                    </td>
-                                </tr>
-                            </table>
+            [...text].forEach(letter => {
+                const span = document.createElement("span");
+                span.className = "btn-anim__letter";
+                span.innerHTML = letter === " " ? "&nbsp;" : letter;
+                block.appendChild(span);
+            });
 
-                            <!-- ACTION BUTTON -->
-                            <table width="100%" cellpadding="0" cellspacing="0" style="margin-top:30px;">
-                                <tr>
-                                    <td align="left">
-                                        <a href="mailto:[your-email]"
-                                            style="display:inline-block; padding:14px 24px; background:#111827; color:#ffffff; text-decoration:none; border-radius:8px; font-size:14px; font-weight:600;">
-                                            Reply to Client →
-                                        </a>
-                                    </td>
-                                </tr>
-                            </table>
+            return block;
+        }
 
-                        </td>
-                    </tr>
+        caption.appendChild(createBlock());
+        caption.appendChild(createBlock());
 
-                    <!-- FOOTER -->
-                    <tr>
-                        <td align="center" style="padding:20px; font-size:12px; color:#9ca3af; background:#f9fafb;">
-                            Canadian Web Guru • Internal Intake Notification
-                        </td>
-                    </tr>
+        link.appendChild(caption);
 
-                </table>
-
-            </td>
-        </tr>
-    </table>
-
-</body>
-
-</html>
+    });
+</script>
