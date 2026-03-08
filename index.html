@@ -1,101 +1,120 @@
-<ul>
-    <li>
-        <a href="#" class="btn-anim">
-            <span class="btn-caption">
-                <div class="btn-anim__block">
-                    <span class="btn-anim__letter">H</span>
-                    <span class="btn-anim__letter">o</span>
-                    <span class="btn-anim__letter">m</span>
-                    <span class="btn-anim__letter">e</span>
-                </div>
-                <div class="btn-anim__block">
-                    <span class="btn-anim__letter">H</span>
-                    <span class="btn-anim__letter">o</span>
-                    <span class="btn-anim__letter">m</span>
-                    <span class="btn-anim__letter">e</span>
-                </div>
-            </span>
-        </a>
-    </li>
-</ul>
-<style>
-    ul {
-        list-style: none;
-        padding: 0;
-    }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    ul li {
-        margin: 10px 0;
-    }
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        $(function () {
+            $(".xs-custom-button-inner")
+                .on("mouseenter", function (e) {
+                    var parentOffset = $(this).offset(),
+                        relX = e.pageX - parentOffset.left,
+                        relY = e.pageY - parentOffset.top;
+                    $(this).find("span").css({ top: relY, left: relX });
+                })
+                .on("mouseout", function (e) {
+                    var parentOffset = $(this).offset(),
+                        relX = e.pageX - parentOffset.left,
+                        relY = e.pageY - parentOffset.top;
+                    $(this).find("span").css({ top: relY, left: relX });
+                });
+        });
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
 
-    ul li a {
-        text-decoration: none;
-        font-size: 24px;
-        font-family: sans-serif;
-        color: #000;
-    }
+        const nextBtn = document.querySelector(".cwg-next");
+        const prevBtn = document.querySelector(".cwg-prev");
+        const steps = document.querySelectorAll(".cwg-step");
 
-    /* animation container */
-    .btn-caption {
-        display: block;
-        height: 30px;
-        overflow: hidden;
-    }
+        if (nextBtn) {
+            nextBtn.addEventListener("click", function () {
+                steps[0].classList.remove("active");
+                steps[1].classList.add("active");
+            });
+        }
 
-    /* blocks */
-    .btn-anim__block {
-        display: block;
-    }
+        if (prevBtn) {
+            prevBtn.addEventListener("click", function () {
+                steps[1].classList.remove("active");
+                steps[0].classList.add("active");
+            });
+        }
 
-    /* letters */
-    .btn-anim__letter {
-        display: inline-block;
-        transition: transform 0.5s cubic-bezier(0.76, 0, 0.024, 1);
-    }
+    });
+</script>
 
-    /* hover animation */
-    .btn-anim:hover .btn-anim__letter {
-        transform: translateY(-100%);
-    }
+<script>
+    (function () {
+        function fitLogo(el) {
+            // find the container we want to fit into (the row)
+            var container = el.closest('.row') || el.parentElement;
+            if (!container) return;
 
-    /* delay for each letter */
-    .btn-anim__letter:nth-child(1) {
-        transition-delay: 0s;
-    }
+            // available width inside the row
+            var containerStyles = getComputedStyle(container);
+            var maxWidth = container.clientWidth
+                - parseFloat(containerStyles.paddingLeft)
+                - parseFloat(containerStyles.paddingRight);
 
-    .btn-anim__letter:nth-child(2) {
-        transition-delay: 0.03s;
-    }
+            // binary search for best font size
+            var min = 10;    // px
+            var max = 1000;  // px
 
-    .btn-anim__letter:nth-child(3) {
-        transition-delay: 0.06s;
-    }
+            while (min <= max) {
+                var mid = (min + max) / 2;
+                el.style.fontSize = mid + 'px';
 
-    .btn-anim__letter:nth-child(4) {
-        transition-delay: 0.09s;
-    }
+                if (el.scrollWidth > maxWidth) {
+                    max = mid - 1;
+                } else {
+                    min = mid + 1;
+                }
+            }
 
-    .btn-anim__letter:nth-child(5) {
-        transition-delay: 0.12s;
-    }
+            el.style.fontSize = max + 'px';
+        }
 
-    .btn-anim__letter:nth-child(6) {
-        transition-delay: 0.15s;
-    }
+        function fitAllLogos() {
+            var logos = document.querySelectorAll('.footer-large-logo');
+            logos.forEach
+                ? logos.forEach(fitLogo)
+                : Array.prototype.forEach.call(logos, fitLogo);
+        }
 
-    .btn-anim__letter:nth-child(7) {
-        transition-delay: 0.18s;
-    }
+        window.addEventListener('load', fitAllLogos);
+        window.addEventListener('resize', fitAllLogos);
+    })();
+</script>
 
-    .btn-anim__letter:nth-child(8) {
-        transition-delay: 0.21s;
-    }
+<!-- Footer Menu Animation Auto -->
+<script>
+    document.querySelectorAll(".btn-anim").forEach(link => {
 
-    .btn-anim__letter:nth-child(9) {
-        transition-delay: 0.24s;
-    }
+        const text = link.textContent.trim();
+        link.textContent = "";
 
-    .btn-anim__letter:nth-child(10) {
-        transition-delay: 0.27s;
-    }
-</style>
+        const caption = document.createElement("span");
+        caption.className = "btn-caption";
+
+        function createBlock() {
+            const block = document.createElement("div");
+
+            [...text].forEach(letter => {
+                const span = document.createElement("span");
+                span.className = "btn-anim__letter";
+                span.innerHTML = letter === " " ? "&nbsp;" : letter;
+                block.appendChild(span);
+            });
+
+            return block;
+        }
+
+        caption.appendChild(createBlock());
+        caption.appendChild(createBlock());
+
+        link.appendChild(caption);
+
+    });
+</script>
