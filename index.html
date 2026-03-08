@@ -91,31 +91,29 @@
 <!-- Footer Menu Animation Auto -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        document.querySelectorAll(".btn-anim").forEach(link => {
+        document.querySelectorAll(".nav-anim").forEach(link => {
 
             const text = link.textContent.trim();
             link.textContent = "";
 
-            const caption = document.createElement("span");
-            caption.className = "btn-caption";
+            const container = document.createElement("span");
 
-            function createBlock() {
-                const block = document.createElement("div");
+            function createLine() {
+                const line = document.createElement("span");
 
                 [...text].forEach(letter => {
                     const span = document.createElement("span");
-                    span.className = "btn-anim__letter";
                     span.innerHTML = letter === " " ? "&nbsp;" : letter;
-                    block.appendChild(span);
+                    line.appendChild(span);
                 });
 
-                return block;
+                return line;
             }
 
-            caption.appendChild(createBlock());
-            caption.appendChild(createBlock());
+            container.appendChild(createLine());
+            container.appendChild(createLine());
 
-            link.appendChild(caption);
+            link.appendChild(container);
 
         });
     })
