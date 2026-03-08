@@ -1,9 +1,101 @@
-<p><span>Get’s Started a Projects?</span> <span><svg class="ml-20" width="74" height="12" fill="none"
-            xmlns="http://www.w3.org/2000/svg">
-            <path
-                d="M65.416 11.8926L73.62 6.76034C73.7367 6.67779 73.8325 6.56504 73.8989 6.43228C73.9652 6.29953 73.9999 6.15095 73.9999 6C73.9999 5.84905 73.9652 5.70048 73.8989 5.56772C73.8325 5.43496 73.7367 5.32221 73.62 5.23966L65.416 0.107354C65.2561 0.0134291 65.0719 -0.0202036 64.8925 0.0117582C64.713 0.04372 64.5485 0.139459 64.4248 0.28388C64.3011 0.428302 64.2254 0.613192 64.2094 0.809402C64.1935 1.00561 64.2383 1.20198 64.3369 1.36755L66.7161 5.11998L0.812592 5.11998C0.597076 5.11998 0.390396 5.21269 0.238007 5.37773C0.0856171 5.54277 0 5.7666 0 6C0 6.2334 0.0856171 6.45724 0.238007 6.62227C0.390396 6.78731 0.597076 6.88003 0.812592 6.88003L66.7161 6.88003L64.3369 10.6325C64.2383 10.798 64.1935 10.9944 64.2094 11.1906C64.2254 11.3868 64.3011 11.5717 64.4248 11.7161C64.5485 11.8605 64.713 11.9563 64.8925 11.9882C65.0719 12.0202 65.2561 11.9866 65.416 11.8926Z"
-                fill="#C4EE18">
-            </path>
-        </svg>
-    </span>
-</p>
+<ul>
+    <li>
+        <a href="#" class="btn-anim">
+            <span class="btn-caption">
+                <div class="btn-anim__block">
+                    <span class="btn-anim__letter">H</span>
+                    <span class="btn-anim__letter">o</span>
+                    <span class="btn-anim__letter">m</span>
+                    <span class="btn-anim__letter">e</span>
+                </div>
+                <div class="btn-anim__block">
+                    <span class="btn-anim__letter">H</span>
+                    <span class="btn-anim__letter">o</span>
+                    <span class="btn-anim__letter">m</span>
+                    <span class="btn-anim__letter">e</span>
+                </div>
+            </span>
+        </a>
+    </li>
+</ul>
+<style>
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    ul li {
+        margin: 10px 0;
+    }
+
+    ul li a {
+        text-decoration: none;
+        font-size: 24px;
+        font-family: sans-serif;
+        color: #000;
+    }
+
+    /* animation container */
+    .btn-caption {
+        display: block;
+        height: 30px;
+        overflow: hidden;
+    }
+
+    /* blocks */
+    .btn-anim__block {
+        display: block;
+    }
+
+    /* letters */
+    .btn-anim__letter {
+        display: inline-block;
+        transition: transform 0.5s cubic-bezier(0.76, 0, 0.024, 1);
+    }
+
+    /* hover animation */
+    .btn-anim:hover .btn-anim__letter {
+        transform: translateY(-100%);
+    }
+
+    /* delay for each letter */
+    .btn-anim__letter:nth-child(1) {
+        transition-delay: 0s;
+    }
+
+    .btn-anim__letter:nth-child(2) {
+        transition-delay: 0.03s;
+    }
+
+    .btn-anim__letter:nth-child(3) {
+        transition-delay: 0.06s;
+    }
+
+    .btn-anim__letter:nth-child(4) {
+        transition-delay: 0.09s;
+    }
+
+    .btn-anim__letter:nth-child(5) {
+        transition-delay: 0.12s;
+    }
+
+    .btn-anim__letter:nth-child(6) {
+        transition-delay: 0.15s;
+    }
+
+    .btn-anim__letter:nth-child(7) {
+        transition-delay: 0.18s;
+    }
+
+    .btn-anim__letter:nth-child(8) {
+        transition-delay: 0.21s;
+    }
+
+    .btn-anim__letter:nth-child(9) {
+        transition-delay: 0.24s;
+    }
+
+    .btn-anim__letter:nth-child(10) {
+        transition-delay: 0.27s;
+    }
+</style>
