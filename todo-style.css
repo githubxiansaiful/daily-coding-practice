@@ -977,3 +977,15 @@ footer.et-l.et-l--footer.et-fb-root-ancestor-sibling {
     width: 33%;
     float: left;
 }
+
+.new-services-page-march-row .et_pb_blurb .et_pb_main_blurb_image {
+    margin-bottom: 10px;
+}
+
+.new-services-page-march-row .et_pb_blurb .et_pb_blurb_container {
+    padding: 0 20px;
+}
+
+.new-services-page-march-row .dsm_button {
+    padding: 0 20px;
+}
