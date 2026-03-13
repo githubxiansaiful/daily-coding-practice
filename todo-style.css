@@ -1009,3 +1009,11 @@ body.single-post #main-content .container #left-area {
     width: 100% !important;
     padding-right: 0 !important
 }
+
+.rank-math-contact-info code,
+.rank-math-contact-info code strong,
+.rank-math-contact-info pre,
+.rank-math-contact-info {
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 400 !important;
+}
