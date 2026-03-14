@@ -847,4 +847,79 @@ span.wpcf7-not-valid-tip {
 .csf-input-submit button svg {
     width: 30px;
 }
-/* GSPA */
+
+/* Service Cards */
+.stack-section {
+    position: relative;
+}
+
+.stack-section .et_pb_row {
+    position: sticky;
+    top: 120px;
+    margin-bottom: 40px;
+    border-radius: 50px;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15);
+    transform-origin: center top;
+    will-change: transform, filter;
+}
+
+.stack-section .et_pb_row:before {
+    content: "\f062";
+    font-family: fontawesome;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    transform: rotate(45deg);
+}
+
+.stack-section .et_pb_row .et_pb_column:first-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.service-card-tags ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 5px;
+    margin-bottom: 30px;
+}
+
+.service-card-tags ul li {
+    color: #161616;
+    font-size: 14px;
+    padding: 4px 10px;
+    border-radius: 100px;
+    border: 1px solid #161616;
+}
+
+.service-card-image {
+    will-change: transform;
+}
+
+.service-card-image img {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
