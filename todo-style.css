@@ -961,7 +961,8 @@ span.wpcf7-not-valid-tip {
     position: relative;
     display: inline-block;
     padding: 16px 42px;
-    border-radius: 40px;
+    padding-right: 60px;
+    border-radius: 100px;
     text-decoration: none;
     overflow: hidden;
     font-weight: 600;
@@ -1055,4 +1056,27 @@ span.wpcf7-not-valid-tip {
 
 .btn-anim:hover .btn-bg {
     transform: translate(-50%, -50%) scale(var(--btn-scale));
+}
+
+.btn-anim .btn-anim__block {
+    margin-top: -2px;
+}
+
+.btn-anim:hover .btn-anim__block {
+    margin-top: 4px;
+}
+
+a.btn-anim:before {
+    content: "\f062";
+    font-family: fontawesome;
+    position: absolute;
+    right: 30px;
+    transform: rotate(40deg);
+    top: 14px;
+    z-index: 999;
+    transition: .3s ease-in-out;
+}
+
+a.btn-anim:hover:before {
+    transform: rotate(90deg);
 }

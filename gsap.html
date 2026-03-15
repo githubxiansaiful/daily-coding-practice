@@ -1,14 +1,40 @@
-<a href="/contact-us" class="btn-anim light">
-  <span class="btn-text">Contact Us</span>
-  <span class="btn-bg"></span>
-</a>
+<div class="about-bg-shapes">
+  <span class="shape shape1"></span>
+  <span class="shape shape2"></span>
+  <span class="shape shape3"></span>
+</div>
 
 <style>
+    .home-about-section{
+  position:relative;
+  overflow:hidden;
+}
 
-/* =====================
-   BUTTON BASE
-===================== */
+.about-bg-shapes span{
+  position:absolute;
+  border-radius:50%;
+  background:linear-gradient(135deg,#6C63FF,#00c6ff);
+  opacity:0.15;
+}
 
+.shape1{
+  width:200px;
+  height:200px;
+  top:10%;
+  left:55%;
+}
 
+.shape2{
+  width:120px;
+  height:120px;
+  bottom:20%;
+  left:40%;
+}
 
+.shape3{
+  width:300px;
+  height:300px;
+  bottom:-100px;
+  right:-80px;
+}
 </style>
