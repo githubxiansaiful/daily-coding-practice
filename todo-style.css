@@ -861,6 +861,7 @@ span.wpcf7-not-valid-tip {
     box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15);
     transform-origin: center top;
     will-change: transform, filter;
+    transition: .3s;
 }
 
 .stack-section .et_pb_row:before {
@@ -878,6 +879,19 @@ span.wpcf7-not-valid-tip {
     align-items: center;
     font-size: 28px;
     transform: rotate(45deg);
+    transition: .3s;
+}
+
+.stack-section .et_pb_row:hover:before {
+    transform: rotate(90deg);
+}
+
+@media all and (max-width: 768px) {
+    .stack-section .et_pb_row:before {
+        width: 60px !important;
+        height: 60px !important;
+        font-size: 22px;
+    }
 }
 
 .stack-section .et_pb_row .et_pb_column:first-child {
@@ -895,11 +909,10 @@ span.wpcf7-not-valid-tip {
 }
 
 .service-card-tags ul li {
-    color: #161616;
     font-size: 14px;
     padding: 4px 10px;
     border-radius: 100px;
-    border: 1px solid #161616;
+    border: 1px solid;
 }
 
 .service-card-image {
@@ -922,4 +935,19 @@ span.wpcf7-not-valid-tip {
     100% {
         transform: translateY(0);
     }
+}
+
+/* New */
+.scramble {
+    opacity: 0.4;
+}
+
+.cursor-glow {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.15), transparent 60%);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: overlay;
 }

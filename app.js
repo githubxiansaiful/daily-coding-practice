@@ -4,28 +4,64 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const cards = gsap.utils.toArray(".stack-section .et_pb_row");
 
-    cards.forEach((card, i) => {
+    ScrollTrigger.matchMedia({
 
-        if (i === cards.length - 1) return;
+        // DESKTOP
+        "(min-width: 981px)": function () {
 
-        let nextCard = cards[i + 1];
+            cards.forEach((card, i) => {
 
-        gsap.timeline({
-            scrollTrigger: {
-                trigger: nextCard,
-                start: "top center",
-                end: "top 20%",
-                scrub: true
-            }
-        })
-            .to(card, {
-                scale: 0.92,
-                filter: "blur(3px)",
+                if (i === cards.length - 1) return;
 
-                ease: "none"
+                let nextCard = cards[i + 1];
+
+                gsap.timeline({
+                    scrollTrigger: {
+                        trigger: nextCard,
+                        start: "top center",
+                        end: "top 20%",
+                        scrub: true
+                    }
+                })
+                .to(card, {
+                    scale: 0.92,
+                    filter: "blur(3px)",
+                    ease: "none"
+                });
+
             });
 
+        },
+
+        // MOBILE + TABLET
+        "(max-width: 980px)": function () {
+			gsap.set(".stack-section", { y: -80 });
+            cards.forEach((card, i) => {
+
+                if (i === cards.length - 1) return;
+
+                let nextCard = cards[i + 1];
+
+                gsap.timeline({
+                    scrollTrigger: {
+                        trigger: nextCard,
+                        start: "top 1%",
+                        end: "top 100%",
+                        scrub: true
+                    }
+                })
+                .to(card, {
+                    scale: 0.95,
+                    filter: "blur(3px)",
+                    ease: "none"
+                });
+
+            });
+
+        }
+
     });
+
 
     // Image Animation
     gsap.utils.toArray(".service-card-image").forEach((img) => {
@@ -50,6 +86,5 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
     });
-
 
 });
