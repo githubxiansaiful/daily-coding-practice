@@ -1,40 +1,39 @@
-<div class="about-bg-shapes">
-  <span class="shape shape1"></span>
-  <span class="shape shape2"></span>
-  <span class="shape shape3"></span>
+<div class="about-ambient">
+    <div class="ambient-shape shape-a"></div>
+    <div class="ambient-shape shape-b"></div>
 </div>
-
 <style>
-    .home-about-section{
-  position:relative;
-  overflow:hidden;
-}
+    .home-about-section {
+        position: relative;
+        overflow: hidden;
+    }
 
-.about-bg-shapes span{
-  position:absolute;
-  border-radius:50%;
-  background:linear-gradient(135deg,#6C63FF,#00c6ff);
-  opacity:0.15;
-}
+    .about-ambient {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+    }
 
-.shape1{
-  width:200px;
-  height:200px;
-  top:10%;
-  left:55%;
-}
+    .ambient-shape {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.35;
+    }
 
-.shape2{
-  width:120px;
-  height:120px;
-  bottom:20%;
-  left:40%;
-}
+    .shape-a {
+        width: 420px;
+        height: 420px;
+        background: linear-gradient(135deg, #6b6cff, #8a4dff);
+        top: -80px;
+        right: 120px;
+    }
 
-.shape3{
-  width:300px;
-  height:300px;
-  bottom:-100px;
-  right:-80px;
-}
+    .shape-b {
+        width: 320px;
+        height: 320px;
+        background: linear-gradient(135deg, #00c6ff, #6b6cff);
+        bottom: -120px;
+        left: 35%;
+    }
 </style>
