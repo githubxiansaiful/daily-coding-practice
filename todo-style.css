@@ -913,6 +913,11 @@ span.wpcf7-not-valid-tip {
     padding: 4px 10px;
     border-radius: 100px;
     border: 1px solid;
+    text-align: center;
+    line-height: 1.1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .service-card-image {

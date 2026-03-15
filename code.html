@@ -1,0 +1,30 @@
+window.addEventListener("load", function(){
+
+gsap.registerPlugin(ScrollTrigger);
+
+document.querySelectorAll(".et_pb_section").forEach(section => {
+
+  const texts = section.querySelectorAll("h1,h2,h3,h4,h5,h6,p,.et_pb_button,.btn-anim");
+
+  if(texts.length){
+
+    gsap.from(texts,{
+      y:40,
+      opacity:0,
+      duration:0.8,
+      ease:"power3.out",
+      stagger:0.15,
+
+      scrollTrigger:{
+        trigger:section,
+        start:"top 80%",
+        toggleActions:"play none none reverse"
+      }
+
+    });
+
+  }
+
+});
+
+});
