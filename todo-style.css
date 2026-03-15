@@ -938,16 +938,121 @@ span.wpcf7-not-valid-tip {
 }
 
 /* New */
-.scramble {
-    opacity: 0.4;
+.hero-word {
+    display: inline-block;
 }
 
-.cursor-glow {
+.xs-custom-title strong {
+    background: linear-gradient(90deg, #fff, #ff00ff, #fff);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.footer-large-logo {
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    will-change: transform;
+}
+
+/* Custom Button All */
+.btn-anim {
+    position: relative;
+    display: inline-block;
+    padding: 16px 42px;
+    border-radius: 40px;
+    text-decoration: none;
+    overflow: hidden;
+    font-weight: 600;
+    letter-spacing: .5px;
+    cursor: pointer;
+    transition: color .35s ease, border-color .35s ease;
+}
+
+/* THEMES */
+
+.btn-anim.dark {
+    border: 2px solid #fff;
+    color: #fff;
+}
+
+.btn-anim.light {
+    border: 2px solid #000;
+    color: #000;
+}
+
+/* =====================
+   RIPPLE BACKGROUND
+===================== */
+
+.btn-bg {
     position: absolute;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.15), transparent 60%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
     pointer-events: none;
-    transform: translate(-50%, -50%);
-    mix-blend-mode: overlay;
+    z-index: 0;
+    transition: transform .65s cubic-bezier(.16, 1, .3, 1);
+}
+
+.btn-anim.dark .btn-bg {
+    background: #fff;
+}
+
+.btn-anim.light .btn-bg {
+    background: #000;
+}
+
+/* =====================
+   TEXT WRAPPER
+===================== */
+
+.btn-anim__wrapper {
+    position: relative;
+    display: block;
+    height: 1.2em;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.btn-anim__block {
+    display: block;
+    white-space: nowrap;
+}
+
+.btn-anim__block:last-child {
+    position: absolute;
+    left: 0;
+    top: 100%;
+}
+
+/* LETTERS */
+
+.btn-anim__letter {
+    display: inline-block;
+    transition: transform .5s cubic-bezier(.76, 0, .024, 1);
+}
+
+/* LETTER ANIMATION */
+
+.btn-anim:hover .btn-anim__letter {
+    transform: translateY(-100%);
+}
+
+/* TEXT COLOR SWITCH */
+
+.btn-anim.dark:hover {
+    color: #000;
+}
+
+.btn-anim.light:hover {
+    color: #fff;
+}
+
+/* RIPPLE EXPAND */
+
+.btn-anim:hover .btn-bg {
+    transform: translate(-50%, -50%) scale(var(--btn-scale));
 }
