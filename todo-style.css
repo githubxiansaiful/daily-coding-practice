@@ -1080,3 +1080,49 @@ a.btn-anim:before {
 a.btn-anim:hover:before {
     transform: rotate(90deg);
 }
+
+/* Shape On About Section */
+.home-about-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.about-shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.25;
+    pointer-events: none;
+}
+
+.shape1 {
+    width: 420px;
+    height: 420px;
+    top: -0;
+    right: 80px;
+    background: radial-gradient(circle, #7c6cff, #a855f7);
+}
+
+.shape2 {
+    width: 520px;
+    height: 520px;
+    bottom: -20px;
+    left: 2%;
+    background: radial-gradient(circle, #00c6ff, #6366f1);
+}
+
+@media all and (max-width: 768px) {
+    .shape1 {
+        width: 320px !important;
+        height: 320px !important;
+        top: -100px !important;
+        right: 40px !important;
+    }
+
+    .shape2 {
+        width: 320px !important;
+        height: 320px !important;
+        bottom: -20px !important;
+        left: -20px !important;
+    }
+}
