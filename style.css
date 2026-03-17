@@ -41,3 +41,9 @@ body .xs-custom-header-section .et_pb_menu ul.et_mobile_menu {
         font-size: 30px !important;
     }
 }
+
+.xs-custom-menu .et-menu-nav ul.sub-menu {
+    border-radius: 10px !important;
+    border-top-color: #D2232A !important;
+    margin-top: 1px !important;
+}
