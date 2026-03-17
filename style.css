@@ -10,8 +10,15 @@ body .xs-custom-header-section .et_pb_menu ul.et_mobile_menu {
     margin-top: 12px;
     background: #6d86a6f7 !important;
 }
+
 @media all and (min-width: 981px) {
-    body .xs-custom-header-section .et_pb_menu ul.et_mobile_menu {
+    body .xs-custom-header-section .et_pb_menu__logo-wrap {
         display: none !important;
+    }
+}
+
+@media all and (min-width: 981px) and (max-width: 1240px) {
+    body .xs-custom-header-section .et-menu-nav ul li a {
+        font-size: 14px !important;
     }
 }
