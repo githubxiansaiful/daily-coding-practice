@@ -47,3 +47,25 @@ body .xs-custom-header-section .et_pb_menu ul.et_mobile_menu {
     border-top-color: #D2232A !important;
     margin-top: 1px !important;
 }
+
+@media all and (min-width: 981px) {
+    .xs-custom-menu .et_pb_menu__wrap {
+        display: block !important;
+        padding: 0 20px !important;
+    }
+
+    .xs-custom-menu .et_pb_menu__menu {
+        display: block !important;
+        max-width: 1250px !important;
+        margin: 0 auto !important;
+    }
+
+    .xs-custom-menu .et-menu-nav {
+        display: block !important;
+        width: 100% !important;
+    }
+
+    .xs-custom-menu ul#menu-main-menu {
+        justify-content: space-evenly !important;
+    }
+}
