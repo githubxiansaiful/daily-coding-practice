@@ -1,169 +1,57 @@
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        $(function () {
-            $(".xs-custom-button-inner")
-                .on("mouseenter", function (e) {
-                    var parentOffset = $(this).offset(),
-                        relX = e.pageX - parentOffset.left,
-                        relY = e.pageY - parentOffset.top;
-                    $(this).find("span").css({ top: relY, left: relX });
-                })
-                .on("mouseout", function (e) {
-                    var parentOffset = $(this).offset(),
-                        relX = e.pageX - parentOffset.left,
-                        relY = e.pageY - parentOffset.top;
-                    $(this).find("span").css({ top: relY, left: relX });
-                });
-        });
-    });
-</script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
+        const section = document.querySelector(".footer-carousel-section");
+        if (!section) return;
 
-        const nextBtn = document.querySelector(".cwg-next");
-        const prevBtn = document.querySelector(".cwg-prev");
-        const steps = document.querySelectorAll(".cwg-step");
+        const images = [
+			"https://owencladding.co.uk/wp-content/uploads/2026/03/PYRAMIDS-EXTENDED.jpeg",
+            "https://owencladding.co.uk/wp-content/uploads/2026/03/IMAGE-STONEHENGE.jpg",
+            "https://owencladding.co.uk/wp-content/uploads/2026/03/IMAGE-ACROPOLIS.jpg",
+        ];
 
-        if (nextBtn) {
-            nextBtn.addEventListener("click", function () {
-                steps[0].classList.remove("active");
-                steps[1].classList.add("active");
+        let index = 0;
+        const layers = [];
+
+        // create layers
+        images.forEach((src, i) => {
+            const div = document.createElement("div");
+            div.classList.add("bg-carousel");
+            if (i === 0) div.classList.add("active");
+            div.style.backgroundImage = `url(${src})`;
+            section.appendChild(div);
+            layers.push(div);
+        });
+
+        // rotate images
+        setInterval(() => {
+            layers[index].classList.remove("active");
+            index = (index + 1) % layers.length;
+            layers[index].classList.add("active");
+        }, 444447587000);
+    });
+</script>
+<!-- Header Mobile Sub Menu -->
+<script>
+
+
+    jQuery(function ($) {
+        $(document).ready(function () {
+            $("body ul.et_mobile_menu li.menu-item-has-children, body ul.et_mobile_menu  li.page_item_has_children").append('<a href="#" class="mobile-toggle"></a>');
+            $('ul.et_mobile_menu li.menu-item-has-children .mobile-toggle, ul.et_mobile_menu li.page_item_has_children .mobile-toggle').click(function (event) {
+                event.preventDefault();
+                $(this).parent('li').toggleClass('dt-open');
+                $(this).parent('li').find('ul.children').first().toggleClass('visible');
+                $(this).parent('li').find('ul.sub-menu').first().toggleClass('visible');
             });
-        }
-
-        if (prevBtn) {
-            prevBtn.addEventListener("click", function () {
-                steps[1].classList.remove("active");
-                steps[0].classList.add("active");
-            });
-        }
-
-    });
-</script>
-
-<script>
-    (function () {
-        function fitLogo(el) {
-            // find the container we want to fit into (the row)
-            var container = el.closest('.row') || el.parentElement;
-            if (!container) return;
-
-            // available width inside the row
-            var containerStyles = getComputedStyle(container);
-            var maxWidth = container.clientWidth
-                - parseFloat(containerStyles.paddingLeft)
-                - parseFloat(containerStyles.paddingRight);
-
-            // binary search for best font size
-            var min = 10;    // px
-            var max = 1000;  // px
-
-            while (min <= max) {
-                var mid = (min + max) / 2;
-                el.style.fontSize = mid + 'px';
-
-                if (el.scrollWidth > maxWidth) {
-                    max = mid - 1;
-                } else {
-                    min = mid + 1;
-                }
-            }
-
-            el.style.fontSize = max + 'px';
-        }
-
-        function fitAllLogos() {
-            var logos = document.querySelectorAll('.footer-large-logo');
-            logos.forEach
-                ? logos.forEach(fitLogo)
-                : Array.prototype.forEach.call(logos, fitLogo);
-        }
-
-        window.addEventListener('load', fitAllLogos);
-        window.addEventListener('resize', fitAllLogos);
-    })();
-</script>
-
-<!-- Footer Menu Animation Auto -->
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        document.querySelectorAll(".nav-anim").forEach(link => {
-
-            const text = link.textContent.trim();
-            link.textContent = "";
-
-            const container = document.createElement("span");
-
-            function createLine() {
-                const line = document.createElement("span");
-
-                [...text].forEach(letter => {
-                    const span = document.createElement("span");
-                    span.innerHTML = letter === " " ? "&nbsp;" : letter;
-                    line.appendChild(span);
-                });
-
-                return line;
-            }
-
-            container.appendChild(createLine());
-            container.appendChild(createLine());
-
-            link.appendChild(container);
-
-        });
-    })
-</script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const titles = document.querySelectorAll(".home-blog .entry-title");
-
-        titles.forEach(title => {
-            let text = title.textContent.trim();
-            let words = text.split(" ");
-
-            if (words.length >= 4) {
-                words[2] = "<strong>" + words[2] + "</strong>"; // 3rd word
-                words[3] = "<strong>" + words[3] + "</strong>"; // 4th word
-
-                title.innerHTML = words.join(" ");
-            }
+            iconFINAL = 'P';
+            $('body ul.et_mobile_menu li.menu-item-has-children, body ul.et_mobile_menu li.page_item_has_children').attr('data-icon', iconFINAL);
+            $('.mobile-toggle').on('mouseover', function () {
+                $(this).parent().addClass('is-hover');
+            }).on('mouseout', function () {
+                $(this).parent().removeClass('is-hover');
+            })
         });
     });
-</script>
-<script>
 
-    document.addEventListener("DOMContentLoaded", function () {
 
-        document.querySelectorAll('.clients-review .dica-item').forEach(function (item) {
-
-            const imageContainer = item.querySelector('.dica-image-container');
-            const title = item.querySelector('.item-title');
-            const subtitle = item.querySelector('.item-subtitle');
-
-            if (imageContainer && title && subtitle) {
-
-                // create wrapper div
-                const authInfo = document.createElement('div');
-                authInfo.classList.add('review-auth-info');
-
-                // move title + subtitle into wrapper
-                authInfo.appendChild(title);
-                authInfo.appendChild(subtitle);
-
-                // append wrapper to image container
-                imageContainer.appendChild(authInfo);
-
-            }
-
-        });
-
-    });
 </script>

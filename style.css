@@ -22,8 +22,8 @@ body .xs-custom-header-section .et_pb_menu ul.et_mobile_menu li a {
 
 @media all and (min-width: 981px) and (max-width: 1240px) {
     body .xs-custom-header-section .et-menu-nav ul li a {
-        font-size: 14px !important;
-        letter-spacing: 0 !important;
+        font-size: 20px !important;
+        letter-spacing: 2px !important;
     }
 }
 
@@ -136,25 +136,40 @@ body .et_pb_row .et_pb_column .xs-custom-menu .et-menu-nav ul.sub-menu li a {
     overflow: hidden;
 }
 
-.footer-carousel-section .bg-carousel {
+/* TRACK (background layer) */
+.footer-carousel-section .carousel-track {
     position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: top center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    transition: opacity 1s ease-in-out;
+    top: 0;
+    left: 0;
+    height: 100%;
+    display: flex;
+    width: 200%;
+    animation: scrollLeft 30s linear infinite;
     z-index: 0;
-    opacity: 0;
 }
 
-/* show active */
-.footer-carousel-section .bg-carousel.active {
-    opacity: 1;
+/* EACH IMAGE */
+.footer-carousel-section .carousel-item {
+    flex: 0 0 100vw;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-/* keep content above */
-.footer-carousel-section>* {
+/* ANIMATION */
+@keyframes scrollLeft {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* MAKE SURE your cockpit image stays above */
+.footer-carousel-section .et_pb_image {
     position: relative;
     z-index: 2;
 }
@@ -274,3 +289,9 @@ ul.et_mobile_menu li.menu-item-has-children.dt-open>.mobile-toggle::after,
     background-color: #ffffff !important;
     border-radius: 10px;
 }
+
+.et-menu .menu-item-has-children>a:first-child:after {
+    display: none !important;
+}
+
+/* Contact Form CSS */
