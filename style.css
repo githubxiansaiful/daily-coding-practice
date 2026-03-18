@@ -95,7 +95,6 @@ body .xs-custom-header-section .et_pb_menu ul.et_mobile_menu {
     overflow: hidden;
 }
 
-/* MAIN IMAGE: convert img to background + fixed effect */
 .hero-main-img {
     position: relative;
     width: 100%;
@@ -126,4 +125,32 @@ body .xs-custom-header-section .et_pb_menu ul.et_mobile_menu {
     width: 100%;
     z-index: 2;
     pointer-events: none;
+}
+
+/* Footer Carousel */
+.footer-carousel-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-carousel-section .bg-carousel {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: opacity 1s ease-in-out;
+    z-index: 0;
+    opacity: 0;
+}
+
+/* show active */
+.footer-carousel-section .bg-carousel.active {
+    opacity: 1;
+}
+
+/* keep content above */
+.footer-carousel-section>* {
+    position: relative;
+    z-index: 2;
 }
