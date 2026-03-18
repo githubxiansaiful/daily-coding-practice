@@ -295,3 +295,58 @@ ul.et_mobile_menu li.menu-item-has-children.dt-open>.mobile-toggle::after,
 }
 
 /* Contact Form CSS */
+.xs-contact-form .xs-cf-inputs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+@media all and (max-width: 767px) {
+    .xs-contact-form .xs-cf-inputs {
+        grid-template-columns: 1fr;
+    }
+}
+
+.xs-contact-form input,
+.xs-contact-form textarea {
+    width: 100%;
+    padding: 20px 10px;
+    border: 1px solid #ddd;
+}
+
+.xs-contact-form {
+    display: grid;
+    gap: 30px;
+}
+
+.xs-contact-form .codedropz-upload-inner h3 {
+    font-size: 20px;
+    line-height: 1.3;
+}
+
+.xs-contact-form input.wpcf7-form-control.wpcf7-submit {
+    background: #D2232A;
+    border: none !important;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.xs-cf-submit {
+    position: relative;
+}
+
+.xs-cf-submit .wpcf7-spinner {
+    position: absolute;
+    right: 0;
+    bottom: 17px;
+}
+
+.wpcf7-response-output {
+    text-align: center;
+    padding: 10px !important;
+    color: #161616;
+    line-height: 1.3;
+}
