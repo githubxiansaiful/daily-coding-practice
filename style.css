@@ -71,9 +71,9 @@ body .et_pb_row .et_pb_column .xs-custom-menu .et-menu-nav ul.sub-menu {
     border-top-color: #D2232A !important;
     background: #D2232A !important;
     margin-top: 1px !important;
-    width: 165px !important;
     padding-top: 13px !important;
     padding-bottom: 13px !important;
+    text-align: center !important;
 }
 
 body .et_pb_row .et_pb_column .xs-custom-menu .et-menu-nav ul.sub-menu li {
@@ -327,11 +327,19 @@ ul.et_mobile_menu li.menu-item-has-children.dt-open>.mobile-toggle::after,
 .xs-contact-form input.wpcf7-form-control.wpcf7-submit {
     background: #D2232A;
     border: none !important;
-    font-size: 15px;
+    font-size: 20px;
     text-transform: uppercase;
     letter-spacing: 3px;
     color: #fff;
     cursor: pointer;
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .xs-cf-submit {
@@ -460,4 +468,12 @@ ul.et_mobile_menu li.menu-item-has-children.dt-open>.mobile-toggle::after,
         color: #000;
     }
 
+}
+
+.equipment-extra-space {
+    padding-top: 15px !important;
+}
+
+.xs-custom-menu ul#menu-main-menu li ul.sub-menu {
+    margin-left: -40px !important;
 }
