@@ -1,30 +1,60 @@
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-body {
-  /* Set a large height to enable page scrolling */
-  height: 2000px;
-  background-image: url("https://owencladding.co.uk/wp-content/uploads/2026/03/OWEN-HOME-PAGE-HEADER-IMAGE-MASTER.jpg");
-  background-repeat: no-repeat;
-  /* The default value, but explicitly set for demonstration */
-  background-attachment: scroll; 
-}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const section = document.querySelector(".footer-carousel-section");
+        if (!section) return;
 
-.content {
-  padding: 50px;
-  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent content area */
-}
-</style>
-</head>
-<body>
+        const images = [
+            "https://owencladding.co.uk/wp-content/uploads/2026/03/IMAGE-STONEHENGE.jpg",
+            "https://owencladding.co.uk/wp-content/uploads/2026/03/IMAGE-ACROPOLIS.jpg",
+            "https://owencladding.co.uk/wp-content/uploads/2026/03/IMAGE-PYRAMIDS.jpg",
+            "https://owencladding.co.uk/wp-content/uploads/2026/03/IMAGE-OWEN-CLADDING-FRAME-2.jpg",
+            "https://owencladding.co.uk/wp-content/uploads/2026/03/OWEN-CAROUSEL-IMAGE1.jpg",
+            "https://owencladding.co.uk/wp-content/uploads/2026/03/OWEN-CAROUSEL-IMAGE2.jpg",
+        ];
 
-<div class="content">
-  <h1>Background Attachment: Scroll</h1>
-  <p>Scroll down the page. The background image will scroll along with this text.</p>
-  <!-- Add more content here to force scrolling -->
-  <p style="margin-top: 1500px;">End of the page content.</p>
-</div>
+        let index = 0;
+        const layers = [];
 
-</body>
-</html>
+        // create layers
+        images.forEach((src, i) => {
+            const div = document.createElement("div");
+            div.classList.add("bg-carousel");
+            if (i === 0) div.classList.add("active");
+            div.style.backgroundImage = `url(${src})`;
+            section.appendChild(div);
+            layers.push(div);
+        });
+
+        // rotate images
+        setInterval(() => {
+            layers[index].classList.remove("active");
+            index = (index + 1) % layers.length;
+            layers[index].classList.add("active");
+        }, 4000);
+    });
+</script>
+<!-- Header Mobile Sub Menu -->
+<script>
+
+
+    jQuery(function ($) {
+        $(document).ready(function () {
+            $("body ul.et_mobile_menu li.menu-item-has-children, body ul.et_mobile_menu  li.page_item_has_children").append('<a href="#" class="mobile-toggle"></a>');
+            $('ul.et_mobile_menu li.menu-item-has-children .mobile-toggle, ul.et_mobile_menu li.page_item_has_children .mobile-toggle').click(function (event) {
+                event.preventDefault();
+                $(this).parent('li').toggleClass('dt-open');
+                $(this).parent('li').find('ul.children').first().toggleClass('visible');
+                $(this).parent('li').find('ul.sub-menu').first().toggleClass('visible');
+            });
+            iconFINAL = 'P';
+            $('body ul.et_mobile_menu li.menu-item-has-children, body ul.et_mobile_menu li.page_item_has_children').attr('data-icon', iconFINAL);
+            $('.mobile-toggle').on('mouseover', function () {
+                $(this).parent().addClass('is-hover');
+            }).on('mouseout', function () {
+                $(this).parent().removeClass('is-hover');
+            })
+        });
+    });
+
+
+</script>
