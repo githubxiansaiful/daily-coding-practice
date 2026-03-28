@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         },
 
-        // MOBILE + TABLET
+        // MOBILE  TABLET
         "(max-width: 980px)": function () {
 			gsap.set(".stack-section", { y: -80 });
             cards.forEach((card, i) => {
