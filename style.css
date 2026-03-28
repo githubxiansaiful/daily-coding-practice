@@ -527,3 +527,10 @@ ul.et_mobile_menu li.menu-item-has-children.dt-open>.mobile-toggle::after,
         right: 15px !important;
     }
 }
+
+.crane-specifications-ul-list ul {
+    list-style: none;
+    padding: 0 !important;
+    display: grid;
+    gap: 15px;
+}
