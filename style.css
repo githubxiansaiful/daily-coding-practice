@@ -546,3 +546,21 @@ ul.et_mobile_menu li.menu-item-has-children.dt-open>.mobile-toggle::after,
         font-size: 27px !important;
     }
 }
+
+@media all and (max-width: 640px) {
+    .footer-email-address {
+        font-size: 22px !important;
+    }
+}
+
+@media all and (max-width: 490px) {
+    .footer-email-address {
+        font-size: 18px !important;
+    }
+}
+
+@media all and (max-width: 410px) {
+    .footer-email-address {
+        font-size: 16px !important;
+    }
+}
