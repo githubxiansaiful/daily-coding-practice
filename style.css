@@ -536,13 +536,13 @@ ul.et_mobile_menu li.menu-item-has-children.dt-open>.mobile-toggle::after,
 }
 
 @media all and (min-width: 981px) and (max-width: 1024px) {
-    .single-crane-three-buttons .et_pb_module {
+    .single-crane-three-buttons {
         font-size: 24px !important;
     }
 }
 
 @media all and (min-width: 1025px) and (max-width: 1180px) {
-    .single-crane-three-buttons .et_pb_module {
+    .single-crane-three-buttons {
         font-size: 27px !important;
     }
 }
