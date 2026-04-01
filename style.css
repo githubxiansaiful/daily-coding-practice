@@ -378,7 +378,7 @@ ul.et_mobile_menu li.menu-item-has-children.dt-open>.mobile-toggle::after,
 }
 
 .crane-row-blurb span.et_pb_image_wrap {
-    padding: 30px;
+    padding: 0 !important;
 }
 
 .crane-row-blurb .et_pb_image::after {
@@ -563,4 +563,24 @@ ul.et_mobile_menu li.menu-item-has-children.dt-open>.mobile-toggle::after,
     .footer-email-address {
         font-size: 16px !important;
     }
+}
+
+.mfp-container.mfp-s-ready.mfp-image-holder img.mfp-img {
+    background: #f4f5f6 !important;
+    width: 100% !important;
+    max-height: 100% !important;
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+}
+
+.mfp-container.mfp-s-ready.mfp-image-holder button.mfp-close {
+    color: red !important;
+    overflow: 1 !important;
+    font-size: 42px !important;
+    top: -8px !important;
+    right: -5px !important;
+}
+
+body .mfp-image-holder .mfp-content {
+    width: 100% !important;
 }
