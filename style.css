@@ -584,3 +584,17 @@ ul.et_mobile_menu li.menu-item-has-children.dt-open>.mobile-toggle::after,
 body .mfp-image-holder .mfp-content {
     width: 100% !important;
 }
+
+body.page-id-16 .mfp-container.mfp-s-ready.mfp-image-holder img.mfp-img,
+body.page-id-16 .mfp-image-holder .mfp-content {
+    width: unset !important;
+    max-height: unset !important;
+}
+
+body.page-id-16 .mfp-container.mfp-s-ready.mfp-image-holder img.mfp-img {
+    padding: 0 !important;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
