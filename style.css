@@ -1,3 +1,7 @@
+.et_builder_inner_content {
+    overflow-x: hidden !important;
+}
+
 @media all and (max-width: 980px) {
     .xs-custom-menu .et_pb_menu__wrap {
         justify-content: end !important;
