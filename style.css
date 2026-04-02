@@ -587,6 +587,7 @@ body .mfp-image-holder .mfp-content {
 
 body.page-id-729 .mfp-container.mfp-s-ready.mfp-image-holder img.mfp-img,
 body.page-id-16 .mfp-container.mfp-s-ready.mfp-image-holder img.mfp-img,
+body.page-id-729 .mfp-image-holder .mfp-content,
 body.page-id-16 .mfp-image-holder .mfp-content {
     width: unset !important;
     max-height: unset !important;
