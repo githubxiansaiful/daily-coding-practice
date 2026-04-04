@@ -492,10 +492,6 @@ ul.et_mobile_menu li.menu-item-has-children.dt-open>.mobile-toggle::after,
     margin-left: -17px !important;
 }
 
-.xs-custom-menu ul#menu-main-menu li:nth-child(2) ul.sub-menu ul.sub-menu {
-    margin-left: 0 !important;
-}
-
 .xs-custom-menu ul#menu-main-menu li:nth-child(3) ul.sub-menu {
     margin-left: -2px !important;
 }
@@ -506,6 +502,10 @@ ul.et_mobile_menu li.menu-item-has-children.dt-open>.mobile-toggle::after,
 
 .xs-custom-menu ul#menu-main-menu li:nth-child(5) ul.sub-menu {
     margin-left: -41px !important;
+}
+
+.xs-custom-menu ul#menu-main-menu li ul.sub-menu li.roto-sub-menu ul.sub-menu {
+    margin-left: 0 !important;
 }
 
 @media all and (min-width: 981px) {
