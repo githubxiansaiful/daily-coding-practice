@@ -635,3 +635,8 @@ body.page-id-16 .mfp-container.mfp-s-ready.mfp-image-holder img.mfp-img {
     margin-top: -14% !important;
     z-index: 9999 !important;
 }
+
+body.page-id-1576 .lifting-solutions-footer-svg img,
+body.page-id-398 .lifting-solutions-footer-svg img {
+    margin-top: -16% !important;
+}
