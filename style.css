@@ -605,3 +605,22 @@ body.page-id-16 .mfp-container.mfp-s-ready.mfp-image-holder img.mfp-img {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
 }
+
+/* Home Icon Hover Animation */
+.home-icon-image-hover .et_pb_image {
+    background: #5A5D63;
+    border-radius: 30px;
+    transition: .3s ease;
+}
+
+.home-icon-image-hover .et_pb_image:hover {
+    background: #404347;
+    transform: scale(1.03);
+}
+
+/* Lifting Solutions Footer */
+.lifting-solutions-footer-svg img {
+    position: relative;
+    top: -14% !important;
+    z-index: 9999 !important;
+}
