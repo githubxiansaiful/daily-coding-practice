@@ -609,8 +609,9 @@ body.page-id-16 .mfp-container.mfp-s-ready.mfp-image-holder img.mfp-img {
 /* Home Icon Hover Animation */
 .home-icon-image-hover .et_pb_image {
     background: #5A5D63;
-    border-radius: 30px;
+    border-radius: 10px;
     transition: .3s ease;
+    border: 2px solid #fff;
 }
 
 .home-icon-image-hover .et_pb_image:hover {
