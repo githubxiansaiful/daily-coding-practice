@@ -621,6 +621,6 @@ body.page-id-16 .mfp-container.mfp-s-ready.mfp-image-holder img.mfp-img {
 /* Lifting Solutions Footer */
 .lifting-solutions-footer-svg img {
     position: relative;
-    top: -14% !important;
+    margin-top: -14% !important;
     z-index: 9999 !important;
 }
