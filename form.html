@@ -44,3 +44,47 @@
         });
     });
 </script>
+
+<!-- Footer text -->
+<script>
+    (function () {
+        function fitLogo(el) {
+            // find the container we want to fit into (the row)
+            var container = el.closest('.row') || el.parentElement;
+            if (!container) return;
+
+            // available width inside the row
+            var containerStyles = getComputedStyle(container);
+            var maxWidth = container.clientWidth
+                - parseFloat(containerStyles.paddingLeft)
+                - parseFloat(containerStyles.paddingRight);
+
+            // binary search for best font size
+            var min = 10;    // px
+            var max = 1000;  // px
+
+            while (min <= max) {
+                var mid = (min + max) / 2;
+                el.style.fontSize = mid + 'px';
+
+                if (el.scrollWidth > maxWidth) {
+                    max = mid - 1;
+                } else {
+                    min = mid + 1;
+                }
+            }
+
+            el.style.fontSize = max + 'px';
+        }
+
+        function fitAllLogos() {
+            var logos = document.querySelectorAll('.footer-large-logo');
+            logos.forEach
+                ? logos.forEach(fitLogo)
+                : Array.prototype.forEach.call(logos, fitLogo);
+        }
+
+        window.addEventListener('load', fitAllLogos);
+        window.addEventListener('resize', fitAllLogos);
+    })();
+</script>
