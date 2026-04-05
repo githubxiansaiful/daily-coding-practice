@@ -1,90 +1,52 @@
-document.addEventListener("DOMContentLoaded", function () {
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const section = document.querySelector(".footer-carousel-section");
+        if (!section) return;
 
-    gsap.registerPlugin(ScrollTrigger);
+        const images = [
+            "https://owencladding.co.uk/wp-content/uploads/2026/03/PYRAMIDS-EXTENDED.jpeg",
+            "https://owencladding.co.uk/wp-content/uploads/2026/03/IMAGE-STONEHENGE.jpg",
+            "https://owencladding.co.uk/wp-content/uploads/2026/03/IMAGE-ACROPOLIS.jpg"
+        ];
 
-    const cards = gsap.utils.toArray(".stack-section .et_pb_row");
+        const track = document.createElement("div");
+        track.classList.add("carousel-track");
 
-    ScrollTrigger.matchMedia({
+        const allImages = [...images, ...images];
 
-        // DESKTOP
-        "(min-width: 981px)": function () {
+        allImages.forEach(src => {
+            const item = document.createElement("div");
+            item.classList.add("carousel-item");
+            item.style.backgroundImage = `url(${src})`;
+            track.appendChild(item);
+        });
 
-            cards.forEach((card, i) => {
+        section.appendChild(track);
+    });
+</script>
+    <script>
 
-                if (i === cards.length - 1) return;
 
-                let nextCard = cards[i + 1];
-
-                gsap.timeline({
-                    scrollTrigger: {
-                        trigger: nextCard,
-                        start: "top center",
-                        end: "top 20%",
-                        scrub: true
-                    }
-                })
-                .to(card, {
-                    scale: 0.92,
-                    filter: "blur(3px)",
-                    ease: "none"
+        jQuery(function ($) {
+            $(document).ready(function () {
+                $("body ul.et_mobile_menu li.menu-item-has-children, body ul.et_mobile_menu  li.page_item_has_children").append('<a href="#" class="mobile-toggle"></a>');
+                $('ul.et_mobile_menu li.menu-item-has-children .mobile-toggle, ul.et_mobile_menu li.page_item_has_children .mobile-toggle').click(function (event) {
+                    event.preventDefault();
+                    $(this).parent('li').toggleClass('dt-open');
+                    $(this).parent('li').find('ul.children').first().toggleClass('visible');
+                    $(this).parent('li').find('ul.sub-menu').first().toggleClass('visible');
                 });
-
-            });
-
-        },
-
-        // MOBILE  TABLET
-        "(max-width: 980px)": function () {
-			gsap.set(".stack-section", { y: -80 });
-            cards.forEach((card, i) => {
-
-                if (i === cards.length - 1) return;
-
-                let nextCard = cards[i + 1];
-
-                gsap.timeline({
-                    scrollTrigger: {
-                        trigger: nextCard,
-                        start: "top 1%",
-                        end: "top 100%",
-                        scrub: true
-                    }
+                iconFINAL = 'P';
+                $('body ul.et_mobile_menu li.menu-item-has-children, body ul.et_mobile_menu li.page_item_has_children').attr('data-icon', iconFINAL);
+                $('.mobile-toggle').on('mouseover', function () {
+                    $(this).parent().addClass('is-hover');
+                }).on('mouseout', function () {
+                    $(this).parent().removeClass('is-hover');
                 })
-                .to(card, {
-                    scale: 0.95,
-                    filter: "blur(3px)",
-                    ease: "none"
-                });
-
             });
-
-        }
-
     });
 
 
-    // Image Animation
-    gsap.utils.toArray(".service-card-image").forEach((img) => {
+    </script>
 
-        gsap.fromTo(img,
-            {
-                y: 80,
-                scale: 0.9,
-                rotate: -6
-            },
-            {
-                y: -80,
-                scale: 1.05,
-                rotate: 6,
-                ease: "none",
-                scrollTrigger: {
-                    trigger: img,
-                    start: "top 80%",
-                    end: "bottom 20%",
-                    scrub: 1.5
-                }
-            });
 
-    });
-
-});

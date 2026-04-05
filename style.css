@@ -541,6 +541,7 @@ ul.et_mobile_menu li.menu-item-has-children.dt-open>.mobile-toggle::after,
         top: 10px !important;
         right: 15px !important;
     }
+
     .crane-row-blurb.three-row-crane .crane-card-detail h3 {
         padding-top: 5px !important;
     }
@@ -643,4 +644,32 @@ body.page-id-16 .mfp-container.mfp-s-ready.mfp-image-holder img.mfp-img {
 body.page-id-1576 .lifting-solutions-footer-svg img,
 body.page-id-398 .lifting-solutions-footer-svg img {
     margin-top: -16% !important;
+}
+
+/* Footer Contact Details */
+.footer-contact-details-full-code {
+    position: absolute !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    left: 0 !important;
+    z-index: 999999 !important;
+    text-align: center !important;
+}
+
+.footer-contact-info .footer-email-font {
+    font-family: 'PFEuroset Thin Regular', Helvetica, Arial, Lucida, sans-serif;
+}
+
+.footer-contact-info .footer-link-font {
+    font-family: 'PFEuroset Bold', Helvetica, Arial, Lucida, sans-serif;
+}
+
+.footer-contact-info p,
+.footer-contact-info a {
+    color: #fff !important;
+    transition: .3s ease;
+}
+
+.footer-contact-info a:hover {
+    color: #000 !important;
 }
