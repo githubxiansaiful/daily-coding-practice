@@ -501,7 +501,8 @@ ul.et_mobile_menu li.menu-item-has-children.dt-open>.mobile-toggle::after,
 }
 
 .xs-custom-menu ul#menu-main-menu li:nth-child(5) ul.sub-menu {
-    margin-left: -41px !important;
+    margin-left: -29px !important;
+    width: 200px !important;
 }
 
 .xs-custom-menu ul#menu-main-menu li ul.sub-menu li.roto-sub-menu ul.sub-menu {
@@ -537,8 +538,11 @@ ul.et_mobile_menu li.menu-item-has-children.dt-open>.mobile-toggle::after,
     }
 
     .crane-row-blurb.three-row-crane .crane-card-detail {
-        top: 15px !important;
+        top: 10px !important;
         right: 15px !important;
+    }
+    .crane-row-blurb.three-row-crane .crane-card-detail h3 {
+        padding-top: 5px !important;
     }
 }
 
