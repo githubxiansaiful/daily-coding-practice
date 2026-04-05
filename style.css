@@ -656,6 +656,10 @@ body.page-id-398 .lifting-solutions-footer-svg img {
     text-align: center !important;
 }
 
+.global-xs-new-footer .footer-contact-info-section {
+    bottom: 6% !important;
+}
+
 .footer-large-logo {
     display: block;
     white-space: nowrap;
@@ -670,6 +674,19 @@ body.page-id-398 .lifting-solutions-footer-svg img {
 
 .footer-large-logo a:hover {
     color: #000;
+}
+
+/* Yellow BG */
+.yellow-footer-black-text .footer-large-logo a {
+    color: #231F20;
+}
+
+.yellow-footer-black-text .footer-large-logo a {
+    color: #231F20;
+}
+
+.yellow-footer-black-text .footer-large-logo a:hover {
+    color: #fff;
 }
 
 .xs-footer-email {
@@ -691,7 +708,7 @@ body.page-id-398 .lifting-solutions-footer-svg img {
 }
 
 .xs-footer-email a span {
-    font-family: 'Poppins', Helvetica, Arial, Lucida, sans-serif;
+    font-family: Swiss-721-regular-ne;
 }
 
 .xs-footer-email {
