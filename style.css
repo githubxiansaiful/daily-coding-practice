@@ -16,10 +16,6 @@
     font-size: 16px;
 }
 
-.xsw-radio-grid {
-    margin-top: 40px;
-}
-
 p.xsw-ptag-title {
     color: #fff;
     font-size: 16px;
@@ -66,12 +62,16 @@ p.xsw-ptag-title {
     color: #fff;
 }
 
-.xsw-message-box {
-    margin-top: 40px;
-}
 .xsw-message-box textarea {
     width: 100%;
     border: none;
     padding: 15px;
     font-size: 16px;
+}
+
+.xsw-radio-grid,
+.xsw-message-box,
+.xsw-upload-files,
+.xsw-optional-information-grid {
+    margin-top: 40px;
 }
