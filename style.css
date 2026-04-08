@@ -2,6 +2,7 @@
     font-family: 'PFEuroset Thin Regular', Helvetica, Arial, Lucida, sans-serif;
 }
 
+.xsw-optional-select-dropdowns,
 .xsw-radio-grid,
 .xsw-grid-inputs {
     display: grid;
@@ -173,8 +174,6 @@ span.wpcf7-not-valid-tip {
 
 .xsw-select-dropdown {
     position: relative;
-    max-width: 250px;
-    margin: 0 auto;
 }
 
 /* Style select */
