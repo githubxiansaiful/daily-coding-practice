@@ -25,3 +25,53 @@ p.xsw-ptag-title {
     font-size: 16px;
     text-align: center;
 }
+
+.xsw-radio-group .wpcf7-form-control.wpcf7-radio,
+.xsw-radio-group span.wpcf7-form-control-wrap {
+    width: 100%;
+    display: grid;
+    gap: 15px;
+}
+
+.xsw-radio-group span.wpcf7-list-item {
+    margin-left: 0 !important;
+}
+
+.xsw-radio-group span.wpcf7-list-item label {
+    width: 100%;
+    max-width: 160px;
+    margin-left: auto;
+    margin-right: auto;
+    background: #fff;
+    display: block;
+    padding: 15px 5px;
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+}
+
+.xsw-radio-group input[type="radio"] {
+    margin-left: 0 !important;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.xsw-radio-group span.wpcf7-list-item label:has(input[type="radio"]:checked) {
+    background: red;
+    color: #fff;
+}
+
+.xsw-message-box {
+    margin-top: 40px;
+}
+.xsw-message-box textarea {
+    width: 100%;
+    border: none;
+    padding: 15px;
+    font-size: 16px;
+}
