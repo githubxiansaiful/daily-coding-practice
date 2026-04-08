@@ -2,6 +2,7 @@
     font-family: 'PFEuroset Thin Regular', Helvetica, Arial, Lucida, sans-serif;
 }
 
+.xsw-radio-grid,
 .xsw-grid-inputs {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -13,4 +14,14 @@
     border: none;
     padding: 15px;
     font-size: 16px;
+}
+
+.xsw-radio-grid {
+    margin-top: 40px;
+}
+
+p.xsw-ptag-title {
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
 }
