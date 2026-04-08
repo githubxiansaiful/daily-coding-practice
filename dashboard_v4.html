@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Progress Dashboard – Procurement Tactics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif; background: #EEF4FB; color: #00234B; font-size: 14px; }
+
+:root {
+  /* Procurement Tactics Brand Colors */
+  --primary:        #01BFF0;   /* PT Cyan */
+  --primary-dark:   #00A8D6;   /* Hover state */
+  --primary-light:  #DDF0FA;   /* Sky Blue - backgrounds */
+  --primary-border: #80DFFF;   /* Cyan border */
+  --navy:           #00234B;   /* Dark Navy */
+  --navy-light:     #CCF2FC;   /* Icy Blue */
+  --mango:          #FFAB00;   /* Ripe Mango - alerts */
+  --mango-light:    #FFF8E1;   /* Mango background */
+  --mango-border:   #FFD54F;
+  --orange:         #FF5C00;   /* Orange - urgent */
+  --red:            #dc2626;   /* Error/at-risk */
+  --red-light:      #fff1f2;
+  --yellow:         #F9EC9B;   /* PT Yellow */
+  --bg-blue:        #30206B;   /* Background Blue / Purple */
+
+  /* Neutrals */
+  --gray-50:  #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-400: #94a3b8;
+  --gray-600: #475569;
+  --gray-800: #00234B;         /* use navy as "dark text" */
+
+  --radius: 12px;
+  --shadow: 0 1px 3px rgba(0,35,75,.07);
+}
+
+/* ─── NAV ─── */
+.topnav {
+  background: var(--navy);
+  border-bottom: none;
+  padding: 0 32px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0,35,75,.25);
+}
+
+/* PT Logo (SVG pill) */
+.pt-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+.pt-logo-badge {
+  background: var(--primary);
+  border-radius: 10px;
+  padding: 5px 10px 5px 8px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+.pt-logo-badge .pt-mark {
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
+  margin-right: 7px;
+}
+.pt-logo-badge .pt-divider {
+  width: 1.5px;
+  height: 26px;
+  background: rgba(255,255,255,.45);
+  margin-right: 7px;
+  flex-shrink: 0;
+}
+.pt-logo-badge .pt-name {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+.pt-logo-badge .pt-name span {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: .3px;
+}
+.pt-portal-label {
+  font-size: 12px;
+  color: rgba(255,255,255,.5);
+  font-weight: 500;
+  letter-spacing: .2px;
+}
+
+.nav-right { display: flex; align-items: center; gap: 10px; }
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--navy);
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: inherit;
+  transition: background .15s;
+}
+.btn-primary:hover { background: var(--primary-dark); }
+
+.btn-secondary {
+  background: rgba(255,255,255,.1);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: inherit;
+  transition: background .15s;
+}
+.btn-secondary:hover { background: rgba(255,255,255,.18); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--gray-600);
+  border: none;
+  padding: 7px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 8px;
+  font-family: inherit;
+  transition: background .15s;
+}
+.btn-ghost:hover { background: var(--gray-100); color: var(--navy); }
+
+/* ─── CONTAINER ─── */
+.container { max-width: 1340px; margin: 0 auto; padding: 28px 32px; }
+
+/* ─── PAGE HEADER ─── */
+.page-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; }
+.filter-select {
+  border: 1px solid var(--gray-200);
+  border-radius: 8px;
+  padding: 7px 12px;
+  font-size: 12px;
+  color: var(--navy);
+  background: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: inherit;
+}
+.filter-select:focus { outline: none; border-color: var(--primary); }
+
+/* ─── KPI ─── */
+.kpi-row { display: grid; grid-template-columns: repeat(5,1fr); gap: 14px; margin-bottom: 24px; }
+.kpi { background: #fff; border-radius: var(--radius); padding: 18px 20px; border: 1px solid var(--gray-200); box-shadow: var(--shadow); }
+.kpi.primary { background: var(--primary-light); border-color: var(--primary-border); }
+.kpi.alert   { background: var(--mango-light);   border-color: var(--mango-border); }
+.kpi-label { font-size: 11px; font-weight: 700; color: var(--gray-400); text-transform: uppercase; letter-spacing: .6px; margin-bottom: 8px; }
+.kpi-value { font-size: 28px; font-weight: 800; color: var(--navy); line-height: 1; }
+.kpi.primary .kpi-value { color: var(--primary-dark); }
+.kpi.alert .kpi-value   { color: var(--mango); }
+.kpi-sub   { font-size: 11px; color: var(--gray-400); margin-top: 5px; }
+.kpi-delta { font-size: 11px; font-weight: 700; margin-top: 4px; }
+
+/* ─── CARDS ─── */
+.card { background: #fff; border-radius: var(--radius); padding: 20px 22px; border: 1px solid var(--gray-200); box-shadow: var(--shadow); }
+.card-title { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.badge { font-size: 11px; font-weight: 700; border-radius: 20px; padding: 2px 9px; display: inline-block; }
+.badge-red    { background: var(--red-light);      color: var(--red); }
+.badge-primary{ background: var(--primary-light);  color: var(--primary-dark); }
+.badge-mango  { background: var(--mango-light);    color: var(--mango); }
+.badge-gray   { background: var(--gray-100);       color: var(--gray-600); }
+.badge-navy   { background: #e8f0fa;               color: var(--navy); }
+
+/* ─── TWO COL ─── */
+.two-col { display: grid; grid-template-columns: 1.1fr 1fr; gap: 18px; margin-bottom: 24px; }
+
+/* ─── ATTENTION ITEMS ─── */
+.att-item {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--mango-light); border: 1.5px solid var(--mango-border);
+  border-radius: 10px; padding: 12px 14px; margin-bottom: 10px;
+  cursor: pointer; transition: box-shadow .15s; user-select: none;
+}
+.att-item:hover { box-shadow: 0 0 0 2px var(--mango); }
+.att-item.selected { background: #fff3cd; box-shadow: 0 0 0 2px var(--mango); }
+.att-item:last-child { margin-bottom: 0; }
+.avatar { border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 11px; color: #fff; flex-shrink: 0; }
+
+/* ─── PROGRESS BARS ─── */
+.prog-wrap { background: var(--gray-100); border-radius: 99px; height: 5px; overflow: hidden; }
+.prog-bar  { height: 100%; border-radius: 99px; }
+
+/* ─── REMINDER BOX ─── */
+.reminder-box {
+  background: var(--gray-50);
+  border: 1.5px dashed var(--gray-200);
+  border-radius: 10px;
+  padding: 14px;
+  margin-top: 14px;
+}
+.reminder-textarea {
+  width: 100%; border: 1.5px solid var(--gray-200); border-radius: 8px;
+  padding: 10px 12px; font-size: 12px; color: var(--navy);
+  resize: none; font-family: inherit; margin-top: 8px; background: #fff;
+}
+.reminder-textarea:focus { outline: none; border-color: var(--primary); }
+.chk { width: 16px; height: 16px; accent-color: var(--primary); flex-shrink: 0; cursor: pointer; }
+
+/* ─── DIST CHART ─── */
+.dist-chart { display: flex; gap: 6px; height: 70px; align-items: flex-end; margin: 14px 0 5px; }
+.dist-bar { flex: 1; border-radius: 5px 5px 0 0; position: relative; }
+.dist-bar span { position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 11px; font-weight: 800; color: var(--navy); white-space: nowrap; }
+.dist-labels { display: flex; gap: 6px; }
+.dist-label { flex: 1; text-align: center; font-size: 10px; color: var(--gray-400); line-height: 1.3; }
+
+/* ─── LEADERBOARD ─── */
+.lb-row { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--gray-100); }
+.lb-row:last-child { border: none; }
+
+/* ─── SECTION ─── */
+.section-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.section-title { font-size: 14px; font-weight: 700; color: var(--navy); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+
+/* ─── COURSE GRID ─── */
+.course-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+.course-card {
+  background: #fff; border-radius: var(--radius); padding: 18px 20px;
+  border: 1px solid var(--gray-200); box-shadow: var(--shadow);
+  cursor: pointer; transition: box-shadow .15s, transform .15s;
+}
+.course-card:hover { box-shadow: 0 4px 14px rgba(0,35,75,.12); transform: translateY(-1px); }
+.course-card.required { border-left: 3px solid var(--primary); }
+.course-card.optional  { border-left: 3px solid var(--gray-200); }
+.course-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; margin-bottom: 10px; }
+.deadline-badge { font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 20px; white-space: nowrap; }
+.soon   { background: var(--red-light);     color: var(--red); }
+.normal { background: var(--primary-light); color: var(--primary-dark); }
+.later  { background: #e8f0fa;              color: var(--navy); }
+.tag-req { background: var(--primary-light); color: var(--primary-dark); font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; }
+.tag-opt { background: var(--gray-100);      color: var(--gray-600);     font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; }
+.course-stats { display: flex; gap: 0; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--gray-100); }
+.stat-item { flex: 1; text-align: center; padding: 0 4px; }
+.stat-item + .stat-item { border-left: 1px solid var(--gray-100); }
+
+/* ─── TABLE ─── */
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+thead th { text-align: left; font-size: 11px; font-weight: 700; color: var(--gray-400); text-transform: uppercase; letter-spacing: .6px; padding: 10px 14px; background: var(--gray-50); border-bottom: 1px solid var(--gray-200); white-space: nowrap; }
+tbody tr { border-bottom: 1px solid var(--gray-100); cursor: pointer; transition: background .1s; }
+tbody tr:hover { background: var(--primary-light); }
+tbody td { padding: 12px 14px; font-size: 13px; }
+.view-link { font-size: 11px; color: var(--primary-dark); font-weight: 700; white-space: nowrap; }
+
+/* ─── STATUS BADGES ─── */
+.status { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; white-space: nowrap; }
+.status.on-track { background: var(--primary-light);  color: var(--primary-dark); }
+.status.watch    { background: var(--mango-light);    color: var(--mango); }
+.status.at-risk  { background: var(--red-light);      color: var(--red); }
+
+/* ─── TIMELINE ─── */
+.tl-item { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; }
+.tl-dot  { width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+
+/* ─── RENEWAL BAR ─── */
+.renewal-bar {
+  background: var(--navy);
+  border-radius: var(--radius);
+  padding: 16px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 24px;
+  box-shadow: var(--shadow);
+}
+
+/* ─── MISC ─── */
+.divider { height: 1px; background: var(--gray-100); margin: 14px 0; }
+.sub-section { font-size: 11px; font-weight: 700; color: var(--gray-400); text-transform: uppercase; letter-spacing: .6px; margin: 16px 0 10px; }
+
+/* ═══ SLIDE PANEL ═══ */
+.panel-overlay { position: fixed; inset: 0; background: rgba(0,35,75,.3); z-index: 299; display: none; }
+.panel-overlay.open { display: block; }
+.slide-panel { position: fixed; right: 0; top: 0; bottom: 0; background: #fff; z-index: 300; box-shadow: -4px 0 32px rgba(0,35,75,.18); transform: translateX(100%); transition: transform .25s ease; overflow-y: auto; width: 480px; }
+.slide-panel.wide { width: 540px; }
+.slide-panel.open { transform: translateX(0); }
+.panel-hdr { padding: 20px 24px; border-bottom: 1px solid var(--gray-200); display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: #fff; z-index: 1; }
+.panel-hdr-accent { width: 4px; height: 36px; background: var(--primary); border-radius: 2px; margin-right: 10px; flex-shrink: 0; }
+.panel-close { background: none; border: none; font-size: 18px; cursor: pointer; color: var(--gray-400); line-height: 1; }
+.panel-body { padding: 20px 24px; }
+.prog-item { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--gray-100); }
+.prog-item:last-child { border: none; }
+
+/* ═══ MODALS ═══ */
+.overlay { position: fixed; inset: 0; background: rgba(0,35,75,.45); z-index: 200; display: none; align-items: center; justify-content: center; padding: 20px; }
+.overlay.open { display: flex; }
+.modal { background: #fff; border-radius: 16px; max-width: 520px; width: 100%; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,35,75,.25); }
+.modal-hdr { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; border-bottom: 1px solid var(--gray-200); }
+.modal-hdr-stripe { height: 3px; background: linear-gradient(90deg, var(--navy), var(--primary)); border-radius: 16px 16px 0 0; }
+.modal-title { font-size: 16px; font-weight: 700; color: var(--navy); }
+.modal-close { background: none; border: none; font-size: 20px; cursor: pointer; color: var(--gray-400); }
+.modal-body { padding: 24px; }
+.form-group { margin-bottom: 14px; }
+.form-label { font-size: 12px; font-weight: 700; color: var(--gray-600); margin-bottom: 6px; display: block; }
+.form-input { width: 100%; border: 1.5px solid var(--gray-200); border-radius: 8px; padding: 9px 12px; font-size: 13px; color: var(--navy); font-family: inherit; }
+.form-input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(1,191,240,.12); }
+.chk-row { display: flex; align-items: flex-start; gap: 8px; padding: 5px 0; }
+.chk-row input { margin-top: 1px; }
+
+/* ─── TOAST ─── */
+.toast { position: fixed; bottom: 24px; right: 24px; background: var(--navy); color: #fff; padding: 12px 18px; border-radius: 10px; font-size: 13px; font-weight: 600; z-index: 999; transform: translateY(80px); opacity: 0; transition: all .3s; pointer-events: none; border-left: 3px solid var(--primary); }
+.toast.show { transform: translateY(0); opacity: 1; }
+
+/* ─── OPTION CARDS ─── */
+.opt-card { border: 2px solid var(--gray-200); border-radius: 12px; padding: 18px; text-align: center; cursor: pointer; transition: border-color .15s, background .15s; }
+.opt-card:hover { border-color: var(--primary); background: var(--primary-light); }
+
+/* ─── LIVE BADGE ─── */
+.live-badge { font-size: 11px; background: rgba(1,191,240,.15); color: var(--primary); padding: 4px 11px; border-radius: 20px; font-weight: 700; border: 1px solid rgba(1,191,240,.3); }
+
+/* ─── NAV LINKS ─── */
+.nav-links { display: flex; align-items: center; gap: 2px; }
+.nav-link { color: rgba(255,255,255,.6); text-decoration: none; font-size: 13px; font-weight: 600; padding: 7px 14px; border-radius: 8px; transition: color .15s, background .15s; font-family: 'Open Sans', sans-serif; }
+.nav-link:hover { color: #fff; background: rgba(255,255,255,.1); }
+.nav-link.active { color: #fff; background: rgba(255,255,255,.12); }
+
+/* ─── INVITE BUTTON (orange) ─── */
+.btn-invite { background: #FF5C00 !important; color: #fff !important; }
+.btn-invite:hover { background: #e54d00 !important; }
+
+/* ─── SORT ICON ─── */
+.sort-icon { color: var(--gray-400); font-size: 10px; margin-left: 2px; }
+
+  /* ── COURSE FILTER PICKER ── */
+  .course-filter-picker { position: relative; }
+  .course-filter-btn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 12px; border: 1.5px solid var(--gray-200); border-radius: 8px; font-size: 12px; font-weight: 600; color: var(--navy); background: #fff; cursor: pointer; font-family: 'Open Sans', sans-serif; transition: border-color .15s; white-space: nowrap; }
+  .course-filter-btn:hover { border-color: var(--primary); }
+  .course-filter-dropdown { position: absolute; right: 0; top: calc(100% + 6px); background: #fff; border: 1.5px solid var(--gray-200); border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,.12); min-width: 230px; z-index: 100; display: none; padding: 4px 0 8px; }
+  .course-filter-dropdown.open { display: block; }
+  .cf-item { display: flex; align-items: center; padding: 7px 14px; cursor: pointer; transition: background .1s; }
+  .cf-item:hover { background: #f8fafc; }
+  .cf-item label { display: flex; align-items: center; gap: 9px; cursor: pointer; font-size: 13px; color: var(--navy); width: 100%; }
+  .cf-item input[type="checkbox"] { width: 15px; height: 15px; accent-color: var(--primary); cursor: pointer; flex-shrink: 0; }
+  .cf-item.cf-disabled label { opacity: .45; cursor: not-allowed; }
+  .cf-item.cf-disabled input { cursor: not-allowed; }
+
+</style>
+</head>
+<body>
+
+<!-- ═══ TOP NAV ═══ -->
+<nav class="topnav">
+  <div class="pt-logo">
+    <div class="pt-logo-badge">
+      <span class="pt-mark">PT</span>
+      <div class="pt-divider"></div>
+      <div class="pt-name">
+        <span>Procurement</span>
+        <span>Tactics</span>
+      </div>
+    </div>
+    <span class="pt-portal-label">Progress Dashboard</span>
+  </div>
+  <div class="nav-links">
+    <a href="dashboard_v4.html" class="nav-link active">Dashboard</a>
+    <a href="settings.html" class="nav-link">Settings</a>
+  </div>
+  <div class="nav-right">
+    <a href="mailto:team@procurementtactics.com" class="btn-secondary" style="text-decoration:none">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      Get Support
+    </a>
+    <button class="btn-primary btn-invite" onclick="window.location.href='invite_member.html'">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      Invite Member
+    </button>
+  </div>
+</nav>
+
+<!-- ═══ DASHBOARD ═══ -->
+<div class="container">
+
+  <!-- Page header -->
+  <div class="page-header">
+    <div>
+      <div style="font-size:22px;font-weight:800;color:var(--navy)">Progress Dashboard</div>
+      <div style="font-size:13px;color:var(--gray-400);margin-top:3px">Elbert Group · 6 members · Updated March 12, 2026</div>
+    </div>
+  </div>
+
+  <!-- ═══ KPI ROW ═══ -->
+  <div class="kpi-row">
+    <div class="kpi">
+      <div class="kpi-label">Team Members</div>
+      <div class="kpi-value">6</div>
+      <div class="kpi-sub">Enrolled in program</div>
+    </div>
+    <div class="kpi primary">
+      <div class="kpi-label">Avg. Progress</div>
+      <div class="kpi-value">61%</div>
+      <div class="kpi-sub">Required courses</div>
+    </div>
+    <div class="kpi primary">
+      <div class="kpi-label">Lessons Completed</div>
+      <div class="kpi-value" id="kpi-lessons">34</div>
+      <div class="kpi-sub" id="kpi-lessons-sub">Last 30 days</div>
+    </div>
+    <div class="kpi primary">
+      <div class="kpi-label">Certificates 🏅</div>
+      <div class="kpi-value">1</div>
+      <div class="kpi-sub">Courses fully completed</div>
+    </div>
+  </div>
+
+  <!-- ═══ NEEDS ATTENTION + DISTRIBUTION ═══ -->
+  <div class="two-col">
+
+    <!-- LEFT: UPCOMING DEADLINES -->
+    <div class="card">
+      <div class="card-title">
+        📅 Upcoming Deadlines
+        <span class="badge badge-mango">Next: Mar 31</span>
+      </div>
+      <div style="font-size:12px;color:var(--gray-400);margin-bottom:12px">Members still working towards the next deadline: <strong style="color:var(--navy)">Negotiation Fundamentals · Mar 31</strong></div>
+
+      <div id="att-list">
+        <!-- Priya -->
+        <div class="att-item" id="att-priya" style="cursor:default" onclick="window.location.href='member_detail.html'">
+          <div class="avatar" style="width:36px;height:36px;background:#8b5cf6">PP</div>
+          <div style="flex:1;min-width:0">
+            <div style="font-weight:700;font-size:13px;color:var(--navy)">Priya Patel</div>
+            <div style="font-size:11px;color:var(--gray-400);margin-bottom:5px">Negotiation Fundamentals · 28 days left</div>
+            <div style="display:flex;align-items:center;gap:6px">
+              <div class="prog-wrap" style="flex:1"><div class="prog-bar" style="width:15%;background:#ef4444"></div></div>
+              <span style="font-size:11px;font-weight:800;color:#ef4444;width:30px">15%</span>
+            </div>
+          </div>
+          <span class="badge badge-mango">28d left</span>
+        </div>
+
+        <!-- Tom -->
+        <div class="att-item" id="att-tom" style="cursor:default" onclick="window.location.href='member_detail.html'">
+          <div class="avatar" style="width:36px;height:36px;background:var(--primary-dark)">TD</div>
+          <div style="flex:1;min-width:0">
+            <div style="font-weight:700;font-size:13px;color:var(--navy)">Tom Davidson</div>
+            <div style="font-size:11px;color:var(--gray-400);margin-bottom:5px">Negotiation Fundamentals · 28 days left</div>
+            <div style="display:flex;align-items:center;gap:6px">
+              <div class="prog-wrap" style="flex:1"><div class="prog-bar" style="width:42%;background:var(--mango)"></div></div>
+              <span style="font-size:11px;font-weight:800;color:var(--mango);width:30px">42%</span>
+            </div>
+          </div>
+          <span class="badge badge-mango">28d left</span>
+        </div>
+
+        <!-- Elena -->
+        <div class="att-item" id="att-elena" style="cursor:default" onclick="window.location.href='member_detail.html'">
+          <div class="avatar" style="width:36px;height:36px;background:#ec4899">ER</div>
+          <div style="flex:1;min-width:0">
+            <div style="font-weight:700;font-size:13px;color:var(--navy)">Elena Rodriguez</div>
+            <div style="font-size:11px;color:var(--gray-400);margin-bottom:5px">Negotiation Fundamentals · 28 days left</div>
+            <div style="display:flex;align-items:center;gap:6px">
+              <div class="prog-wrap" style="flex:1"><div class="prog-bar" style="width:55%;background:var(--mango)"></div></div>
+              <span style="font-size:11px;font-weight:800;color:var(--mango);width:30px">55%</span>
+            </div>
+          </div>
+          <span class="badge badge-mango">28d left</span>
+        </div>
+      </div>
+
+      <!-- Empty state (hidden by default - shown when no required courses) -->
+      <div id="upcoming-empty" style="display:none;text-align:center;padding:24px 16px">
+        <div style="font-size:28px;margin-bottom:8px">📋</div>
+        <div style="font-weight:700;font-size:14px;color:var(--navy);margin-bottom:6px">No required courses set</div>
+        <div style="font-size:12px;color:var(--gray-400);margin-bottom:14px">Configure required courses and deadlines to track your team's progress here.</div>
+        <a href="settings.html" class="btn-primary" style="text-decoration:none;display:inline-flex">Go to Settings →</a>
+      </div>
+    </div>
+
+    <!-- RIGHT: DISTRIBUTION + LEADERBOARD -->
+    <div class="card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;flex-wrap:wrap;gap:8px">
+        <div class="card-title" style="margin-bottom:0">Progress Distribution</div>
+        <select class="filter-select" onchange="updateDistChart(this.value)" id="dist-course-select" style="font-size:11px;padding:5px 10px">
+          <option value="neg" selected>Negotiation Fundamentals · Mar 31</option>
+          <option value="strat">Strategic Sourcing · Apr 30</option>
+          <option value="supp">Supplier Management · May 31</option>
+        </select>
+      </div>
+      <div style="font-size:12px;color:var(--gray-400);margin-bottom:10px">Progress buckets across 6 enrolled members</div>
+
+      <div class="dist-chart" id="dist-chart-bars">
+        <div class="dist-bar" style="background:#fecaca;height:24px"><span>1 member</span></div>
+        <div class="dist-bar" style="background:var(--mango-light);border:1.5px solid var(--mango-border);height:48px"><span>2 members</span></div>
+        <div class="dist-bar" style="background:var(--primary-light);height:24px"><span>1 member</span></div>
+        <div class="dist-bar" style="background:var(--primary);opacity:.6;height:70px"><span>2 members</span></div>
+      </div>
+      <div class="dist-labels">
+        <div class="dist-label">0–25%<br>course completion</div>
+        <div class="dist-label">26–50%<br>course completion</div>
+        <div class="dist-label">51–75%<br>course completion</div>
+        <div class="dist-label">76–100%<br>course completion</div>
+      </div>
+      <!-- Legend -->
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:10px;padding-top:10px;border-top:1px solid var(--gray-100)">
+        <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--gray-600)"><div style="width:12px;height:12px;border-radius:3px;background:#fecaca"></div>0–25%</div>
+        <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--gray-600)"><div style="width:12px;height:12px;border-radius:3px;background:var(--mango-light);border:1.5px solid var(--mango-border)"></div>26–50%</div>
+        <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--gray-600)"><div style="width:12px;height:12px;border-radius:3px;background:var(--primary-light)"></div>51–75%</div>
+        <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--gray-600)"><div style="width:12px;height:12px;border-radius:3px;background:var(--primary);opacity:.75"></div>76–100%</div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="card-title" style="margin-bottom:12px">🏆 Top Performers</div>
+      <div class="lb-row">
+        <div style="width:22px;text-align:center;font-size:15px;flex-shrink:0">🥇</div>
+        <div class="avatar" style="width:30px;height:30px;background:var(--primary-dark)">JC</div>
+        <div style="flex:1"><div style="font-weight:700;font-size:13px;color:var(--navy)">James Chen</div><div style="font-size:11px;color:var(--gray-400)">Avg required: 82%</div></div>
+        <div style="font-weight:800;color:var(--primary-dark)">82%</div>
+      </div>
+      <div class="lb-row">
+        <div style="width:22px;text-align:center;font-size:15px;flex-shrink:0">🥈</div>
+        <div class="avatar" style="width:30px;height:30px;background:var(--navy)">MW</div>
+        <div style="flex:1"><div style="font-weight:700;font-size:13px;color:var(--navy)">Marcus Williams</div><div style="font-size:11px;color:var(--gray-400)">Avg required: 74%</div></div>
+        <div style="font-weight:800;color:var(--navy)">74%</div>
+      </div>
+      <div class="lb-row">
+        <div style="width:22px;text-align:center;font-size:15px;flex-shrink:0">🥉</div>
+        <div class="avatar" style="width:30px;height:30px;background:var(--mango)">SJ</div>
+        <div style="flex:1"><div style="font-weight:700;font-size:13px;color:var(--navy)">Sarah Johnson</div><div style="font-size:11px;color:var(--gray-400)">Avg required: 61%</div></div>
+        <div style="font-weight:800;color:var(--mango)">61%</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ COURSES ═══ -->
+  <div style="margin-bottom:24px">
+    <div class="section-row">
+      <div class="section-title">
+        📚 Courses
+        <span class="badge badge-primary">3 required</span>
+        <span class="badge badge-gray" id="optional-badge">+ 3 optional</span>
+      </div>
+      <button class="btn-ghost" id="view-all-btn" onclick="toggleOptional()">View all courses ▾</button>
+    </div>
+
+    <!-- Required courses -->
+    <div style="font-size:11px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px">Required · with deadlines</div>
+    <div class="course-grid" style="margin-bottom:0">
+
+      <div class="course-card required" onclick="window.location.href='course_detail.html'">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">
+          <div class="course-icon" style="background:#ede9fe">🤝</div>
+          <span class="deadline-badge soon">Due Mar 31</span>
+        </div>
+        <div style="font-weight:700;font-size:14px;color:var(--navy);margin-bottom:4px">Negotiation Fundamentals</div>
+        <span class="tag-req">Required</span>
+        <div style="margin-top:12px">
+          <div class="prog-wrap"><div class="prog-bar" style="width:57%;background:var(--primary)"></div></div>
+          <div style="display:flex;justify-content:space-between;margin-top:4px"><span style="font-size:11px;color:var(--gray-400)">Team avg</span><span style="font-size:11px;font-weight:800;color:var(--primary-dark)">57%</span></div>
+        </div>
+        <div class="course-stats">
+          <div class="stat-item"><div style="font-size:16px;font-weight:800;color:var(--navy)">6</div><div style="font-size:10px;color:var(--gray-400);text-transform:uppercase">Enrolled</div></div>
+          <div class="stat-item"><div style="font-size:16px;font-weight:800;color:var(--primary-dark)">1</div><div style="font-size:10px;color:var(--primary-dark);text-transform:uppercase">Done ✓</div></div>
+          <div class="stat-item"><div style="font-size:16px;font-weight:800;color:var(--mango)">2</div><div style="font-size:10px;color:var(--mango);text-transform:uppercase">In Progress</div></div>
+        </div>
+      </div>
+
+      <div class="course-card required" onclick="window.location.href='course_detail.html'">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">
+          <div class="course-icon" style="background:var(--primary-light)">🏭</div>
+          <span class="deadline-badge normal">Due Apr 30</span>
+        </div>
+        <div style="font-weight:700;font-size:14px;color:var(--navy);margin-bottom:4px">Strategic Sourcing</div>
+        <span class="tag-req">Required</span>
+        <div style="margin-top:12px">
+          <div class="prog-wrap"><div class="prog-bar" style="width:42%;background:var(--mango)"></div></div>
+          <div style="display:flex;justify-content:space-between;margin-top:4px"><span style="font-size:11px;color:var(--gray-400)">Team avg</span><span style="font-size:11px;font-weight:800;color:var(--mango)">42%</span></div>
+        </div>
+        <div class="course-stats">
+          <div class="stat-item"><div style="font-size:16px;font-weight:800;color:var(--navy)">6</div><div style="font-size:10px;color:var(--gray-400);text-transform:uppercase">Enrolled</div></div>
+          <div class="stat-item"><div style="font-size:16px;font-weight:800;color:var(--primary-dark)">0</div><div style="font-size:10px;color:var(--primary-dark);text-transform:uppercase">Done ✓</div></div>
+          <div class="stat-item"><div style="font-size:16px;font-weight:800;color:var(--gray-400)">0</div><div style="font-size:10px;color:var(--gray-400);text-transform:uppercase">In Progress</div></div>
+        </div>
+      </div>
+
+      <div class="course-card required" onclick="window.location.href='course_detail.html'">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">
+          <div class="course-icon" style="background:#e8f0fa">📋</div>
+          <span class="deadline-badge later">Due May 31</span>
+        </div>
+        <div style="font-weight:700;font-size:14px;color:var(--navy);margin-bottom:4px">Supplier Management</div>
+        <span class="tag-req">Required</span>
+        <div style="margin-top:12px">
+          <div class="prog-wrap"><div class="prog-bar" style="width:21%;background:var(--red)"></div></div>
+          <div style="display:flex;justify-content:space-between;margin-top:4px"><span style="font-size:11px;color:var(--gray-400)">Team avg</span><span style="font-size:11px;font-weight:800;color:var(--red)">21%</span></div>
+        </div>
+        <div class="course-stats">
+          <div class="stat-item"><div style="font-size:16px;font-weight:800;color:var(--navy)">6</div><div style="font-size:10px;color:var(--gray-400);text-transform:uppercase">Enrolled</div></div>
+          <div class="stat-item"><div style="font-size:16px;font-weight:800;color:var(--primary-dark)">0</div><div style="font-size:10px;color:var(--primary-dark);text-transform:uppercase">Done ✓</div></div>
+          <div class="stat-item"><div style="font-size:16px;font-weight:800;color:var(--gray-400)">0</div><div style="font-size:10px;color:var(--gray-400);text-transform:uppercase">In Progress</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Optional courses (hidden by default) -->
+    <div id="optional-section" style="display:none;margin-top:16px">
+      <div style="font-size:11px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px">Optional · available to your team</div>
+      <div class="course-grid">
+        <div class="course-card optional" onclick="window.location.href='course_detail.html'">
+          <div class="course-icon" style="background:#fef3c7">📊</div>
+          <div style="font-weight:700;font-size:14px;color:var(--navy);margin-bottom:4px">Category Management</div>
+          <span class="tag-opt">Optional</span>
+          <div style="margin-top:12px">
+            <div class="prog-wrap"><div class="prog-bar" style="width:38%;background:var(--mango)"></div></div>
+            <div style="font-size:11px;color:var(--gray-400);margin-top:4px">3 / 6 enrolled · 38% avg</div>
+          </div>
+        </div>
+        <div class="course-card optional" onclick="window.location.href='course_detail.html'">
+          <div class="course-icon" style="background:var(--red-light)">📝</div>
+          <div style="font-weight:700;font-size:14px;color:var(--navy);margin-bottom:4px">Contract Management</div>
+          <span class="tag-opt">Optional</span>
+          <div style="margin-top:12px">
+            <div class="prog-wrap"><div class="prog-bar" style="width:12%;background:var(--red)"></div></div>
+            <div style="font-size:11px;color:var(--gray-400);margin-top:4px">1 / 6 enrolled · 12% avg</div>
+          </div>
+        </div>
+        <div class="course-card optional" onclick="window.location.href='course_detail.html'">
+          <div class="course-icon" style="background:var(--primary-light)">🔗</div>
+          <div style="font-weight:700;font-size:14px;color:var(--navy);margin-bottom:4px">Supply Chain Risk</div>
+          <span class="tag-opt">Optional</span>
+          <div style="margin-top:12px">
+            <div class="prog-wrap"><div class="prog-bar" style="width:0%;background:var(--primary)"></div></div>
+            <div style="font-size:11px;color:var(--gray-400);margin-top:4px">0 / 6 enrolled</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ INDIVIDUAL TABLE ═══ -->
+  <div class="card" style="margin-bottom:24px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px">
+      <div class="card-title" style="margin-bottom:0">👥 Individual Progress <span class="badge badge-primary">6 members</span></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+        <div class="course-filter-picker" id="course-filter-picker">
+          <button class="course-filter-btn" id="course-filter-btn" onclick="toggleCourseFilter()">📚 Filter courses ▾</button>
+          <div class="course-filter-dropdown" id="course-filter-dropdown">
+            <div style="font-size:11px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:.5px;padding:8px 14px 6px">Select up to 4 courses</div>
+            <div class="cf-item"><label><input type="checkbox" class="cf-check" data-col="neg" checked onchange="applyCourseFilter(this)"> <span>Negotiation Fundamentals</span></label></div>
+            <div class="cf-item"><label><input type="checkbox" class="cf-check" data-col="strat" checked onchange="applyCourseFilter(this)"> <span>Strategic Sourcing</span></label></div>
+            <div class="cf-item"><label><input type="checkbox" class="cf-check" data-col="supp" checked onchange="applyCourseFilter(this)"> <span>Supplier Management</span></label></div>
+            <div class="cf-item"><label><input type="checkbox" class="cf-check" data-col="cat" checked onchange="applyCourseFilter(this)"> <span>Category Management</span></label></div>
+            <div class="cf-item"><label><input type="checkbox" class="cf-check" data-col="ana" onchange="applyCourseFilter(this)"> <span>Procurement Analytics</span></label></div>
+            <div class="cf-item"><label><input type="checkbox" class="cf-check" data-col="cost" onchange="applyCourseFilter(this)"> <span>Cost Reduction Strategies</span></label></div>
+          </div>
+        </div>
+        <input type="text" placeholder="🔍  Search…" oninput="filterTable(this.value)" style="border:1.5px solid var(--gray-200);border-radius:8px;padding:7px 12px;font-size:12px;width:160px;color:var(--navy);font-family:inherit;">
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table id="progress-table">
+        <thead>
+          <tr>
+            <th data-sort-key="name" onclick="sortTable('name')" style="cursor:pointer">Member <span class="sort-icon">↕</span></th>
+            <th data-col="neg" data-sort-key="neg" onclick="sortTable('neg')" style="cursor:pointer">Negotiation <span style="color:var(--red);font-weight:800">· Mar 31</span> <span class="sort-icon">↕</span></th>
+            <th data-col="strat" data-sort-key="strat" onclick="sortTable('strat')" style="cursor:pointer">Strategic Sourcing <span style="color:var(--primary-dark);font-weight:800">· Apr 30</span> <span class="sort-icon">↕</span></th>
+            <th data-col="supp" data-sort-key="supp" onclick="sortTable('supp')" style="cursor:pointer">Supplier Mgmt <span style="color:var(--navy);font-weight:800">· May 31</span> <span class="sort-icon">↕</span></th>
+            <th data-col="cat" data-sort-key="cat" onclick="sortTable('cat')" style="cursor:pointer">Category Mgmt <span class="sort-icon">↕</span></th>
+            <th data-col="ana" data-sort-key="ana" onclick="sortTable('ana')" style="cursor:pointer;display:none">Procurement Analytics <span class="sort-icon">↕</span></th>
+            <th data-col="cost" data-sort-key="cost" onclick="sortTable('cost')" style="cursor:pointer;display:none">Cost Reduction <span class="sort-icon">↕</span></th>
+            <th data-sort-key="done" onclick="sortTable('done')" style="cursor:pointer;text-align:center">Courses Completed <span class="sort-icon">↕</span></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="member-tbody">
+          <tr onclick="window.location.href='member_detail.html'" data-name="James Chen" data-neg="100" data-strat="88" data-supp="60" data-cat="45" data-ana="72" data-cost="0" data-done="1">
+            <td><div style="font-weight:700;color:var(--navy)">James Chen</div><div style="font-size:11px;color:var(--gray-400)">james.chen@elbert.com</div></td>
+            <td data-col="neg"><div style="display:flex;align-items:center;gap:6px"><div class="prog-wrap" style="width:56px"><div class="prog-bar" style="width:100%;background:var(--primary)"></div></div><span style="font-size:12px;font-weight:800;color:var(--primary-dark)">100%✓</span></div></td>
+            <td data-col="strat"><div style="display:flex;align-items:center;gap:6px"><div class="prog-wrap" style="width:56px"><div class="prog-bar" style="width:88%;background:var(--primary)"></div></div><span style="font-size:12px;font-weight:800;color:var(--primary-dark)">88%</span></div></td>
+            <td data-col="supp"><div style="display:flex;align-items:center;gap:6px"><div class="prog-wrap" style="width:56px"><div class="prog-bar" style="width:60%;background:var(--mango)"></div></div><span style="font-size:12px;font-weight:800;color:var(--mango)">60%</span></div></td>
+            <td data-col="cat"><div style="display:flex;align-items:center;gap:6px"><div class="prog-wrap" style="width:56px"><div class="prog-bar" style="width:45%;background:var(--mango)"></div></div><span style="font-size:12px;font-weight:800;color:var(--mango)">45%</span></div></td>
+            <td data-col="ana" style="display:none"><div style="display:flex;align-items:center;gap:6px"><div class="prog-wrap" style="width:56px"><div class="prog-bar" style="width:72%;background:var(--primary)"></div></div><span style="font-size:12px;font-weight:800;color:var(--primary-dark)">72%</span></div></td>
+            <td data-col="cost" style="display:none"><div style="display:flex;align-items:center;gap:6px"><div class="prog-wrap" style="width:56px"><div class="prog-bar" style="width:0%;background:var(--gray-200)"></div></div><span style="font-size:12px;font-weight:600;color:var(--gray-400)">—</span></div></td>
+            <td style="text-align:center"><span style="font-weight:800;color:var(--primary-dark)">1 / 3</span></td>
+            <td><span class="view-link">View →</span></td>
+          </tr>
+          <tr onclick="window.location.href='member_detail.html'" data-name="Marcus Williams" data-neg="92" data-strat="67" data-supp="35" data-cat="0" data-ana="35" data-cost="0" data-done="0">
+            <td><div style="font-weight:700;color:var(--navy)">Marcus Williams</div><div style="font-size:11px;color:var(--gray-400)">m.williams@elbert.com</div></td>
+            <td data-col="neg"><div style="display:flex;align-items:center;gap:6px"><div class="prog-wrap" style="width:56px"><div class="prog-bar" style="width:92%;background:var(--primary)"></div></div><span style="font-size:12px;font-weight:800;color:var(--primary-dark)">92%</span></div></td>
+            <td data-col="strat"><div style="display:flex;align-items:center;gap:6px"><div class="prog-wrap" style="width:56px"><div class="prog-bar" style="width:67%;background:var(--mango)"></div></div><span style="font-size:12px;font-weight:800;color:var(--mango)">67%</span></div></td>
+            <td data-col="supp"><div style="display:flex;align-items:center;gap:6px"><div class="prog-wrap" style="width:56px"><div class="prog-bar" style="width:35%;background:var(--mango)"></div></div><span style="font-size:12px;font-weight:800;color:var(--mango)">35%</span></div></td>
+            <td data-col="cat"><div style="display:flex;align-items:center;gap:6px"><div class="prog-wrap" style="width:56px"><div class="prog-bar" style="width:0%;background:var(--gray-200)"></div></div><span style="font-size:12px;font-weight:600;color:var(--gray-400)">—</span></div></td>
+            <td data-col="ana" style="display:none"><div style="display:flex;align-items:center;gap:6px"><div class="prog-wrap" style="width:56px"><div class="prog-bar" style="width:35%;background:var(--mango)"></div></div><span style="font-size:12px;font-weight:800;color:var(--mango)">35%</span></div></td>
+            <td data-col="cost" style="display:none"><div style="display:flex;align-items:center;gap:6px"><div class="prog-wrap" style="width:56px"><div class="prog-bar" style="width:0%;background:var(--gray-200)"></div></div><span style="font-size:12px;font-weight:600;color:var(--gray-400)">—</span></div></td>
+            <td style="text-align:center"><span style="font-weight:800;color:var(--gray-600)">0 / 3</span></td>
+            <td><span class="view-link">View →</span></td>
+          </tr>
+          <tr onclick="window.location.href='member_detail.html'" data-name="Sarah Johnson" data-neg="78" data-strat="45" data-supp="20" data-cat="0" data-ana="0" data-cost="55" data-done="0">
+            <td><div style="font-weight:700;color:var(--navy)">Sarah Johnson</div><div style="font-size:11px;color:var(--gray-400)">s.johnson@elbert.com</div></td>
+            <td data-col="neg"><div style="display:flex;align-items:center;gap:6px"><div class="prog-wrap" style="width:56px"><div class="prog-bar" style="width:78%;background:var(--primary)"></div></div><span style="font-size:12px;font-weight:800;color:var(--primary-dark)">78%</span></div></td>
+            <td data-col="strat"><div style="display:flex;align-items:center;gap:6px"><div class="prog-wrap" style="width:56px"><div class="prog-bar" style="width:45%;background:var(--mango)"></div></div><span style="font-size:12px;font-weight:800;color:var(--mango)">45%</span></div></td>
+            <td data-col="supp"><div style="display:flex;align-items:center;gap:6px"><div class="prog-wrap" style="width:56px"><div class="prog-bar" style="width:20%;background:var(--red)"></div></div><span style="font-size:12px;font-weight:800;color:var(--red)">20%</span></div></td>
+            <td data-col="cat"><div style="display:flex;align-items:center;gap:6px"><div class="prog-wrap" style="width:56px"><div class="prog-bar" style="width:0%;background:var(--gray-200)"></div></div><span style="font-size:12px;font-weight:600;color:var(--gray-400)">—</span></div></td>
+            <td data-col="ana" style="display:none"><div style="display:flex;align-items:center;gap:6px"><div class="prog-wrap" style="width:56px"><div class="prog-bar" style="width:0%;background:var(--gray-200)"></div></div><span style="font-size:12px;font-weight:600;color:var(--gray-400)">—</span></div></td>
+            <td data-col="cost" style="display:none"><div style="display:flex;align-items:center;gap:6px"><div class="prog-wrap" style="width:56px"><div class="prog-bar" style="width:55%;background:var(--mango)"></div></div><span style="font-size:12px;font-weight:800;color:var(--mango)">55%</span></div></td>
+            <td style="text-align:center"><span style="font-weight:800;color:var(--gray-600)">0 / 3</span></td>
+            <td><span class="view-link">View →</span></td>
+          </tr>
+          <tr onclick="window.location.href='member_detail.html'" data-name="Elena Rodriguez" data-neg="55" data-strat="30" data-supp="10" data-cat="38" data-ana="0" data-cost="40" data-done="0">
+            <td><div style="font-weight:700;color:var(--navy)">Elena Rodriguez</div><div style="font-size:11px;color:var(--gray-400)">e.rodriguez@elbert.com</div></td>
+            <td data-col="neg"><div style="display:flex;align-items:center;gap:6px"><div class="prog-wrap" style="width:56px"><div class="prog-bar" style="width:55%;background:var(--mango)"></div></div><span style="font-size:12px;font-weight:800;color:var(--mango)">55%</span></div></td>
+            <td data-col="strat"><div style="display:flex;align-items:center;gap:6px"><div class="prog-wrap" style="width:56px"><div class="prog-bar" style="width:30%;background:var(--red)"></div></div><span style="font-size:12px;font-weight:800;color:var(--red)">30%</span></div></td>
+            <td data-col="supp"><div style="display:flex;align-items:center;gap:6px"><div class="prog-wrap" style="width:56px"><div class="prog-bar" style="width:10%;background:var(--red)"></div></div><span style="font-size:12px;font-weight:800;color:var(--red)">10%</span></div></td>
+            <td data-col="cat"><div style="display:flex;align-items:center;gap:6px"><div class="prog-wrap" style="width:56px"><div class="prog-bar" style="width:38%;background:var(--mango)"></div></div><span style="font-size:12px;font-weight:800;color:var(--mango)">38%</span></div></td>
+            <td data-col="ana" style="display:none"><div style="display:flex;align-items:center;gap:6px"><div class="prog-wrap" style="width:56px"><div class="prog-bar" style="width:0%;background:var(--gray-200)"></div></div><span style="font-size:12px;font-weight:600;color:var(--gray-400)">—</span></div></td>
+            <td data-col="cost" style="display:none"><div style="display:flex;align-items:center;gap:6px"><div class="prog-wrap" style="width:56px"><div class="prog-bar" style="width:40%;background:var(--mango)"></div></div><span style="font-size:12px;font-weight:800;color:var(--mango)">40%</span></div></td>
+            <td style="text-align:center"><span style="font-weight:800;color:var(--gray-600)">0 / 3</span></td>
+            <td><span class="view-link">View →</span></td>
+          </tr>
+          <tr onclick="window.location.href='member_detail.html'" data-name="Tom Davidson" data-neg="42" data-strat="18" data-supp="0" data-cat="0" data-ana="0" data-cost="0" data-done="0">
+            <td><div style="font-weight:700;color:var(--navy)">Tom Davidson</div><div style="font-size:11px;color:var(--gray-400)">t.davidson@elbert.com</div></td>
+            <td data-col="neg"><div style="display:flex;align-items:center;gap:6px"><div class="prog-wrap" style="width:56px"><div class="prog-bar" style="width:42%;background:var(--mango)"></div></div><span style="font-size:12px;font-weight:800;color:var(--mango)">42%</span></div></td>
+            <td data-col="strat"><div style="display:flex;align-items:center;gap:6px"><div class="prog-wrap" style="width:56px"><div class="prog-bar" style="width:18%;background:var(--red)"></div></div><span style="font-size:12px;font-weight:800;color:var(--red)">18%</span></div></td>
+            <td data-col="supp"><div style="display:flex;align-items:center;gap:6px"><div class="prog-wrap" style="width:56px"><div class="prog-bar" style="width:0%;background:var(--gray-200)"></div></div><span style="font-size:12px;font-weight:800;color:var(--gray-400)">0%</span></div></td>
+            <td data-col="cat"><div style="display:flex;align-items:center;gap:6px"><div class="prog-wrap" style="width:56px"><div class="prog-bar" style="width:0%;background:var(--gray-200)"></div></div><span style="font-size:12px;font-weight:600;color:var(--gray-400)">—</span></div></td>
+            <td data-col="ana" style="display:none"><div style="display:flex;align-items:center;gap:6px"><div class="prog-wrap" style="width:56px"><div class="prog-bar" style="width:0%;background:var(--gray-200)"></div></div><span style="font-size:12px;font-weight:600;color:var(--gray-400)">—</span></div></td>
+            <td data-col="cost" style="display:none"><div style="display:flex;align-items:center;gap:6px"><div class="prog-wrap" style="width:56px"><div class="prog-bar" style="width:0%;background:var(--gray-200)"></div></div><span style="font-size:12px;font-weight:600;color:var(--gray-400)">—</span></div></td>
+            <td style="text-align:center"><span style="font-weight:800;color:var(--gray-600)">0 / 3</span></td>
+            <td><span class="view-link">View →</span></td>
+          </tr>
+          <tr onclick="window.location.href='member_detail.html'" data-name="Priya Patel" data-neg="15" data-strat="5" data-supp="0" data-cat="0" data-ana="0" data-cost="0" data-done="0">
+            <td><div style="font-weight:700;color:var(--navy)">Priya Patel</div><div style="font-size:11px;color:var(--gray-400)">p.patel@elbert.com</div></td>
+            <td data-col="neg"><div style="display:flex;align-items:center;gap:6px"><div class="prog-wrap" style="width:56px"><div class="prog-bar" style="width:15%;background:var(--red)"></div></div><span style="font-size:12px;font-weight:800;color:var(--red)">15%</span></div></td>
+            <td data-col="strat"><div style="display:flex;align-items:center;gap:6px"><div class="prog-wrap" style="width:56px"><div class="prog-bar" style="width:5%;background:var(--red)"></div></div><span style="font-size:12px;font-weight:800;color:var(--red)">5%</span></div></td>
+            <td data-col="supp"><div style="display:flex;align-items:center;gap:6px"><div class="prog-wrap" style="width:56px"><div class="prog-bar" style="width:0%;background:var(--gray-200)"></div></div><span style="font-size:12px;font-weight:800;color:var(--gray-400)">0%</span></div></td>
+            <td data-col="cat"><div style="display:flex;align-items:center;gap:6px"><div class="prog-wrap" style="width:56px"><div class="prog-bar" style="width:0%;background:var(--gray-200)"></div></div><span style="font-size:12px;font-weight:600;color:var(--gray-400)">—</span></div></td>
+            <td data-col="ana" style="display:none"><div style="display:flex;align-items:center;gap:6px"><div class="prog-wrap" style="width:56px"><div class="prog-bar" style="width:0%;background:var(--gray-200)"></div></div><span style="font-size:12px;font-weight:600;color:var(--gray-400)">—</span></div></td>
+            <td data-col="cost" style="display:none"><div style="display:flex;align-items:center;gap:6px"><div class="prog-wrap" style="width:56px"><div class="prog-bar" style="width:0%;background:var(--gray-200)"></div></div><span style="font-size:12px;font-weight:600;color:var(--gray-400)">—</span></div></td>
+            <td style="text-align:center"><span style="font-weight:800;color:var(--gray-600)">0 / 3</span></td>
+            <td><span class="view-link">View →</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ═══ RECENT ACTIVITY ═══ -->
+  <div class="card" style="margin-bottom:24px">
+    <div class="card-title">🕐 Recent Activity</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 32px">
+      <div>
+        <div class="tl-item">
+          <div class="tl-dot" style="background:var(--primary-light)">🎓</div>
+          <div><div style="font-weight:600;font-size:13px;color:var(--navy)">James Chen completed Negotiation</div><div style="font-size:11px;color:var(--gray-400);margin-top:2px">Today · certificate earned</div></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="background:var(--primary-light)">📖</div>
+          <div><div style="font-weight:600;font-size:13px;color:var(--navy)">Marcus Williams — lesson 7 of 12</div><div style="font-size:11px;color:var(--gray-400);margin-top:2px">Yesterday · Negotiation Fundamentals</div></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="background:var(--mango-light)">⚡</div>
+          <div><div style="font-weight:600;font-size:13px;color:var(--navy)">Sarah Johnson — progress at 78%</div><div style="font-size:11px;color:var(--gray-400);margin-top:2px">2 days ago · Negotiation</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="tl-item">
+          <div class="tl-dot" style="background:var(--red-light)">⚠️</div>
+          <div><div style="font-weight:600;font-size:13px;color:var(--navy)">Priya Patel — no activity</div><div style="font-size:11px;color:var(--gray-400);margin-top:2px">Last seen 9 days ago · behind on all courses</div></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="background:var(--primary-light)">📖</div>
+          <div><div style="font-weight:600;font-size:13px;color:var(--navy)">Elena Rodriguez — lesson 4 of 12</div><div style="font-size:11px;color:var(--gray-400);margin-top:2px">3 days ago · Strategic Sourcing</div></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="background:var(--mango-light)">📧</div>
+          <div><div style="font-weight:600;font-size:13px;color:var(--navy)">Reminder sent to Tom Davidson</div><div style="font-size:11px;color:var(--gray-400);margin-top:2px">4 days ago · by you</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SUBSCRIPTION RENEWAL BAR ═══ -->
+  <div class="renewal-bar">
+    <div style="display:flex;align-items:center;gap:14px">
+      <div style="width:40px;height:40px;background:rgba(1,191,240,.15);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">📅</div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#fff">Your subscription renews on <span style="color:var(--primary)">June 1, 2026</span> — 81 days away</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:2px">6 active seats · questions? <a href="mailto:team@procurementtactics.com" style="color:var(--primary);font-weight:600;text-decoration:none">Contact us</a></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<!-- ═══ PANEL OVERLAY ═══ -->
+<div class="panel-overlay" id="panel-overlay" onclick="closePanel()"></div>
+
+<!-- ═══ SLIDE PANEL: MEMBER DETAIL ═══ -->
+<div class="slide-panel" id="panel-member">
+  <div class="panel-hdr">
+    <div style="display:flex;align-items:center">
+      <div class="panel-hdr-accent"></div>
+      <div>
+        <div style="font-size:16px;font-weight:800;color:var(--navy)" id="pm-name">James Chen</div>
+        <div style="font-size:12px;color:var(--gray-400)" id="pm-email">james.chen@elbert.com</div>
+      </div>
+    </div>
+    <button class="panel-close" onclick="closePanel()">✕</button>
+  </div>
+  <div class="panel-body">
+    <div id="pm-status-bar" style="background:var(--primary-light);border:1.5px solid var(--primary-border);border-radius:10px;padding:14px;margin-bottom:20px">
+      <div style="font-size:12px;font-weight:700;color:var(--primary-dark);margin-bottom:2px" id="pm-status-label">✓ On track</div>
+      <div style="font-size:22px;font-weight:800;color:var(--primary-dark)" id="pm-avg">82%</div>
+      <div style="font-size:11px;color:var(--gray-600)">Average across required courses</div>
+    </div>
+
+    <div class="sub-section">Required Courses</div>
+
+    <div class="prog-item">
+      <div style="width:32px;height:32px;border-radius:8px;background:#ede9fe;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">🤝</div>
+      <div style="flex:1">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
+          <div style="font-weight:600;font-size:13px;color:var(--navy)">Negotiation Fundamentals</div>
+          <div style="display:flex;align-items:center;gap:6px">
+            <span style="font-size:10px;color:var(--red);font-weight:700">Due Mar 31</span>
+            <span id="pm-neg" style="font-size:12px;font-weight:800;color:var(--primary-dark)">100% ✓</span>
+          </div>
+        </div>
+        <div class="prog-wrap"><div class="prog-bar" id="pm-neg-bar" style="width:100%;background:var(--primary)"></div></div>
+      </div>
+    </div>
+
+    <div class="prog-item">
+      <div style="width:32px;height:32px;border-radius:8px;background:var(--primary-light);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">🏭</div>
+      <div style="flex:1">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
+          <div style="font-weight:600;font-size:13px;color:var(--navy)">Strategic Sourcing</div>
+          <div style="display:flex;align-items:center;gap:6px">
+            <span style="font-size:10px;color:var(--primary-dark);font-weight:700">Due Apr 30</span>
+            <span id="pm-strat" style="font-size:12px;font-weight:800;color:var(--primary-dark)">88%</span>
+          </div>
+        </div>
+        <div class="prog-wrap"><div class="prog-bar" id="pm-strat-bar" style="width:88%;background:var(--primary)"></div></div>
+      </div>
+    </div>
+
+    <div class="prog-item">
+      <div style="width:32px;height:32px;border-radius:8px;background:#e8f0fa;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">📋</div>
+      <div style="flex:1">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
+          <div style="font-weight:600;font-size:13px;color:var(--navy)">Supplier Management</div>
+          <div style="display:flex;align-items:center;gap:6px">
+            <span style="font-size:10px;color:var(--navy);font-weight:700">Due May 31</span>
+            <span id="pm-supp" style="font-size:12px;font-weight:800;color:var(--mango)">60%</span>
+          </div>
+        </div>
+        <div class="prog-wrap"><div class="prog-bar" id="pm-supp-bar" style="width:60%;background:var(--mango)"></div></div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-section">Optional Courses</div>
+
+    <div class="prog-item">
+      <div style="width:32px;height:32px;border-radius:8px;background:#fef3c7;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">📊</div>
+      <div style="flex:1">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
+          <div style="font-weight:600;font-size:13px;color:var(--gray-600)">Category Management</div>
+          <span style="font-size:12px;font-weight:800;color:var(--mango)">45%</span>
+        </div>
+        <div class="prog-wrap"><div class="prog-bar" style="width:45%;background:var(--mango)"></div></div>
+      </div>
+    </div>
+    <div class="prog-item">
+      <div style="width:32px;height:32px;border-radius:8px;background:var(--gray-100);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">📝</div>
+      <div style="flex:1">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
+          <div style="font-weight:600;font-size:13px;color:var(--gray-400)">Contract Management</div>
+          <span style="font-size:12px;font-weight:600;color:var(--gray-400)">Not started</span>
+        </div>
+        <div class="prog-wrap"><div class="prog-bar" style="width:0%"></div></div>
+      </div>
+    </div>
+    <div class="prog-item">
+      <div style="width:32px;height:32px;border-radius:8px;background:var(--gray-100);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">🔗</div>
+      <div style="flex:1">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
+          <div style="font-weight:600;font-size:13px;color:var(--gray-400)">Supply Chain Risk</div>
+          <span style="font-size:12px;font-weight:600;color:var(--gray-400)">Not started</span>
+        </div>
+        <div class="prog-wrap"><div class="prog-bar" style="width:0%"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SLIDE PANEL: COURSE DETAIL ═══ -->
+<div class="slide-panel wide" id="panel-course">
+  <div class="panel-hdr">
+    <div style="display:flex;align-items:center">
+      <div class="panel-hdr-accent"></div>
+      <div>
+        <div style="font-size:16px;font-weight:800;color:var(--navy)">Negotiation Fundamentals</div>
+        <div style="font-size:12px;color:var(--gray-400)">Required course · Deadline: March 31, 2026</div>
+      </div>
+    </div>
+    <button class="panel-close" onclick="closePanel()">✕</button>
+  </div>
+  <div class="panel-body">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px">
+      <div style="background:var(--gray-50);border-radius:8px;padding:12px;text-align:center"><div style="font-size:18px;font-weight:800;color:var(--navy)">6</div><div style="font-size:10px;color:var(--gray-400);text-transform:uppercase">Enrolled</div></div>
+      <div style="background:var(--primary-light);border-radius:8px;padding:12px;text-align:center"><div style="font-size:18px;font-weight:800;color:var(--primary-dark)">57%</div><div style="font-size:10px;color:var(--gray-400);text-transform:uppercase">Team avg</div></div>
+      <div style="background:var(--red-light);border-radius:8px;padding:12px;text-align:center"><div style="font-size:18px;font-weight:800;color:var(--red)">2</div><div style="font-size:10px;color:var(--red);text-transform:uppercase">At risk</div></div>
+    </div>
+
+    <div class="sub-section">Team progress · sorted by completion</div>
+
+    <div class="prog-item">
+      <div class="avatar" style="width:30px;height:30px;background:var(--primary-dark)">JC</div>
+      <div style="flex:1">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
+          <div style="font-weight:700;font-size:13px;color:var(--navy)">James Chen</div>
+          <span style="font-size:12px;font-weight:800;color:var(--primary-dark)">100% 🏅</span>
+        </div>
+        <div class="prog-wrap"><div class="prog-bar" style="width:100%;background:var(--primary)"></div></div>
+      </div>
+    </div>
+    <div class="prog-item">
+      <div class="avatar" style="width:30px;height:30px;background:var(--navy)">MW</div>
+      <div style="flex:1">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
+          <div style="font-weight:700;font-size:13px;color:var(--navy)">Marcus Williams</div>
+          <span style="font-size:12px;font-weight:800;color:var(--primary-dark)">92%</span>
+        </div>
+        <div class="prog-wrap"><div class="prog-bar" style="width:92%;background:var(--primary)"></div></div>
+      </div>
+    </div>
+    <div class="prog-item">
+      <div class="avatar" style="width:30px;height:30px;background:var(--mango)">SJ</div>
+      <div style="flex:1">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
+          <div style="font-weight:700;font-size:13px;color:var(--navy)">Sarah Johnson</div>
+          <span style="font-size:12px;font-weight:800;color:var(--primary-dark)">78%</span>
+        </div>
+        <div class="prog-wrap"><div class="prog-bar" style="width:78%;background:var(--primary)"></div></div>
+      </div>
+    </div>
+    <div class="prog-item">
+      <div class="avatar" style="width:30px;height:30px;background:#ec4899">ER</div>
+      <div style="flex:1">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
+          <div style="font-weight:700;font-size:13px;color:var(--navy)">Elena Rodriguez</div>
+          <span style="font-size:12px;font-weight:800;color:var(--mango)">55%</span>
+        </div>
+        <div class="prog-wrap"><div class="prog-bar" style="width:55%;background:var(--mango)"></div></div>
+      </div>
+    </div>
+    <div class="prog-item" style="background:var(--mango-light);border-radius:8px;padding:10px;margin:0 -4px">
+      <div class="avatar" style="width:30px;height:30px;background:var(--primary-dark)">TD</div>
+      <div style="flex:1">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
+          <div style="font-weight:700;font-size:13px;color:var(--navy)">Tom Davidson <span style="background:var(--mango-light);color:var(--mango);font-size:10px;padding:1px 6px;border-radius:4px;font-weight:700;margin-left:4px">IN PROGRESS</span></div>
+          <span style="font-size:12px;font-weight:800;color:var(--mango)">42%</span>
+        </div>
+        <div class="prog-wrap"><div class="prog-bar" style="width:42%;background:var(--mango)"></div></div>
+      </div>
+    </div>
+    <div class="prog-item" style="background:var(--red-light);border-radius:8px;padding:10px;margin:4px -4px 0">
+      <div class="avatar" style="width:30px;height:30px;background:#8b5cf6">PP</div>
+      <div style="flex:1">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
+          <div style="font-weight:700;font-size:13px;color:var(--navy)">Priya Patel <span style="background:var(--mango-light);color:var(--mango);font-size:10px;padding:1px 6px;border-radius:4px;font-weight:700;margin-left:4px">IN PROGRESS</span></div>
+          <span style="font-size:12px;font-weight:800;color:var(--red)">15%</span>
+        </div>
+        <div class="prog-wrap"><div class="prog-bar" style="width:15%;background:var(--red)"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MODALS ═══ -->
+
+<!-- INVITE MEMBER -->
+<div class="overlay" id="modal-invite">
+  <div class="modal">
+    <div class="modal-hdr-stripe"></div>
+    <div class="modal-hdr">
+      <div class="modal-title">➕ Invite New Team Member</div>
+      <button class="modal-close" onclick="closeModal('modal-invite')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div style="background:var(--mango-light);border:1.5px solid var(--mango-border);border-radius:10px;padding:12px 14px;margin-bottom:18px;font-size:12px;color:#7c5a00">
+        <strong>Adds a paid seat</strong> · New members are billed at <strong>€1,625 / 12 months</strong> starting from their enrollment date. You'll receive a separate invoice.
+      </div>
+      <div class="form-group">
+        <label class="form-label">Full name</label>
+        <input type="text" class="form-input" placeholder="e.g. Anna de Vries">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Work email address</label>
+        <input type="email" class="form-input" placeholder="anna@company.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Course access</label>
+        <select class="form-input">
+          <option>All required courses (default)</option>
+          <option>Full access (all courses)</option>
+          <option>Custom — contact us</option>
+        </select>
+      </div>
+      <div style="margin-bottom:18px">
+        <div class="chk-row">
+          <input type="checkbox" class="chk" id="chk-billing">
+          <label for="chk-billing" style="font-size:12px;color:var(--navy)">I confirm this adds <strong>1 seat at €1,625 / 12 months</strong> to my plan, starting March 3, 2026. A separate invoice will follow.</label>
+        </div>
+      </div>
+      <button class="btn-primary" style="width:100%;justify-content:center;padding:12px;border-radius:8px;font-size:13px;font-family:inherit;" onclick="inviteMember()">Send Invitation & Add to Plan</button>
+      <div style="font-size:11px;color:var(--gray-400);text-align:center;margin-top:10px">Questions? <a href="mailto:pim@procurementtactics.com" style="color:var(--primary-dark);font-weight:600;">Contact Pim directly</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- GET SUPPORT -->
+<div class="overlay" id="modal-support">
+  <div class="modal">
+    <div class="modal-hdr-stripe"></div>
+    <div class="modal-hdr">
+      <div class="modal-title">🤝 Contact Procurement Tactics</div>
+      <button class="modal-close" onclick="closeModal('modal-support')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div style="margin-bottom:6px;font-size:13px;color:var(--gray-600)">Your contact: <strong style="color:var(--navy)">Pim de Marijn</strong> · pim@procurementtactics.com</div>
+      <div style="height:1px;background:var(--gray-100);margin:14px 0"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+        <div class="opt-card" onclick="showToast('📧 Email draft opening…'); closeModal('modal-support')">
+          <div style="font-size:28px;margin-bottom:8px">✉️</div>
+          <div style="font-weight:700;font-size:14px;color:var(--navy);margin-bottom:4px">Send an email</div>
+          <div style="font-size:12px;color:var(--gray-400)">Reply within 1 business day</div>
+        </div>
+        <div class="opt-card" onclick="showToast('📅 Calendar opening…'); closeModal('modal-support')">
+          <div style="font-size:28px;margin-bottom:8px">📅</div>
+          <div style="font-weight:700;font-size:14px;color:var(--navy);margin-bottom:4px">Plan a call with Pim</div>
+          <div style="font-size:12px;color:var(--gray-400)">Pick a time in his calendar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPORT -->
+<div class="overlay" id="modal-export">
+  <div class="modal">
+    <div class="modal-hdr-stripe"></div>
+    <div class="modal-hdr">
+      <div class="modal-title">📥 Export Progress Report</div>
+      <button class="modal-close" onclick="closeModal('modal-export')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div style="font-size:13px;color:var(--gray-600);margin-bottom:16px">Export a summary to share in management updates or run your own analysis with AI.</div>
+      <div style="display:grid;gap:10px">
+        <div onclick="showToast('✅ PDF exported successfully'); closeModal('modal-export')" style="border:1.5px solid var(--gray-200);border-radius:10px;padding:14px;cursor:pointer;display:flex;align-items:center;gap:12px;transition:background .15s" onmouseover="this.style.background='var(--primary-light)';this.style.borderColor='var(--primary-border)'" onmouseout="this.style.background='';this.style.borderColor='var(--gray-200)'">
+          <div style="font-size:24px">📋</div>
+          <div style="flex:1">
+            <div style="font-weight:700;font-size:13px;color:var(--navy)">Team snapshot (PDF)</div>
+            <div style="font-size:12px;color:var(--gray-400)">Top 3 + at-risk members · good for management updates</div>
+          </div>
+          <span style="font-size:12px;color:var(--primary-dark);font-weight:700">Export →</span>
+        </div>
+        <div onclick="showToast('✅ CSV exported successfully'); closeModal('modal-export')" style="border:1.5px solid var(--gray-200);border-radius:10px;padding:14px;cursor:pointer;display:flex;align-items:center;gap:12px;transition:background .15s" onmouseover="this.style.background='var(--primary-light)';this.style.borderColor='var(--primary-border)'" onmouseout="this.style.background='';this.style.borderColor='var(--gray-200)'">
+          <div style="font-size:24px">📊</div>
+          <div style="flex:1">
+            <div style="font-weight:700;font-size:13px;color:var(--navy)">Full member list (CSV)</div>
+            <div style="font-size:12px;color:var(--gray-400)">All members · all courses · all progress % · import into AI</div>
+          </div>
+          <span style="font-size:12px;color:var(--primary-dark);font-weight:700">Export →</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- ═══ JAVASCRIPT ═══ -->
+<script>
+const MEMBERS = {
+  'James Chen':      { email:'james.chen@elbert.com',   status:'on-track', avg:'82', neg:'100%✓', negPct:100, negCol:'var(--primary-dark)', strat:'88%', stratPct:88, stratCol:'var(--primary-dark)', supp:'60%', suppPct:60, suppCol:'var(--mango)' },
+  'Marcus Williams': { email:'m.williams@elbert.com',   status:'on-track', avg:'74', neg:'92%',   negPct:92,  negCol:'var(--primary-dark)', strat:'67%', stratPct:67, stratCol:'var(--mango)',       supp:'35%', suppPct:35, suppCol:'var(--mango)' },
+  'Sarah Johnson':   { email:'s.johnson@elbert.com',    status:'on-track', avg:'61', neg:'78%',   negPct:78,  negCol:'var(--primary-dark)', strat:'45%', stratPct:45, stratCol:'var(--mango)',       supp:'20%', suppPct:20, suppCol:'var(--red)' },
+  'Elena Rodriguez': { email:'e.rodriguez@elbert.com',  status:'watch',    avg:'45', neg:'55%',   negPct:55,  negCol:'var(--mango)',        strat:'30%', stratPct:30, stratCol:'var(--red)',         supp:'10%', suppPct:10, suppCol:'var(--red)' },
+  'Tom Davidson':    { email:'t.davidson@elbert.com',   status:'at-risk',  avg:'20', neg:'42%',   negPct:42,  negCol:'var(--mango)',        strat:'18%', stratPct:18, stratCol:'var(--red)',         supp:'0%',  suppPct:0,  suppCol:'var(--red)' },
+  'Priya Patel':     { email:'p.patel@elbert.com',      status:'at-risk',  avg:'7',  neg:'15%',   negPct:15,  negCol:'var(--red)',          strat:'5%',  stratPct:5,  stratCol:'var(--red)',         supp:'0%',  suppPct:0,  suppCol:'var(--red)' },
+};
+
+// ── PANEL ──
+let activePanel = null;
+
+function openPanel(id) {
+  closePanel();
+  const p = document.getElementById(id);
+  p.classList.add('open');
+  document.getElementById('panel-overlay').classList.add('open');
+  activePanel = id;
+}
+
+function openMemberPanel(name, email, status, avg) {
+  const d = MEMBERS[name];
+  document.getElementById('pm-name').textContent = name;
+  document.getElementById('pm-email').textContent = d ? d.email : email;
+  document.getElementById('pm-avg').textContent = (d ? d.avg : avg) + '%';
+
+  const bar = document.getElementById('pm-status-bar');
+  const lbl = document.getElementById('pm-status-label');
+  const avgEl = document.getElementById('pm-avg');
+  const s = d ? d.status : status;
+
+  if (s === 'on-track') {
+    bar.style.background = 'var(--primary-light)'; bar.style.borderColor = 'var(--primary-border)';
+    avgEl.style.color = 'var(--primary-dark)'; lbl.style.color = 'var(--primary-dark)'; lbl.textContent = '✓ On track';
+  } else if (s === 'watch') {
+    bar.style.background = 'var(--mango-light)'; bar.style.borderColor = 'var(--mango-border)';
+    avgEl.style.color = 'var(--mango)'; lbl.style.color = 'var(--mango)'; lbl.textContent = '⚡ Watch';
+  } else {
+    bar.style.background = 'var(--red-light)'; bar.style.borderColor = '#fca5a5';
+    avgEl.style.color = 'var(--red)'; lbl.style.color = 'var(--red)'; lbl.textContent = '⚠️ At risk';
+  }
+
+  if (d) {
+    const setField = (id, barId, val, pct, col) => {
+      document.getElementById(id).textContent = val;
+      document.getElementById(id).style.color = col;
+      const b = document.getElementById(barId);
+      b.style.width = pct + '%';
+      b.style.background = col.startsWith('var') ? 'var(' + col.match(/var\((.+)\)/)[1] + ')' : col;
+    };
+    // Use inline style since CSS vars don't work in JS string assignment easily
+    document.getElementById('pm-neg').textContent = d.neg;
+    document.getElementById('pm-neg').style.color = '';
+    document.getElementById('pm-neg').style.cssText += ';color:' + d.negCol;
+    document.getElementById('pm-neg-bar').style.width = d.negPct + '%';
+    document.getElementById('pm-neg-bar').style.cssText += ';background:' + (d.negPct >= 75 ? '#01BFF0' : d.negPct >= 40 ? '#FFAB00' : '#dc2626');
+
+    document.getElementById('pm-strat').textContent = d.strat;
+    document.getElementById('pm-strat-bar').style.width = d.stratPct + '%';
+    document.getElementById('pm-strat-bar').style.cssText += ';background:' + (d.stratPct >= 75 ? '#01BFF0' : d.stratPct >= 40 ? '#FFAB00' : '#dc2626');
+
+    document.getElementById('pm-supp').textContent = d.supp;
+    document.getElementById('pm-supp-bar').style.width = d.suppPct + '%';
+    document.getElementById('pm-supp-bar').style.cssText += ';background:' + (d.suppPct >= 75 ? '#01BFF0' : d.suppPct >= 40 ? '#FFAB00' : '#dc2626');
+  }
+
+  openPanel('panel-member');
+}
+
+function closePanel() {
+  if (activePanel) { document.getElementById(activePanel).classList.remove('open'); }
+  document.getElementById('panel-overlay').classList.remove('open');
+  activePanel = null;
+}
+
+// ── MODALS ──
+function openModal(id) { document.getElementById(id).classList.add('open'); }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+document.querySelectorAll('.overlay').forEach(el => el.addEventListener('click', e => { if (e.target === el) el.classList.remove('open'); }));
+
+// ── DIST CHART BY COURSE ──
+const DIST_DATA = {
+  neg:   { bars: [1, 2, 1, 2] },  // Negotiation
+  strat: { bars: [2, 2, 1, 1] },  // Strategic Sourcing
+  supp:  { bars: [3, 1, 1, 1] },  // Supplier Management
+};
+const BAR_HEIGHTS = [24, 48, 70];
+function updateDistChart(course) {
+  const data = DIST_DATA[course] || DIST_DATA.neg;
+  const max = Math.max(...data.bars);
+  const container = document.getElementById('dist-chart-bars');
+  const bars = container.querySelectorAll('.dist-bar');
+  const palette = ['#fecaca', 'var(--mango-light)', 'var(--primary-light)', 'var(--primary)'];
+  const borders = ['','1.5px solid var(--mango-border)','',''];
+  bars.forEach((b, i) => {
+    const h = Math.round((data.bars[i] / max) * 70);
+    b.style.height = Math.max(h, 8) + 'px';
+    b.style.background = palette[i];
+    b.style.border = borders[i];
+    b.style.opacity = i === 3 ? '.6' : '1';
+    const n = data.bars[i];
+    b.querySelector('span').textContent = n === 1 ? '1 member' : n + ' members';
+  });
+}
+
+// ── OPTIONAL COURSES ──
+let optOpen = false;
+function toggleOptional() {
+  optOpen = !optOpen;
+  document.getElementById('optional-section').style.display = optOpen ? 'block' : 'none';
+  document.getElementById('view-all-btn').textContent = optOpen ? 'View less ▴' : 'View all courses ▾';
+  const badge = document.getElementById('optional-badge');
+  badge.style.background = optOpen ? 'var(--primary-light)' : 'var(--gray-100)';
+  badge.style.color = optOpen ? 'var(--primary-dark)' : 'var(--gray-600)';
+}
+
+// ── TABLE FILTER ──
+function filterTable(q) {
+  document.querySelectorAll('#member-tbody tr').forEach(r => {
+    r.style.display = r.querySelector('td')?.textContent?.toLowerCase().includes(q.toLowerCase()) ? '' : 'none';
+  });
+}
+
+// ── TABLE SORT ──
+let sortState = { col: '', asc: true };
+function sortTable(key) {
+  const tbody = document.getElementById('member-tbody');
+  const rows = Array.from(tbody.querySelectorAll('tr'));
+  if (!key) return;
+  sortState.asc = sortState.col === key ? !sortState.asc : true;
+  sortState.col = key;
+  rows.sort((a, b) => {
+    let va = key === 'name' ? (a.dataset.name || '') : (a.dataset[key] || '0');
+    let vb = key === 'name' ? (b.dataset.name || '') : (b.dataset[key] || '0');
+    const na = parseFloat(va), nb = parseFloat(vb);
+    if (!isNaN(na) && !isNaN(nb)) return sortState.asc ? na - nb : nb - na;
+    return sortState.asc ? va.localeCompare(vb) : vb.localeCompare(va);
+  });
+  rows.forEach(r => tbody.appendChild(r));
+  // Update sort icons
+  document.querySelectorAll('#progress-table th').forEach(th => {
+    const ic = th.querySelector('.sort-icon');
+    if (ic) ic.textContent = th.dataset.sortKey === key ? (sortState.asc ? '↑' : '↓') : '↕';
+  });
+}
+
+// ── COURSE FILTER ──
+let courseFilterOrder = ['neg','strat','supp','cat']; // tracks check order (oldest first)
+function toggleCourseFilter() {
+  const dd = document.getElementById('course-filter-dropdown');
+  dd.classList.toggle('open');
+}
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('#course-filter-picker')) {
+    document.getElementById('course-filter-dropdown').classList.remove('open');
+  }
+});
+function applyCourseFilter(cb) {
+  const col = cb.dataset.col;
+  if (cb.checked) {
+    // Enforce max 4
+    const allChecked = [...document.querySelectorAll('.cf-check:checked')].map(c => c.dataset.col);
+    if (allChecked.length > 4) {
+      // Uncheck the oldest one
+      const oldest = courseFilterOrder.shift();
+      const oldCb = document.querySelector('.cf-check[data-col="' + oldest + '"]');
+      if (oldCb) { oldCb.checked = false; showHideCol(oldest, false); }
+    }
+    courseFilterOrder.push(col);
+    showHideCol(col, true);
+  } else {
+    courseFilterOrder = courseFilterOrder.filter(k => k !== col);
+    showHideCol(col, false);
+  }
+  updateFilterBtn();
+}
+function showHideCol(col, show) {
+  const disp = show ? '' : 'none';
+  const th = document.querySelector('#progress-table th[data-col="' + col + '"]');
+  if (th) th.style.display = disp;
+  document.querySelectorAll('#member-tbody td[data-col="' + col + '"]').forEach(td => td.style.display = disp);
+}
+function updateFilterBtn() {
+  const checked = document.querySelectorAll('.cf-check:checked').length;
+  document.getElementById('course-filter-btn').textContent = '📚 ' + checked + ' of 6 courses ▾';
+  // Grey out unchecked items when at max
+  document.querySelectorAll('.cf-item').forEach(item => {
+    const cb = item.querySelector('.cf-check');
+    if (!cb.checked && checked >= 4) item.classList.add('cf-disabled');
+    else item.classList.remove('cf-disabled');
+  });
+}
+
+// ── INVITE ──
+function inviteMember() {
+  if (!document.getElementById('chk-billing').checked) {
+    showToast('⚠️ Please confirm the billing terms first');
+    return;
+  }
+  closeModal('modal-invite');
+  showToast('✅ Invitation sent & seat added! Pim has been notified.');
+}
+
+// ── TOAST ──
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// ── ESC KEY ──
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    closePanel();
+    document.querySelectorAll('.overlay.open').forEach(el => el.classList.remove('open'));
+  }
+});
+</script>
+</body>
+</html>
