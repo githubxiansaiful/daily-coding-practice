@@ -1,7 +1,62 @@
-<ul class="footer-menu right-menu">
-    <li><a class="nav-anim" href="#">Services</a></li>
-    <li><a class="nav-anim" href="#">Web Design</a></li>
-    <li><a class="nav-anim" href="#">Web Development</a></li>
-    <li><a class="nav-anim" href="#">E-Commerce</a></li>
-    <li><a class="nav-anim" href="#">Custom WP Plugin</a></li>
-</ul>
+<div class="xs-owen-form">
+    <div class="xsw-grid-inputs">
+        <div class="xsw-input-group">
+            [text* text-name autocomplete:name placeholder "Name"]
+        </div>
+        <div class="xsw-input-group">
+            [email* text-email autocomplete:email placeholder "Email Address"]
+        </div>
+        <div class="xsw-input-group">
+            [text* text-company autocomplete:organization placeholder "Company Name"]
+        </div>
+        <div class="xsw-input-group">
+            [text* text-phone autocomplete:tel placeholder "Phone Number"]
+        </div>
+    </div>
+    <!-- Radio Options -->
+    <div class="xsw-radio-grid">
+        <div class="xsw-radio-group">
+            <p class="xsw-ptag-title">what do you need?</p>
+            [radio radio_what_do_you_need use_label_element "Hire Only" "Contract Lift" "Not sure yet"]
+        </div>
+        <div class="xsw-radio-group">
+            <p class="xsw-ptag-title">preferred contact by</p>
+            [radio radio_preferred_contact_by use_label_element "By Phone" "Choose a Time" "By Email"]
+        </div>
+    </div>
+    <!-- A brief description of your project -->
+    <div class="xsw-message-box">
+        <p class="xsw-ptag-title">A brief description of your project</p>
+        [textarea* textarea-message]
+    </div>
+    <!-- OPTIONAL INFORMATION -->
+    <div class="xsw-optional-information">
+        <h2 class="xsw-inner-heading">OPTIONAL INFORMATION</h2>
+        <p class="xsw-ptag-title">Which type of equipment are you interested in?</p>
+        <div class="xsw-optional-select-dropdowns">
+            <div class="xsw-select-dropdown">
+                [select select-roto class:xsw-roto-select first_as_label "Option 1" "Option 2" "Option 3"]
+            </div>
+            <div class="xsw-select-dropdown">
+                [select select-roto class:xsw-roto-select first_as_label "Option 1" "Option 2" "Option 3"]
+            </div>
+            <div class="xsw-select-dropdown">
+                [select select-roto class:xsw-roto-select first_as_label "Option 1" "Option 2" "Option 3"]
+            </div>
+            <div class="xsw-select-dropdown">
+                [select select-roto class:xsw-roto-select first_as_label "Option 1" "Option 2" "Option 3"]
+            </div>
+        </div>
+    </div>
+    <!-- Upload Files -->
+    <div class="xsw-upload-files">
+        <h2 class="xsw-inner-heading">Upload Files</h2>
+        [mfile mfile-upload-files limit:10000000 filetypes:jpeg|png|jpg|svg|pdf|docs|text min-file:0 max-file:5]
+        <p class="xsw-file-acceptable-formats">(Acceptable formats: JPEG, PNG, JPG, SVG, PDF, DOC, DOCX, TEXT)</p>
+    </div>
+    <!-- Submit Button -->
+    <div class="xsw-submit-button">
+        [submit "SEND"]
+    </div>
+
+</div>

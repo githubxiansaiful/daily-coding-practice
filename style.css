@@ -58,7 +58,7 @@ p.xsw-ptag-title {
 }
 
 .xsw-radio-group span.wpcf7-list-item label:has(input[type="radio"]:checked) {
-    background: red;
+    background: #D2232A;
     color: #fff;
 }
 
@@ -72,6 +72,137 @@ p.xsw-ptag-title {
 .xsw-radio-grid,
 .xsw-message-box,
 .xsw-upload-files,
-.xsw-optional-information-grid {
+.xsw-optional-information {
     margin-top: 40px;
+}
+
+h2.xsw-inner-heading {
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+p.xsw-file-acceptable-formats {
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.xsw-upload-files span.dnd-upload-counter {
+    color: #fff;
+}
+
+.codedropz-upload-inner h3 {
+    font-size: 20px;
+    color: #fff;
+}
+
+.codedropz-upload-inner span {
+    color: #fff;
+}
+
+.codedropz-btn-wrap a {
+    color: #fff;
+}
+
+.cd-upload-btn .upload-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.cd-upload-btn .upload-icon img {
+    width: 100px;
+}
+
+.dnd-upload-status .dnd-upload-details .name {
+    color: #fff !important;
+}
+
+.dnd-upload-status .dnd-upload-details .remove-file span:after {
+    filter: invert(1);
+}
+
+.dnd-upload-status .dnd-upload-details .name em {
+    color: #fff !important;
+}
+
+.dnd-upload-status .dnd-upload-image {
+    border-color: #fff !important;
+}
+
+.dnd-upload-status .dnd-upload-image span.file {
+    filter: invert(1) !important;
+}
+
+.xsw-submit-button p,
+.xsw-submit-button {
+    text-align: center;
+}
+
+.xsw-submit-button input {
+    text-align: center;
+    border: none;
+    text-transform: uppercase;
+    background: #A8ADB2;
+    color: #fff;
+    cursor: pointer;
+    font-size: 26px;
+    letter-spacing: 2px;
+    border-radius: 10px;
+    padding: 20px 40px;
+    transition: .3s;
+    margin-top: 40px;
+}
+
+.xsw-submit-button input:hover {
+    background: #D2232A;
+}
+
+.wpcf7-response-output {
+    color: #fff !important;
+    font-family: 'PFEuroset Thin Regular', Helvetica, Arial, Lucida, sans-serif;
+    font-size: 16px;
+}
+
+span.wpcf7-not-valid-tip {
+    text-align: center !important;
+}
+
+.xsw-select-dropdown {
+    position: relative;
+    max-width: 250px;
+    margin: 0 auto;
+}
+
+/* Style select */
+.xsw-select-dropdown select {
+    width: 100%;
+    padding: 20px 10px 40px;
+    text-align: center;
+    text-align-last: center;
+    background: #e5e5e5;
+    border: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* Custom SVG arrow */
+.xsw-select-dropdown::after {
+    content: "";
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 24px;
+    background: url("/wp-content/uploads/2026/04/arrow-down-select.svg") no-repeat center;
+    background-size: contain;
+    pointer-events: none;
 }
