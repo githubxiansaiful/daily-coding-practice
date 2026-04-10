@@ -39,13 +39,16 @@
         <p class="xsw-ptag-title">Project Description</p>
         [textarea* textarea-message]
     </div>
-    <!-- Technical Details -->
+    <!-- Lift Specifications -->
     <div class="xsw-form-row-title">
-        <h3>Technical Details</h3>
+        <h3>Lift Specifications</h3>
     </div>
     <div class="xsw-grid-inputs">
         <div class="xsw-input-group">
             [text* text-load-weight placeholder "Load Weight (kg/tonnes)"]
+        </div>
+        <div class="xsw-input-group">
+            [text text-load-dimensions placeholder "Load Dimensions"]
         </div>
         <div class="xsw-input-group">
             [text text-lift-height placeholder "Lift Height"]
@@ -53,9 +56,23 @@
         <div class="xsw-input-group">
             [text text-lift-reach-radius placeholder "Lift Reach/Radius"]
         </div>
-        <div class="xsw-input-group xsw-business-select">
-            [select select-site-conditions first_as_label "Site conditions" "Restricted access" "Indoor / confined
-            space" "Uneven ground" "Live site" "Other"]
+    </div>
+    <!-- Lift Complexity -->
+    <div class="xsw-form-row-title">
+        <h3>Lift Complexity</h3>
+    </div>
+    <div class="xsw-grid-inputs">
+        <div class="xsw-input-group">
+            [number* number-of-lifts placeholder "Number of Lifts"]
+        </div>
+        <div class="xsw-input-group">
+            [text text-load-dimensions placeholder "Load Dimensions"]
+        </div>
+        <div class="xsw-input-group">
+            [text text-lift-height placeholder "Lift Height"]
+        </div>
+        <div class="xsw-input-group">
+            [text text-lift-reach-radius placeholder "Lift Reach/Radius"]
         </div>
     </div>
     <!-- What Equipment is Required -->
