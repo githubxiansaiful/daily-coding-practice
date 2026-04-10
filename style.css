@@ -2,7 +2,6 @@
     font-family: 'PFEuroset Thin Regular', Helvetica, Arial, Lucida, sans-serif;
 }
 
-.xsw-optional-select-dropdowns,
 .xsw-radio-grid,
 .xsw-grid-inputs {
     display: grid;
@@ -82,6 +81,7 @@ h2.xsw-inner-heading {
     color: #fff;
     text-transform: uppercase;
     margin-bottom: 30px;
+    padding-bottom: 0;
 }
 
 p.xsw-file-acceptable-formats {
@@ -170,6 +170,7 @@ p.xsw-file-acceptable-formats {
 
 span.wpcf7-not-valid-tip {
     text-align: center !important;
+    display: none !important;
 }
 
 .xsw-select-dropdown {
@@ -179,15 +180,15 @@ span.wpcf7-not-valid-tip {
 /* Style select */
 .xsw-select-dropdown select {
     width: 100%;
-    padding: 20px 10px 40px;
+    padding: 20px 10px 60px;
     text-align: center;
     text-align-last: center;
-    background: #e5e5e5;
+    background: #fff;
     border: none;
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 500;
     cursor: pointer;
 }
@@ -196,12 +197,74 @@ span.wpcf7-not-valid-tip {
 .xsw-select-dropdown::after {
     content: "";
     position: absolute;
-    bottom: 12px;
+    bottom: 5px;
     left: 50%;
     transform: translateX(-50%);
-    width: 24px;
-    height: 24px;
-    background: url("/wp-content/uploads/2026/04/arrow-down-select.svg") no-repeat center;
-    background-size: contain;
+    width: 70px;
+    height: 40px;
     pointer-events: none;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+}
+
+.xsw-optional-select-dropdowns {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.xsw-optional-select-dropdowns option {
+    font-size: 16px !important;
+}
+
+.xsw-select-dropdown.xsw-roto-select:after {
+    background: url(/wp-content/uploads/2026/04/form-roto-icon.png);
+}
+
+.xsw-select-dropdown.xsw-spider-select:after {
+    background: url(/wp-content/uploads/2026/04/form-spidericon.png);
+}
+
+.xsw-select-dropdown.xsw-all-terrain-select:after {
+    background: url(/wp-content/uploads/2026/04/form-All-terrain-icon.png);
+}
+
+.xsw-select-dropdown.xsw-add-ons-select:after {
+    background: url(/wp-content/uploads/2026/04/form-Add-ons-icon.png);
+}
+
+/* Responsive CSS */
+@media all and (max-width: 600px) {
+    .xsw-grid-inputs {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .xsw-optional-select-dropdowns {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .xsw-radio-group span.wpcf7-list-item label {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+.xsw-submit-button {
+    position: relative;
+}
+
+.xsw-submit-button .wpcf7-spinner {
+    bottom: 25px;
+    position: absolute !important;
+}
+
+/* Business Enquery Form Style */
+.xsw-form-row-title h3 {
+    text-align: center;
+    color: #fff;
+    padding-bottom: 30px;
+    font-size: 20px !important;
+    line-height: 1.3;
 }

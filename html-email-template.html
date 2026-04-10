@@ -1,4 +1,7 @@
-<div class="xs-owen-form">
+<div class="xs-owen-form xw-business-inquiry-form">
+    <div class="xsw-form-row-title">
+        <h3>Your Details</h3>
+    </div>
     <div class="xsw-grid-inputs">
         <div class="xsw-input-group">
             [text* text-name autocomplete:name placeholder "Name"]
@@ -34,17 +37,19 @@
         <h2 class="xsw-inner-heading">OPTIONAL INFORMATION</h2>
         <p class="xsw-ptag-title">Which type of equipment are you interested in?</p>
         <div class="xsw-optional-select-dropdowns">
-            <div class="xsw-select-dropdown">
-                [select select-roto class:xsw-roto-select first_as_label "Option 1" "Option 2" "Option 3"]
+            <div class="xsw-select-dropdown xsw-roto-select">
+                [select select-roto first_as_label "ROTO" "Magni 6.26" "Magni 6.31" "Manitou 2550"
+                "Magni 13.26" "Magni 5.25" "Magni 6.22" "Magni 8.35" "Magni 8.39" "Magni 8.46" "Magni 8.51"]
             </div>
-            <div class="xsw-select-dropdown">
-                [select select-roto class:xsw-roto-select first_as_label "Option 1" "Option 2" "Option 3"]
+            <div class="xsw-select-dropdown xsw-spider-select">
+                [select select-spider first_as_label "Spider" "Maeda 405c"]
             </div>
-            <div class="xsw-select-dropdown">
-                [select select-roto class:xsw-roto-select first_as_label "Option 1" "Option 2" "Option 3"]
+            <div class="xsw-select-dropdown xsw-all-terrain-select">
+                [select select-all-terrain first_as_label "All Terrain" "Liebherr LTM
+                1055-3.1"]
             </div>
-            <div class="xsw-select-dropdown">
-                [select select-roto class:xsw-roto-select first_as_label "Option 1" "Option 2" "Option 3"]
+            <div class="xsw-select-dropdown xsw-add-ons-select">
+                [select select-add-ons first_as_label "Attachments" "Option 1" "Option 2"]
             </div>
         </div>
     </div>
@@ -58,5 +63,4 @@
     <div class="xsw-submit-button">
         [submit "SEND"]
     </div>
-
 </div>
