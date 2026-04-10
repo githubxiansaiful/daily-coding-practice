@@ -151,9 +151,35 @@
     </div>
     <!-- Upload Files -->
     <div class="xsw-upload-files">
-        <h2 class="xsw-inner-heading">Upload Files</h2>
+        <h2 class="xsw-inner-heading">UPLOAD DOCUMENTATION</h2>
         [mfile mfile-upload-files limit:10000000 filetypes:jpeg|png|jpg|svg|pdf|docs|text min-file:0 max-file:5]
         <p class="xsw-file-acceptable-formats">(Acceptable formats: JPEG, PNG, JPG, SVG, PDF, DOC, DOCX, TEXT)</p>
+    </div>
+    <!-- Project Schedule & Budget -->
+    <div class="xsw-form-row-title">
+        <h3>Project Schedule & Budget</h3>
+    </div>
+    <div class="xsw-grid-inputs">
+        <div class="xsw-input-group">
+            <label class="xsw-label-text" for="required-date">Start Date <span>*</span></label>
+            [date* date-start-date]
+        </div>
+        <div class="xsw-input-group">
+            <label class="xsw-label-text" for="required-date">Project Duration</label>
+            [text text-project-duration placeholder "Project Duration"]
+        </div>
+    </div>
+    <!-- Project Schedule -->
+    <div class="xsw-form-row-title">
+        <h3>Project Schedule</h3>
+    </div>
+    <div class="xsw-grid-inputs">
+        <div class="xsw-input-group">
+            [text text-budget-expectation placeholder "Budget Expectation"]
+        </div>
+        <div class="xsw-input-group xsw-business-select">
+            [select select-response-time first_as_label "Response Time" "Same day" "Within 24 hours" "This week"]
+        </div>
     </div>
     <!-- Submit Button -->
     <div class="xsw-submit-button">

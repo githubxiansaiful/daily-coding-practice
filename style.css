@@ -361,4 +361,6 @@ label.xsw-label-text {
 
 label.xsw-label-text span {
     color: #D2232A;
+    font-size: 26px;
+    position: absolute;
 }
