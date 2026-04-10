@@ -11,10 +11,55 @@
             [email* text-email autocomplete:email placeholder "Email Address"]
         </div>
         <div class="xsw-input-group xsw-business-select">
-            [select* select-role first_as_label "Role" "Site Manager" "Project Manager" "Contractor" "Buyer / Procurement" "Other"]
+            [select* select-role first_as_label "Role" "Site Manager" "Project Manager" "Contractor" "Buyer /
+            Procurement" "Other"]
         </div>
         <div class="xsw-input-group">
             [text* text-company autocomplete:organization placeholder "Company Name"]
+        </div>
+    </div>
+    <!-- Project Details -->
+    <div class="xsw-form-row-title">
+        <h3>Project Details</h3>
+    </div>
+    <div class="xsw-grid-inputs project-details-grid">
+        <div class="xsw-input-group">
+            [text text-project-name placeholder "Project Name"]
+        </div>
+        <div class="xsw-input-group xsw-business-select">
+            [select* select-type-lift first_as_label "Lift Type" "Cladding" "Steel installation" "Glazing" "Plant
+            movement" "General lifting" "Other"]
+        </div>
+        <div class="xsw-input-group">
+            [text* text-site-address placeholder "Site Address"]
+        </div>
+    </div>
+    <!-- Technical Details -->
+    <div class="xsw-form-row-title">
+        <h3>Technical Details</h3>
+    </div>
+    <div class="xsw-grid-inputs">
+        <div class="xsw-input-group">
+            [text* text-load-weight placeholder "Load Weight (kg/tonnes)"]
+        </div>
+        <div class="xsw-input-group">
+            [text text-lift-height placeholder "Lift Height"]
+        </div>
+        <div class="xsw-input-group">
+            [text text-lift-reach-radius placeholder "Lift Reach/Radius"]
+        </div>
+        <div class="xsw-input-group xsw-business-select">
+            [select select-site-conditions first_as_label "Site conditions" "Restricted access" "Indoor / confined
+            space" "Uneven ground" "Live site" "Other"]
+        </div>
+    </div>
+    <!-- What Equipment is Required -->
+    <div class="xsw-form-row-title">
+        <h3>Do you know what equipment is required?</h3>
+    </div>
+    <div class="xsw-yes-now-options">
+        <div class="xsw-yes-now-option">
+            [radio radio-equipment_required use_label_element "Yes" "No"]
         </div>
     </div>
     <!-- A brief description of your project -->
