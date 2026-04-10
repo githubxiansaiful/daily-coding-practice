@@ -65,12 +65,11 @@
         <div class="xsw-input-group">
             [number* number-of-lifts placeholder "Number of Lifts"]
         </div>
-        <div class="xsw-input-group">
-            [text text-load-dimensions placeholder "Load Dimensions"]
+        <div class="xsw-input-group xsw-business-select">
+            [select* select-duration-per-lift first_as_label "Duration Per Lift" "Single lift" "Half day" "Full day" "Multiple days"]
         </div>
         <div class="xsw-input-group xsw-business-select">
-            [select* select-number-of-days first_as_label "Number of Days" "Single lift" "Half day" "Full day" "Multiple
-            days"]
+            [select* select-number-of-days first_as_label "Number of Days" "Single lift" "Half day" "Full day" "Multiple days"]
         </div>
         <div class="xsw-input-group">
             [text text-crane-type placeholder "Crane type"]
@@ -106,9 +105,9 @@
             </div>
         </div>
     </div>
-    <!-- Project Schedule -->
+    <!-- Site Characteristics -->
     <div class="xsw-form-row-title">
-        <h3>Project Schedule</h3>
+        <h3>Site Characteristics</h3>
     </div>
     <div class="xsw-grid-inputs">
         <div class="xsw-input-group">
