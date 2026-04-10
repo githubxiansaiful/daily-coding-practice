@@ -66,10 +66,12 @@
             [number* number-of-lifts placeholder "Number of Lifts"]
         </div>
         <div class="xsw-input-group xsw-business-select">
-            [select* select-duration-per-lift first_as_label "Duration Per Lift" "Single lift" "Half day" "Full day" "Multiple days"]
+            [select* select-duration-per-lift first_as_label "Duration Per Lift" "Single lift" "Half day" "Full day"
+            "Multiple days"]
         </div>
         <div class="xsw-input-group xsw-business-select">
-            [select* select-number-of-days first_as_label "Number of Days" "Single lift" "Half day" "Full day" "Multiple days"]
+            [select* select-number-of-days first_as_label "Number of Days" "Single lift" "Half day" "Full day" "Multiple
+            days"]
         </div>
         <div class="xsw-input-group">
             [text text-crane-type placeholder "Crane type"]
@@ -111,12 +113,40 @@
     </div>
     <div class="xsw-grid-inputs">
         <div class="xsw-input-group">
-            <label class="xsw-label-text" for="required-date">Project date <span>*</span></label>
-            [date* date-start-date]
+            [text* text-access-restrictions placeholder "Access Restrictions"]
         </div>
         <div class="xsw-input-group">
-            <label class="xsw-label-text" for="project-duration">Project duration</label>
-            [text text-duration placeholder "Duration"]
+            [text* text-ground-conditions placeholder "Ground Conditions"]
+        </div>
+        <div class="xsw-input-group">
+            [text* text-additional-requirements placeholder "Additional Requirements"]
+        </div>
+        <div class="xsw-input-group xsw-business-select">
+            [select* select-lift-plan-required first_as_label "Lift Plan Required" "Yes" "No"]
+        </div>
+        <div class="xsw-input-group xsw-business-select">
+            [select* select-traffic-management first_as_label "Traffic Management" "Yes" "No"]
+        </div>
+        <div class="xsw-input-group xsw-business-select">
+            [select* select-appointed-person first_as_label "Appointed Person" "Yes" "No"]
+        </div>
+        <div class="xsw-input-group xsw-business-select">
+            [select* select-out-of-hours-work first_as_label "Out of Hours Work" "Yes" "No"]
+        </div>
+        <div class="xsw-input-group xsw-business-select">
+            [select* select-weekend-work first_as_label "Weekend Work" "Yes" "No"]
+        </div>
+    </div>
+    <!-- Compliance / Documentation -->
+    <div class="xsw-form-row-title">
+        <h3>Compliance / Documentation</h3>
+    </div>
+    <div class="xsw-grid-inputs">
+        <div class="xsw-input-group xsw-business-select">
+            [select* select-rams-required first_as_label "RAMS Required" "Yes" "No"]
+        </div>
+        <div class="xsw-input-group xsw-business-select">
+            [select select-insureance-requirements first_as_label "Insurance Requirements" "Yes" "No"]
         </div>
     </div>
     <!-- Upload Files -->
