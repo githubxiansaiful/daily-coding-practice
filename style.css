@@ -354,3 +354,11 @@ span.wpcf7-not-valid-tip {
 .xsw-optional-info-select .xsw-optional-select-dropdowns {
     margin-top: 0;
 }
+
+label.xsw-label-text {
+    color: #fff;
+}
+
+label.xsw-label-text span {
+    color: #D2232A;
+}
