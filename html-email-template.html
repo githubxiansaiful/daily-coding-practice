@@ -62,15 +62,11 @@
             [radio radio-equipment_required use_label_element "Yes" "No"]
         </div>
     </div>
-    <!-- A brief description of your project -->
-    <div class="xsw-message-box">
-        <p class="xsw-ptag-title">A brief description of your project</p>
-        [textarea* textarea-message]
+    <!-- If YES please select below -->
+    <div class="xsw-form-row-title">
+        <h3>If YES please select below:</h3>
     </div>
-    <!-- OPTIONAL INFORMATION -->
-    <div class="xsw-optional-information">
-        <h2 class="xsw-inner-heading">OPTIONAL INFORMATION</h2>
-        <p class="xsw-ptag-title">Which type of equipment are you interested in?</p>
+    <div class="xsw-optional-info-select">
         <div class="xsw-optional-select-dropdowns">
             <div class="xsw-select-dropdown xsw-roto-select">
                 [select select-roto first_as_label "ROTO" "Magni 6.26" "Magni 6.31" "Manitou 2550"
@@ -80,12 +76,28 @@
                 [select select-spider first_as_label "Spider" "Maeda 405c"]
             </div>
             <div class="xsw-select-dropdown xsw-all-terrain-select">
-                [select select-all-terrain first_as_label "All Terrain" "Liebherr LTM
-                1055-3.1"]
+                [select select-all-terrain first_as_label "All Terrain" "Liebherr LTM 1055-3.1"]
             </div>
             <div class="xsw-select-dropdown xsw-add-ons-select">
                 [select select-add-ons first_as_label "Attachments" "Option 1" "Option 2"]
             </div>
+        </div>
+    </div>
+    <!-- A brief description of your project -->
+    <div class="xsw-message-box">
+        <p class="xsw-ptag-title">A brief description of your project</p>
+        [textarea* textarea-message]
+    </div>
+    <!-- Project Schedule -->
+    <div class="xsw-form-row-title">
+        <h3>Project Schedule</h3>
+    </div>
+    <div class="xsw-grid-inputs">
+        <div class="xsw-input-group">
+            [date* date-start-date]
+        </div>
+        <div class="xsw-input-group">
+            [text text-duration placeholder "Duration"]
         </div>
     </div>
     <!-- Upload Files -->
