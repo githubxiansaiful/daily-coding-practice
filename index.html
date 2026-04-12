@@ -1,19 +1,129 @@
-<div class="xsw-optional-select-dropdowns">
-    <div class="xsw-select-dropdown xsw-roto-select">
-        <p class="xsw-roto-select-title">Roto</p>
-        [select select-roto multiple size:1 first_as_label "Magni 6.26" "Magni 6.31" "Manitou 2550" "Magni 13.26"
-        "Magni 5.25" "Magni 6.22" "Magni 8.35" "Magni 8.39" "Magni 8.46" "Magni 8.51" ]
-    </div>
-    <div class="xsw-select-dropdown xsw-spider-select">
-        <p class="xsw-roto-select-title">Spider</p>
-        [select select-spider first_as_label "Select Option" "Spider" "Maeda 405c"]
-    </div>
-    <div class="xsw-select-dropdown xsw-all-terrain-select">
-        <p class="xsw-roto-select-title">All Terrain</p>
-        [select select-all-terrain first_as_label "Select Option" "Liebherr LTM 1055-3.1"]
-    </div>
-    <div class="xsw-select-dropdown xsw-add-ons-select">
-        <p class="xsw-roto-select-title">Attachments</p>
-        [select select-add-ons multiple size:1 first_as_label "Option 1" "Option 2"]
-    </div>
-</div>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>New Business Enquiry</title>
+</head>
+
+<body style="margin:0; padding:0; font-family:Arial, sans-serif; background:#f4f4f4;">
+
+    <table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f4f4; padding:20px;">
+        <tr>
+            <td align="center">
+
+                <!-- MAIN CONTAINER -->
+                <table width="600" cellpadding="0" cellspacing="0"
+                    style="background:#ffffff; border-radius:6px; overflow:hidden;">
+
+                    <!-- HEADER -->
+                    <tr>
+                        <td style="background:#d71920; color:#ffffff; text-align:center; padding:20px;">
+                            <h2 style="margin:0;">OWEN LIFTING</h2>
+                            <p style="margin:5px 0 0;">New Business Enquiry Received</p>
+                        </td>
+                    </tr>
+
+                    <!-- SECTION: YOUR DETAILS -->
+                    <tr>
+                        <td style="padding:20px;">
+                            <h3 style="border-bottom:2px solid #d71920; padding-bottom:5px;">Your Details</h3>
+
+                            <p><strong>Name:</strong> [text-name]</p>
+                            <p><strong>Email:</strong> [text-email]</p>
+                            <p><strong>Role:</strong> [select-role]</p>
+                            <p><strong>Company:</strong> [text-company]</p>
+
+                        </td>
+                    </tr>
+
+                    <!-- SECTION: PROJECT DETAILS -->
+                    <tr>
+                        <td style="padding:20px;">
+                            <h3 style="border-bottom:2px solid #d71920; padding-bottom:5px;">Project Details</h3>
+
+                            <p><strong>Project Name:</strong> [text-project-name]</p>
+                            <p><strong>Lift Type:</strong> [select-type-lift]</p>
+                            <p><strong>Site Address:</strong> [text-site-address]</p>
+
+                        </td>
+                    </tr>
+
+                    <!-- SECTION: TECHNICAL -->
+                    <tr>
+                        <td style="padding:20px;">
+                            <h3 style="border-bottom:2px solid #d71920; padding-bottom:5px;">Technical Details</h3>
+
+                            <p><strong>Load Weight:</strong> [text-load-weight]</p>
+                            <p><strong>Lift Height:</strong> [text-lift-height]</p>
+                            <p><strong>Reach / Radius:</strong> [text-lift-reach-radius]</p>
+                            <p><strong>Site Conditions:</strong> [select-site-conditions]</p>
+
+                        </td>
+                    </tr>
+
+                    <!-- SECTION: EQUIPMENT -->
+                    <tr>
+                        <td style="padding:20px;">
+                            <h3 style="border-bottom:2px solid #d71920; padding-bottom:5px;">Equipment</h3>
+
+                            <p><strong>Equipment Known:</strong> [radio-equipment_required]</p>
+
+                            <p><strong>Roto:</strong> [select-roto]</p>
+                            <p><strong>Spider:</strong> [select-spider]</p>
+                            <p><strong>All Terrain:</strong> [select-all-terrain]</p>
+                            <p><strong>Attachments:</strong> [select-add-ons]</p>
+
+                        </td>
+                    </tr>
+
+                    <!-- SECTION: MESSAGE -->
+                    <tr>
+                        <td style="padding:20px;">
+                            <h3 style="border-bottom:2px solid #d71920; padding-bottom:5px;">Project Description</h3>
+
+                            <p>[textarea-message]</p>
+
+                        </td>
+                    </tr>
+
+                    <!-- SECTION: SCHEDULE -->
+                    <tr>
+                        <td style="padding:20px;">
+                            <h3 style="border-bottom:2px solid #d71920; padding-bottom:5px;">Schedule</h3>
+
+                            <p><strong>Start Date:</strong> [date-start-date]</p>
+                            <p><strong>Duration:</strong> [text-duration]</p>
+
+                        </td>
+                    </tr>
+
+                    <!-- FOOTER -->
+                    <tr>
+                        <td style="background:#111; color:#ffffff; padding:20px; font-size:13px;">
+
+                            <p style="margin:0 0 10px;"><strong>Submission Details</strong></p>
+
+                            <p style="margin:3px 0;"><strong>Sent on:</strong> [_date] at [_time]</p>
+                            <p style="margin:3px 0;"><strong>IP Address:</strong> [_remote_ip]</p>
+                            <p style="margin:3px 0;"><strong>User Agent:</strong> [_user_agent]</p>
+                            <p style="margin:3px 0;"><strong>Page URL:</strong> [_url]</p>
+
+                            <hr style="border:none; border-top:1px solid #444; margin:15px 0;">
+
+                            <p style="margin:0; font-size:12px; color:#aaa;">
+                                © [_date format:Y] Owen Lifting. All rights reserved.
+                            </p>
+
+                        </td>
+                    </tr>
+
+                </table>
+
+            </td>
+        </tr>
+    </table>
+
+</body>
+
+</html>
