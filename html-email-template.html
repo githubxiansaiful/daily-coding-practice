@@ -1,18 +1,114 @@
-<select name="" id="" multiple size="1">
-    <option value="">Option 1</option>
-    <option value="">Option 2</option>
-    <option value="">Option 3</option>
-</select>
-<select name="" id="">
-    <option value="">Option 1</option>
-    <option value="">Option 2</option>
-    <option value="">Option 3</option>
-</select>
-<style>
-    select {
-        width: 200px;
-        padding: 10px;
-        font-size: 16px;
-        border: 2px solid #ccc;
-    }
-</style>
+<div class="xs-owen-form xw-business-inquiry-form">
+    <!-- Your Details -->
+    <div class="xsw-form-row-title">
+        <h3>Your Details</h3>
+    </div>
+    <div class="xsw-grid-inputs">
+        <div class="xsw-input-group">
+            [text* text-name autocomplete:name placeholder "Name"]
+        </div>
+        <div class="xsw-input-group">
+            [email* text-email autocomplete:email placeholder "Email Address"]
+        </div>
+        <div class="xsw-input-group xsw-business-select">
+            [select* select-role first_as_label "Role" "Site Manager" "Project Manager" "Contractor" "Buyer /
+            Procurement" "Other"]
+        </div>
+        <div class="xsw-input-group">
+            [text* text-company autocomplete:organization placeholder "Company Name"]
+        </div>
+    </div>
+    <!-- Project Details -->
+    <div class="xsw-form-row-title">
+        <h3>Project Details</h3>
+    </div>
+    <div class="xsw-grid-inputs project-details-grid">
+        <div class="xsw-input-group">
+            [text text-project-name placeholder "Project Name"]
+        </div>
+        <div class="xsw-input-group xsw-business-select">
+            [select* select-type-lift first_as_label "Lift Type" "Cladding" "Steel installation" "Glazing" "Plant
+            movement" "General lifting" "Other"]
+        </div>
+        <div class="xsw-input-group">
+            [text* text-site-address placeholder "Site Address"]
+        </div>
+    </div>
+    <!-- Technical Details -->
+    <div class="xsw-form-row-title">
+        <h3>Technical Details</h3>
+    </div>
+    <div class="xsw-grid-inputs">
+        <div class="xsw-input-group">
+            [text* text-load-weight placeholder "Load Weight (kg/tonnes)"]
+        </div>
+        <div class="xsw-input-group">
+            [text text-lift-height placeholder "Lift Height"]
+        </div>
+        <div class="xsw-input-group">
+            [text text-lift-reach-radius placeholder "Lift Reach/Radius"]
+        </div>
+        <div class="xsw-input-group xsw-business-select">
+            [select select-site-conditions first_as_label "Site conditions" "Restricted access" "Indoor / confined
+            space" "Uneven ground" "Live site" "Other"]
+        </div>
+    </div>
+    <!-- What Equipment is Required -->
+    <div class="xsw-form-row-title">
+        <h3>Do you know what equipment is required?</h3>
+    </div>
+    <div class="xsw-yes-now-options">
+        <div class="xsw-yes-now-option">
+            [radio radio-equipment_required use_label_element "Yes" "No"]
+        </div>
+    </div>
+    <!-- If YES please select below -->
+    <div class="xsw-form-row-title">
+        <h3>If YES please select below:</h3>
+    </div>
+    <div class="xsw-optional-info-select">
+        <div class="xsw-optional-select-dropdowns">
+            <div class="xsw-select-dropdown xsw-roto-select">
+                [select select-roto multiple first_as_label "Roto" "Magni 6.26" "Magni 6.31" "Manitou 2550" "Magni 13.26" "Magni 5.25" "Magni 6.22" "Magni 8.35" "Magni 8.39" "Magni 8.46" "Magni 8.51"]
+            </div>
+            <div class="xsw-select-dropdown xsw-spider-select">
+                [select select-spider first_as_label "Spider" "Maeda 405c"]
+            </div>
+            <div class="xsw-select-dropdown xsw-all-terrain-select">
+                [select select-all-terrain first_as_label "All Terrain" "Liebherr LTM 1055-3.1"]
+            </div>
+            <div class="xsw-select-dropdown xsw-add-ons-select">
+                [select select-add-ons first_as_label "Attachments" "Option 1" "Option 2"]
+            </div>
+        </div>
+    </div>
+    <!-- A brief description of your project -->
+    <div class="xsw-message-box">
+        <p class="xsw-ptag-title">Describe your project</p>
+        [textarea* textarea-message]
+    </div>
+    <!-- Project Schedule -->
+    <div class="xsw-form-row-title">
+        <h3>Project Schedule</h3>
+    </div>
+    <div class="xsw-grid-inputs">
+        <div class="xsw-input-group">
+            <label class="xsw-label-text" for="required-date">Project date <span>*</span></label>
+            [date* date-start-date]
+        </div>
+        <div class="xsw-input-group">
+            <label class="xsw-label-text" for="project-duration">Project duration</label>
+            [text text-duration placeholder "Duration"]
+        </div>
+    </div>
+    <!-- Upload Files -->
+    <div class="xsw-upload-files">
+        <h2 class="xsw-inner-heading">Upload Files</h2>
+        [mfile mfile-upload-files limit:10000000 filetypes:jpeg|png|jpg|svg|pdf|docs|text min-file:0 max-file:5]
+        <p class="xsw-file-acceptable-formats">(Acceptable formats: JPEG, PNG, JPG, SVG, PDF, DOC, DOCX, TEXT)</p>
+    </div>
+    <!-- Submit Button -->
+    <div class="xsw-submit-button">
+        [submit "SEND"]
+    </div>
+</div>
