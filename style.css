@@ -383,7 +383,7 @@ label.xsw-label-text span {
     position: absolute;
 }
 
-p.xsw-roto-select-title {
+.xsw-roto-select-title {
     text-align: center;
     background: #fff;
     padding-bottom: 0;
