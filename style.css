@@ -180,7 +180,7 @@ span.wpcf7-not-valid-tip {
 /* Style select */
 .xsw-select-dropdown select {
     width: 100%;
-    padding: 20px 10px 60px;
+    padding: 20px 10px 90px;
     text-align: center;
     text-align-last: center;
     background: #fff;
@@ -197,7 +197,7 @@ span.wpcf7-not-valid-tip {
 .xsw-select-dropdown::after {
     content: "";
     position: absolute;
-    bottom: 5px;
+    bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
     width: 70px;
@@ -206,6 +206,22 @@ span.wpcf7-not-valid-tip {
     background-size: contain !important;
     background-repeat: no-repeat !important;
     background-position: center center !important;
+}
+
+.xsw-select-dropdown:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 40px;
+    pointer-events: none;
+    background: url(/wp-content/uploads/2026/04/arrow-down-select.svg);
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+    z-index: 1;
 }
 
 .xsw-optional-select-dropdowns {
@@ -221,6 +237,7 @@ span.wpcf7-not-valid-tip {
 
 .xsw-select-dropdown.xsw-roto-select:after {
     background: url(/wp-content/uploads/2026/04/form-roto-icon.png);
+    width: 56px !important;
 }
 
 .xsw-select-dropdown.xsw-spider-select:after {
@@ -233,6 +250,7 @@ span.wpcf7-not-valid-tip {
 
 .xsw-select-dropdown.xsw-add-ons-select:after {
     background: url(/wp-content/uploads/2026/04/form-Add-ons-icon.png);
+    width: 56px !important;
 }
 
 /* Responsive CSS */
