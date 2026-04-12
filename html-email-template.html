@@ -1,193 +1,168 @@
-<div class="xs-owen-form xw-business-inquiry-form xsw-estimate-request-form">
-    <!-- Your Details -->
-    <div class="xsw-form-row-title">
-        <h3>Your Details</h3>
-    </div>
-    <div class="xsw-grid-inputs">
-        <div class="xsw-input-group">
-            [text* text-name autocomplete:name placeholder "Name"]
-        </div>
-        <div class="xsw-input-group">
-            [email* text-email autocomplete:email placeholder "Email Address"]
-        </div>
-        <div class="xsw-input-group xsw-business-select">
-            [select* select-role first_as_label "Role" "Site Manager" "Project Manager" "Contractor" "Buyer /
-            Procurement" "Other"]
-        </div>
-        <div class="xsw-input-group">
-            [text* text-company autocomplete:organization placeholder "Company Name"]
-        </div>
-    </div>
-    <!-- Project Details -->
-    <div class="xsw-form-row-title">
-        <h3>Project Details</h3>
-    </div>
-    <div class="xsw-grid-inputs project-details-grid">
-        <div class="xsw-input-group">
-            [text text-project-name placeholder "Project Name"]
-        </div>
-        <div class="xsw-input-group xsw-business-select">
-            [select* select-type-lift first_as_label "Lift Type" "Cladding" "Steel installation" "Glazing" "Plant
-            movement" "General lifting" "Other"]
-        </div>
-        <div class="xsw-input-group">
-            [text* text-site-address placeholder "Site Address"]
-        </div>
-    </div>
-    <!-- A brief description of your project -->
-    <div class="xsw-message-box">
-        <p class="xsw-ptag-title">Project Description</p>
-        [textarea* textarea-message]
-    </div>
-    <!-- Lift Specifications -->
-    <div class="xsw-form-row-title">
-        <h3>Lift Specifications</h3>
-    </div>
-    <div class="xsw-grid-inputs">
-        <div class="xsw-input-group">
-            [text* text-load-weight placeholder "Load Weight (kg/tonnes)"]
-        </div>
-        <div class="xsw-input-group">
-            [text text-load-dimensions placeholder "Load Dimensions"]
-        </div>
-        <div class="xsw-input-group">
-            [text text-lift-height placeholder "Lift Height"]
-        </div>
-        <div class="xsw-input-group">
-            [text text-lift-reach-radius placeholder "Lift Reach/Radius"]
-        </div>
-    </div>
-    <!-- Lift Complexity -->
-    <div class="xsw-form-row-title">
-        <h3>Lift Complexity</h3>
-    </div>
-    <div class="xsw-grid-inputs">
-        <div class="xsw-input-group">
-            [number* number-of-lifts placeholder "Number of Lifts"]
-        </div>
-        <div class="xsw-input-group xsw-business-select">
-            [select* select-duration-per-lift first_as_label "Duration Per Lift" "Single lift" "Half day" "Full day"
-            "Multiple days"]
-        </div>
-        <div class="xsw-input-group xsw-business-select">
-            [select* select-number-of-days first_as_label "Number of Days" "Single lift" "Half day" "Full day" "Multiple
-            days"]
-        </div>
-        <div class="xsw-input-group">
-            [text text-crane-type placeholder "Crane type"]
-        </div>
-    </div>
-    <!-- What Equipment is Required -->
-    <div class="xsw-form-row-title">
-        <h3>Do you know what equipment is required?</h3>
-    </div>
-    <div class="xsw-yes-now-options">
-        <div class="xsw-yes-now-option">
-            [radio radio-equipment_required use_label_element "Yes" "No"]
-        </div>
-    </div>
-    <!-- If YES please select below -->
-    <div class="xsw-form-row-title">
-        <h3>If YES please select below:</h3>
-    </div>
-    <div class="xsw-optional-info-select">
-        <div class="xsw-optional-select-dropdowns">
-            <div class="xsw-select-dropdown xsw-roto-select">
-                <p class="xsw-roto-select-title">Roto</p>
-                [select select-roto multiple size:1 first_as_label "Magni 6.26" "Magni 6.31" "Manitou 2550" "Magni
-                13.26"
-                "Magni 5.25" "Magni 6.22" "Magni 8.35" "Magni 8.39" "Magni 8.46" "Magni 8.51" ]
-            </div>
-            <div class="xsw-select-dropdown xsw-spider-select">
-                <p class="xsw-roto-select-title">Spider</p>
-                [select select-spider first_as_label "Select Option" "Spider" "Maeda 405c"]
-            </div>
-            <div class="xsw-select-dropdown xsw-all-terrain-select">
-                <p class="xsw-roto-select-title">All Terrain</p>
-                [select select-all-terrain first_as_label "Select Option" "Liebherr LTM 1055-3.1"]
-            </div>
-            <div class="xsw-select-dropdown xsw-add-ons-select">
-                <p class="xsw-roto-select-title">Attachments</p>
-                [select select-add-ons multiple size:1 first_as_label "Option 1" "Option 2"]
-            </div>
-        </div>
-    </div>
-    <!-- Site Characteristics -->
-    <div class="xsw-form-row-title">
-        <h3>Site Characteristics</h3>
-    </div>
-    <div class="xsw-grid-inputs">
-        <div class="xsw-input-group">
-            [text* text-access-restrictions placeholder "Access Restrictions"]
-        </div>
-        <div class="xsw-input-group">
-            [text* text-ground-conditions placeholder "Ground Conditions"]
-        </div>
-        <div class="xsw-input-group">
-            [text* text-additional-requirements placeholder "Additional Requirements"]
-        </div>
-        <div class="xsw-input-group xsw-business-select">
-            [select* select-lift-plan-required first_as_label "Lift Plan Required" "Yes" "No"]
-        </div>
-        <div class="xsw-input-group xsw-business-select">
-            [select* select-traffic-management first_as_label "Traffic Management" "Yes" "No"]
-        </div>
-        <div class="xsw-input-group xsw-business-select">
-            [select* select-appointed-person first_as_label "Appointed Person" "Yes" "No"]
-        </div>
-        <div class="xsw-input-group xsw-business-select">
-            [select* select-out-of-hours-work first_as_label "Out of Hours Work" "Yes" "No"]
-        </div>
-        <div class="xsw-input-group xsw-business-select">
-            [select* select-weekend-work first_as_label "Weekend Work" "Yes" "No"]
-        </div>
-    </div>
-    <!-- Compliance / Documentation -->
-    <div class="xsw-form-row-title">
-        <h3>Compliance / Documentation</h3>
-    </div>
-    <div class="xsw-grid-inputs">
-        <div class="xsw-input-group xsw-business-select">
-            [select* select-rams-required first_as_label "RAMS Required" "Yes" "No"]
-        </div>
-        <div class="xsw-input-group xsw-business-select">
-            [select select-insureance-requirements first_as_label "Insurance Requirements" "Yes" "No"]
-        </div>
-    </div>
-    <!-- Upload Files -->
-    <div class="xsw-upload-files">
-        <h2 class="xsw-inner-heading">UPLOAD DOCUMENTATION</h2>
-        [mfile mfile-upload-files limit:10000000 filetypes:jpeg|png|jpg|svg|pdf|docs|text min-file:0 max-file:5]
-        <p class="xsw-file-acceptable-formats">(Acceptable formats: JPEG, PNG, JPG, SVG, PDF, DOC, DOCX, TEXT)</p>
-    </div>
-    <!-- Project Schedule & Budget -->
-    <div class="xsw-form-row-title">
-        <h3>Project Schedule & Budget</h3>
-    </div>
-    <div class="xsw-grid-inputs">
-        <div class="xsw-input-group">
-            <label class="xsw-label-text" for="required-date">Start Date <span>*</span></label>
-            [date* date-start-date]
-        </div>
-        <div class="xsw-input-group">
-            <label class="xsw-label-text" for="required-date">Project Duration</label>
-            [text text-project-duration placeholder "Project Duration"]
-        </div>
-    </div>
-    <!-- Project Schedule -->
-    <div class="xsw-form-row-title">
-        <h3>Project Schedule</h3>
-    </div>
-    <div class="xsw-grid-inputs">
-        <div class="xsw-input-group">
-            [text text-budget-expectation placeholder "Budget Expectation"]
-        </div>
-        <div class="xsw-input-group xsw-business-select">
-            [select select-response-time first_as_label "Response Time" "Same day" "Within 24 hours" "This week"]
-        </div>
-    </div>
-    <!-- Submit Button -->
-    <div class="xsw-submit-button">
-        [submit "SEND"]
-    </div>
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Estimate Request</title>
+</head>
+<body style="margin:0; padding:0; font-family:Arial, sans-serif; background:#f4f4f4;">
+
+<table width="100%" cellpadding="0" cellspacing="0" style="padding:20px;">
+<tr>
+<td align="center">
+
+<table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff; border-radius:6px; overflow:hidden;">
+
+<!-- HEADER -->
+<tr>
+<td style="background:#d71920; color:#fff; text-align:center; padding:20px;">
+<h2 style="margin:0;">ESTIMATE REQUEST</h2>
+<p style="margin:5px 0 0;">New submission received</p>
+</td>
+</tr>
+
+<!-- YOUR DETAILS -->
+<tr>
+<td style="padding:20px;">
+<h3 style="border-bottom:2px solid #d71920;">Your Details</h3>
+
+<p><strong>Name:</strong> [text-name]</p>
+<p><strong>Email:</strong> [text-email]</p>
+<p><strong>Role:</strong> [select-role]</p>
+<p><strong>Company:</strong> [text-company]</p>
+</td>
+</tr>
+
+<!-- PROJECT DETAILS -->
+<tr>
+<td style="padding:20px;">
+<h3 style="border-bottom:2px solid #d71920;">Project Details</h3>
+
+<p><strong>Project Name:</strong> [text-project-name]</p>
+<p><strong>Lift Type:</strong> [select-type-lift]</p>
+<p><strong>Site Address:</strong> [text-site-address]</p>
+</td>
+</tr>
+
+<!-- DESCRIPTION -->
+<tr>
+<td style="padding:20px;">
+<h3 style="border-bottom:2px solid #d71920;">Project Description</h3>
+
+<p>[textarea-message]</p>
+</td>
+</tr>
+
+<!-- LIFT SPECIFICATIONS -->
+<tr>
+<td style="padding:20px;">
+<h3 style="border-bottom:2px solid #d71920;">Lift Specifications</h3>
+
+<p><strong>Load Weight:</strong> [text-load-weight]</p>
+<p><strong>Load Dimensions:</strong> [text-load-dimensions]</p>
+<p><strong>Lift Height:</strong> [text-lift-height]</p>
+<p><strong>Reach / Radius:</strong> [text-lift-reach-radius]</p>
+</td>
+</tr>
+
+<!-- COMPLEXITY -->
+<tr>
+<td style="padding:20px;">
+<h3 style="border-bottom:2px solid #d71920;">Lift Complexity</h3>
+
+<p><strong>Number of Lifts:</strong> [number-of-lifts]</p>
+<p><strong>Duration per Lift:</strong> [select-duration-per-lift]</p>
+<p><strong>Number of Days:</strong> [select-number-of-days]</p>
+<p><strong>Crane Type:</strong> [text-crane-type]</p>
+</td>
+</tr>
+
+<!-- EQUIPMENT -->
+<tr>
+<td style="padding:20px;">
+<h3 style="border-bottom:2px solid #d71920;">Equipment</h3>
+
+<p><strong>Equipment Known:</strong> [radio-equipment_required]</p>
+
+<p><strong>Roto:</strong> [select-roto]</p>
+<p><strong>Spider:</strong> [select-spider]</p>
+<p><strong>All Terrain:</strong> [select-all-terrain]</p>
+<p><strong>Attachments:</strong> [select-add-ons]</p>
+</td>
+</tr>
+
+<!-- SITE -->
+<tr>
+<td style="padding:20px;">
+<h3 style="border-bottom:2px solid #d71920;">Site Characteristics</h3>
+
+<p><strong>Access Restrictions:</strong> [text-access-restrictions]</p>
+<p><strong>Ground Conditions:</strong> [text-ground-conditions]</p>
+<p><strong>Additional Requirements:</strong> [text-additional-requirements]</p>
+
+<p><strong>Lift Plan Required:</strong> [select-lift-plan-required]</p>
+<p><strong>Traffic Management:</strong> [select-traffic-management]</p>
+<p><strong>Appointed Person:</strong> [select-appointed-person]</p>
+<p><strong>Out of Hours Work:</strong> [select-out-of-hours-work]</p>
+<p><strong>Weekend Work:</strong> [select-weekend-work]</p>
+</td>
+</tr>
+
+<!-- COMPLIANCE -->
+<tr>
+<td style="padding:20px;">
+<h3 style="border-bottom:2px solid #d71920;">Compliance</h3>
+
+<p><strong>RAMS Required:</strong> [select-rams-required]</p>
+<p><strong>Insurance Requirements:</strong> [select-insureance-requirements]</p>
+</td>
+</tr>
+
+<!-- FILES -->
+<tr>
+<td style="padding:20px;">
+<h3 style="border-bottom:2px solid #d71920;">Uploaded Files</h3>
+
+<p>[mfile-upload-files]</p>
+</td>
+</tr>
+
+<!-- SCHEDULE -->
+<tr>
+<td style="padding:20px;">
+<h3 style="border-bottom:2px solid #d71920;">Schedule & Budget</h3>
+
+<p><strong>Start Date:</strong> [date-start-date]</p>
+<p><strong>Project Duration:</strong> [text-project-duration]</p>
+<p><strong>Budget:</strong> [text-budget-expectation]</p>
+<p><strong>Response Time:</strong> [select-response-time]</p>
+</td>
+</tr>
+
+<!-- FOOTER -->
+<tr>
+<td style="background:#111; color:#ffffff; padding:20px; font-size:13px;">
+
+<p style="margin:0 0 10px;"><strong>Submission Details</strong></p>
+
+<p><strong>Sent on:</strong> [_date] at [_time]</p>
+<p><strong>IP Address:</strong> [_remote_ip]</p>
+<p><strong>User Agent:</strong> [_user_agent]</p>
+<p><strong>Page URL:</strong> [_url]</p>
+
+<hr style="border:none; border-top:1px solid #444; margin:15px 0;">
+
+<p style="font-size:12px; color:#aaa;">
+© [_date format:Y] Owen Lifting. All rights reserved.
+</p>
+
+</td>
+</tr>
+
+</table>
+
+</td>
+</tr>
+</table>
+
+</body>
+</html>
