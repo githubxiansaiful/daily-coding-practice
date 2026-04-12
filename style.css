@@ -382,3 +382,11 @@ label.xsw-label-text span {
     font-size: 26px;
     position: absolute;
 }
+
+p.xsw-roto-select-title {
+    text-align: center;
+    background: #fff;
+    padding-bottom: 0;
+    padding-top: 5px;
+    font-size: 16px;
+}
