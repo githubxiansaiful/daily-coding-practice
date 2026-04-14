@@ -1,52 +1,17 @@
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const section = document.querySelector(".footer-carousel-section");
-        if (!section) return;
-
-        const images = [
-            "https://owencladding.co.uk/wp-content/uploads/2026/03/PYRAMIDS-EXTENDED.jpeg",
-            "https://owencladding.co.uk/wp-content/uploads/2026/03/IMAGE-STONEHENGE.jpg",
-            "https://owencladding.co.uk/wp-content/uploads/2026/03/IMAGE-ACROPOLIS.jpg"
-        ];
-
-        const track = document.createElement("div");
-        track.classList.add("carousel-track");
-
-        const allImages = [...images, ...images];
-
-        allImages.forEach(src => {
-            const item = document.createElement("div");
-            item.classList.add("carousel-item");
-            item.style.backgroundImage = `url(${src})`;
-            track.appendChild(item);
-        });
-
-        section.appendChild(track);
+const selectBtn = document.querySelector(".select-btn"),
+    items = document.querySelectorAll(".item");
+selectBtn.addEventListener("click", () => {
+    selectBtn.classList.toggle("open");
+});
+items.forEach(item => {
+    item.addEventListener("click", () => {
+        item.classList.toggle("checked");
+        let checked = document.querySelectorAll(".checked"),
+            btnText = document.querySelector(".btn-text");
+        if (checked && checked.length > 0) {
+            btnText.innerText = `${checked.length} Selected`;
+        } else {
+            btnText.innerText = "Select Language";
+        }
     });
-</script>
-    <script>
-
-
-        jQuery(function ($) {
-            $(document).ready(function () {
-                $("body ul.et_mobile_menu li.menu-item-has-children, body ul.et_mobile_menu  li.page_item_has_children").append('<a href="#" class="mobile-toggle"></a>');
-                $('ul.et_mobile_menu li.menu-item-has-children .mobile-toggle, ul.et_mobile_menu li.page_item_has_children .mobile-toggle').click(function (event) {
-                    event.preventDefault();
-                    $(this).parent('li').toggleClass('dt-open');
-                    $(this).parent('li').find('ul.children').first().toggleClass('visible');
-                    $(this).parent('li').find('ul.sub-menu').first().toggleClass('visible');
-                });
-                iconFINAL = 'P';
-                $('body ul.et_mobile_menu li.menu-item-has-children, body ul.et_mobile_menu li.page_item_has_children').attr('data-icon', iconFINAL);
-                $('.mobile-toggle').on('mouseover', function () {
-                    $(this).parent().addClass('is-hover');
-                }).on('mouseout', function () {
-                    $(this).parent().removeClass('is-hover');
-                })
-            });
-    });
-
-
-    </script>
-
-
+})
